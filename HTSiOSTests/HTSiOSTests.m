@@ -7,26 +7,36 @@
 //
 
 #import "HTSiOSTests.h"
+#import "GeoSample.h"
 
 @implementation HTSiOSTests
 
 - (void)setUp
 {
     [super setUp];
-    
     // Set-up code here.
+    [MagicalRecordHelpers setDefaultModelForTestCase:[GeoSample class]];
+    [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
 }
 
 - (void)tearDown
 {
     // Tear-down code here.
+    [MagicalRecordHelpers cleanUp];
     
     [super tearDown];
 }
 
-- (void)testExample
+- (void)testBasicGeoSampleDistanceComparison
 {
-    STFail(@"Unit tests are not implemented yet in HTSiOSTests");
+    GeoSample *mySample = [GeoSample MR_createEntity];
+    mySample.longitudeValue = 51.261926;
+    mySample.latitudeValue = 30.236045;
+    mySample.timestamp = [NSDate date];
+    
+    CLLocation *loc = [[CLLocation alloc] initWithLatitude:50.0 longitude:30.0];
+    STAssertFalse([mySample isCloseToLocation:loc distanceThreshold:1000.0], @"These distant points should not be detected as being quite close.");
+    
 }
 
 @end

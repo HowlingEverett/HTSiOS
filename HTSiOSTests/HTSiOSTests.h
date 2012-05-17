@@ -7,6 +7,7 @@
 //
 
 #import <SenTestingKit/SenTestingKit.h>
+#import <CoreLocation/CoreLocation.h>
 
 @interface HTSiOSTests : SenTestCase
 
