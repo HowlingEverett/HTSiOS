@@ -15,11 +15,13 @@ extern const struct GeoSampleAttributes {
 } GeoSampleAttributes;
 
 extern const struct GeoSampleRelationships {
+	__unsafe_unretained NSString *trip;
 } GeoSampleRelationships;
 
 extern const struct GeoSampleFetchedProperties {
 } GeoSampleFetchedProperties;
 
+@class Trip;
 
 
 
@@ -122,6 +124,13 @@ extern const struct GeoSampleFetchedProperties {
 
 
 
+@property (nonatomic, strong) Trip* trip;
+
+//- (BOOL)validateTrip:(id*)value_ error:(NSError**)error_;
+
+
+
+
 
 @end
 
@@ -190,6 +199,11 @@ extern const struct GeoSampleFetchedProperties {
 - (void)setPrimitiveTimestamp:(NSDate*)value;
 
 
+
+
+
+- (Trip*)primitiveTrip;
+- (void)setPrimitiveTrip:(Trip*)value;
 
 
 @end

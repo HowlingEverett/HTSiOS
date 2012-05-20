@@ -21,6 +21,15 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D004FFA515689F82004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
+		D004FFA715689F91004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
+		D004FFA815689F98004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
+		D004FFAB1568A4D6004687ED /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E720015651CC900ECC409 /* CoreLocation.framework */; };
+		D004FFAF1568AC92004687ED /* HTSTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFAE1568AC92004687ED /* HTSTodayViewController.m */; };
+		D004FFB41568B613004687ED /* _Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFB11568B613004687ED /* _Trip.m */; };
+		D004FFB51568B613004687ED /* _Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFB11568B613004687ED /* _Trip.m */; };
+		D004FFB61568B613004687ED /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFB31568B613004687ED /* Trip.m */; };
+		D004FFB71568B613004687ED /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFB31568B613004687ED /* Trip.m */; };
 		D00E720115651CC900ECC409 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E720015651CC900ECC409 /* CoreLocation.framework */; };
 		D00E7203156525ED00ECC409 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E720015651CC900ECC409 /* CoreLocation.framework */; };
 		D034E6441564EAF30092AAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D034E6431564EAF30092AAA0 /* UIKit.framework */; };
@@ -49,7 +58,6 @@
 		D034E6901564ED4E0092AAA0 /* HTSiOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D034E68F1564ED4E0092AAA0 /* HTSiOS.storyboard */; };
 		D034E6A01564FC120092AAA0 /* _GeoSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E69D1564FC120092AAA0 /* _GeoSample.m */; };
 		D034E6A11564FC120092AAA0 /* GeoSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E69F1564FC120092AAA0 /* GeoSample.m */; };
-		D034E6A61564FCBA0092AAA0 /* HTSiOS Acceptance Tests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D034E6A51564FCBA0092AAA0 /* HTSiOS Acceptance Tests-Info.plist */; };
 		D034E6A91564FD2A0092AAA0 /* HTSExampleTestController.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E6A81564FD2A0092AAA0 /* HTSExampleTestController.m */; };
 		D034E6AE1564FDB00092AAA0 /* KIFTestScenario+HTSAdditions.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E6AD1564FDB00092AAA0 /* KIFTestScenario+HTSAdditions.m */; };
 		D034E7531565065F0092AAA0 /* HTSiOS.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D034E68F1564ED4E0092AAA0 /* HTSiOS.storyboard */; };
@@ -96,6 +104,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D004FFA415689F82004687ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		D004FFA91568A4B4004687ED /* HTSiOS Acceptance Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HTSiOS Acceptance Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
+		D004FFAD1568AC92004687ED /* HTSTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTodayViewController.h; sourceTree = "<group>"; };
+		D004FFAE1568AC92004687ED /* HTSTodayViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTodayViewController.m; sourceTree = "<group>"; };
+		D004FFB01568B613004687ED /* _Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _Trip.h; sourceTree = "<group>"; };
+		D004FFB11568B613004687ED /* _Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _Trip.m; sourceTree = "<group>"; };
+		D004FFB21568B613004687ED /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
+		D004FFB31568B613004687ED /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		D00E720015651CC900ECC409 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		D034E63F1564EAF30092AAA0 /* HTSiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTSiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D034E6431564EAF30092AAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -122,7 +138,6 @@
 		D034E69D1564FC120092AAA0 /* _GeoSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _GeoSample.m; sourceTree = "<group>"; };
 		D034E69E1564FC120092AAA0 /* GeoSample.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GeoSample.h; sourceTree = "<group>"; };
 		D034E69F1564FC120092AAA0 /* GeoSample.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeoSample.m; sourceTree = "<group>"; };
-		D034E6A51564FCBA0092AAA0 /* HTSiOS Acceptance Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HTSiOS Acceptance Tests-Info.plist"; sourceTree = "<group>"; };
 		D034E6A71564FD2A0092AAA0 /* HTSExampleTestController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSExampleTestController.h; sourceTree = "<group>"; };
 		D034E6A81564FD2A0092AAA0 /* HTSExampleTestController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSExampleTestController.m; sourceTree = "<group>"; };
 		D034E6AC1564FDB00092AAA0 /* KIFTestScenario+HTSAdditions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "KIFTestScenario+HTSAdditions.h"; sourceTree = "<group>"; };
@@ -164,6 +179,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D004FFA515689F82004687ED /* MapKit.framework in Frameworks */,
 				D00E720115651CC900ECC409 /* CoreLocation.framework in Frameworks */,
 				D034E6441564EAF30092AAA0 /* UIKit.framework in Frameworks */,
 				D034E6461564EAF30092AAA0 /* Foundation.framework in Frameworks */,
@@ -176,6 +192,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D004FFA715689F91004687ED /* MapKit.framework in Frameworks */,
 				D00E7203156525ED00ECC409 /* CoreLocation.framework in Frameworks */,
 				D034E6611564EAF30092AAA0 /* SenTestingKit.framework in Frameworks */,
 				D034E6621564EAF30092AAA0 /* UIKit.framework in Frameworks */,
@@ -188,6 +205,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D004FFAB1568A4D6004687ED /* CoreLocation.framework in Frameworks */,
+				D004FFA815689F98004687ED /* MapKit.framework in Frameworks */,
 				D034E68E1564EBCE0092AAA0 /* libKIF.a in Frameworks */,
 				D034E6811564EB630092AAA0 /* UIKit.framework in Frameworks */,
 				D034E6821564EB630092AAA0 /* Foundation.framework in Frameworks */,
@@ -199,6 +218,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D004FFAC1568AC71004687ED /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D004FFAD1568AC92004687ED /* HTSTodayViewController.h */,
+				D004FFAE1568AC92004687ED /* HTSTodayViewController.m */,
+			);
+			name = "View Controllers";
+			sourceTree = "<group>";
+		};
 		D034E6341564EAF30092AAA0 = {
 			isa = PBXGroup;
 			children = (
@@ -206,7 +234,6 @@
 				D034E6671564EAF30092AAA0 /* HTSiOSTests */,
 				D034E6421564EAF30092AAA0 /* Frameworks */,
 				D034E6401564EAF30092AAA0 /* Products */,
-				D034E6A51564FCBA0092AAA0 /* HTSiOS Acceptance Tests-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -223,6 +250,7 @@
 		D034E6421564EAF30092AAA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D004FFA415689F82004687ED /* MapKit.framework */,
 				D034E68D1564EBCE0092AAA0 /* libKIF.a */,
 				D00E720015651CC900ECC409 /* CoreLocation.framework */,
 				D034E6431564EAF30092AAA0 /* UIKit.framework */,
@@ -239,6 +267,7 @@
 			children = (
 				D034E7B21565152B0092AAA0 /* Libraries */,
 				D034E6A21564FC2E0092AAA0 /* Models */,
+				D004FFAC1568AC71004687ED /* View Controllers */,
 				D034E6541564EAF30092AAA0 /* HTSAppDelegate.h */,
 				D034E6551564EAF30092AAA0 /* HTSAppDelegate.m */,
 				D034E64C1564EAF30092AAA0 /* Supporting Files */,
@@ -270,6 +299,7 @@
 		D034E6681564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D004FFA91568A4B4004687ED /* HTSiOS Acceptance Tests-Info.plist */,
 				D034E6691564EAF30092AAA0 /* HTSiOSTests-Info.plist */,
 				D034E66A1564EAF30092AAA0 /* InfoPlist.strings */,
 			);
@@ -289,6 +319,8 @@
 		D034E6A31564FC360092AAA0 /* Robot */ = {
 			isa = PBXGroup;
 			children = (
+				D004FFB01568B613004687ED /* _Trip.h */,
+				D004FFB11568B613004687ED /* _Trip.m */,
 				D034E69C1564FC120092AAA0 /* _GeoSample.h */,
 				D034E69D1564FC120092AAA0 /* _GeoSample.m */,
 			);
@@ -298,6 +330,8 @@
 		D034E6A41564FC3C0092AAA0 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				D004FFB21568B613004687ED /* Trip.h */,
+				D004FFB31568B613004687ED /* Trip.m */,
 				D034E69E1564FC120092AAA0 /* GeoSample.h */,
 				D034E69F1564FC120092AAA0 /* GeoSample.m */,
 			);
@@ -487,7 +521,6 @@
 			files = (
 				D034E6501564EAF30092AAA0 /* InfoPlist.strings in Resources */,
 				D034E6901564ED4E0092AAA0 /* HTSiOS.storyboard in Resources */,
-				D034E6A61564FCBA0092AAA0 /* HTSiOS Acceptance Tests-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -563,6 +596,9 @@
 				D034E7AF156515280092AAA0 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				D034E7B0156515280092AAA0 /* MagicalRecordHelpers.m in Sources */,
 				D034E7B1156515280092AAA0 /* MRCoreDataAction.m in Sources */,
+				D004FFAF1568AC92004687ED /* HTSTodayViewController.m in Sources */,
+				D004FFB41568B613004687ED /* _Trip.m in Sources */,
+				D004FFB61568B613004687ED /* Trip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +635,8 @@
 				D034E7C0156516530092AAA0 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */,
 				D034E7C1156517380092AAA0 /* _GeoSample.m in Sources */,
 				D034E7C2156517380092AAA0 /* GeoSample.m in Sources */,
+				D004FFB51568B613004687ED /* _Trip.m in Sources */,
+				D004FFB71568B613004687ED /* Trip.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

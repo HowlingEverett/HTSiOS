@@ -22,4 +22,18 @@
     return scenario;
 }
 
++ (id)scenarioToStartNewTrip
+{
+    KIFTestScenario *scenario = [KIFTestScenario scenarioWithDescription:@"Test that when a user taps the Start button that trip logging is enabled."];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Today"]];
+    [scenario addStep:[KIFTestStep stepToTapViewWithAccessibilityLabel:@"Trip Start Button"]];
+    
+    // Verify that location services has started by catching the notification
+    [scenario addStep:[KIFTestStep stepToWaitForNotificationName:@"new_location_found" object:nil]];
+    // Verify that the Start/Stop button has switched to "Stop"
+    [scenario addStep:[KIFTestStep stepToWaitForViewWithAccessibilityLabel:@"Trip Start Button" value:<#(NSString *)#> traits:<#(UIAccessibilityTraits)#>
+    
+    return scenario;
+}
+
 @end

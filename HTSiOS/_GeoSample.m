@@ -14,6 +14,7 @@ const struct GeoSampleAttributes GeoSampleAttributes = {
 };
 
 const struct GeoSampleRelationships GeoSampleRelationships = {
+	.trip = @"trip",
 };
 
 const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
@@ -238,6 +239,10 @@ const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
 
 
 
+
+@dynamic trip;
+
+	
 
 
 

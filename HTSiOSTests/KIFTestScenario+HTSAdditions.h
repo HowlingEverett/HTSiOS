@@ -12,5 +12,5 @@
 @interface KIFTestScenario (HTSAdditions)
 
 + (id)scenarioToSwitchToTabTwo;
-
++ (id)scenarioToStartNewTrip;
 @end
