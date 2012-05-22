@@ -5,9 +5,9 @@
 
 const struct GeoSampleAttributes GeoSampleAttributes = {
 	.heading = @"heading",
-	.heading_accuracy = @"heading_accuracy",
+	.headingAccuracy = @"headingAccuracy",
 	.latitude = @"latitude",
-	.location_accuracy = @"location_accuracy",
+	.locationAccuracy = @"locationAccuracy",
 	.longitude = @"longitude",
 	.speed = @"speed",
 	.timestamp = @"timestamp",
@@ -50,16 +50,16 @@ const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
 		NSSet *affectingKey = [NSSet setWithObject:@"heading"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"heading_accuracyValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"heading_accuracy"];
+	if ([key isEqualToString:@"headingAccuracyValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"headingAccuracy"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"latitudeValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"latitude"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
-	if ([key isEqualToString:@"location_accuracyValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"location_accuracy"];
+	if ([key isEqualToString:@"locationAccuracyValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"locationAccuracy"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"longitudeValue"]) {
@@ -81,48 +81,48 @@ const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
 
 
 
-- (float)headingValue {
+- (double)headingValue {
 	NSNumber *result = [self heading];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setHeadingValue:(float)value_ {
-	[self setHeading:[NSNumber numberWithFloat:value_]];
+- (void)setHeadingValue:(double)value_ {
+	[self setHeading:[NSNumber numberWithDouble:value_]];
 }
 
-- (float)primitiveHeadingValue {
+- (double)primitiveHeadingValue {
 	NSNumber *result = [self primitiveHeading];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveHeadingValue:(float)value_ {
-	[self setPrimitiveHeading:[NSNumber numberWithFloat:value_]];
+- (void)setPrimitiveHeadingValue:(double)value_ {
+	[self setPrimitiveHeading:[NSNumber numberWithDouble:value_]];
 }
 
 
 
 
 
-@dynamic heading_accuracy;
+@dynamic headingAccuracy;
 
 
 
-- (float)heading_accuracyValue {
-	NSNumber *result = [self heading_accuracy];
-	return [result floatValue];
+- (double)headingAccuracyValue {
+	NSNumber *result = [self headingAccuracy];
+	return [result doubleValue];
 }
 
-- (void)setHeading_accuracyValue:(float)value_ {
-	[self setHeading_accuracy:[NSNumber numberWithFloat:value_]];
+- (void)setHeadingAccuracyValue:(double)value_ {
+	[self setHeadingAccuracy:[NSNumber numberWithDouble:value_]];
 }
 
-- (float)primitiveHeading_accuracyValue {
-	NSNumber *result = [self primitiveHeading_accuracy];
-	return [result floatValue];
+- (double)primitiveHeadingAccuracyValue {
+	NSNumber *result = [self primitiveHeadingAccuracy];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveHeading_accuracyValue:(float)value_ {
-	[self setPrimitiveHeading_accuracy:[NSNumber numberWithFloat:value_]];
+- (void)setPrimitiveHeadingAccuracyValue:(double)value_ {
+	[self setPrimitiveHeadingAccuracy:[NSNumber numberWithDouble:value_]];
 }
 
 
@@ -155,26 +155,26 @@ const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
 
 
 
-@dynamic location_accuracy;
+@dynamic locationAccuracy;
 
 
 
-- (float)location_accuracyValue {
-	NSNumber *result = [self location_accuracy];
-	return [result floatValue];
+- (double)locationAccuracyValue {
+	NSNumber *result = [self locationAccuracy];
+	return [result doubleValue];
 }
 
-- (void)setLocation_accuracyValue:(float)value_ {
-	[self setLocation_accuracy:[NSNumber numberWithFloat:value_]];
+- (void)setLocationAccuracyValue:(double)value_ {
+	[self setLocationAccuracy:[NSNumber numberWithDouble:value_]];
 }
 
-- (float)primitiveLocation_accuracyValue {
-	NSNumber *result = [self primitiveLocation_accuracy];
-	return [result floatValue];
+- (double)primitiveLocationAccuracyValue {
+	NSNumber *result = [self primitiveLocationAccuracy];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveLocation_accuracyValue:(float)value_ {
-	[self setPrimitiveLocation_accuracy:[NSNumber numberWithFloat:value_]];
+- (void)setPrimitiveLocationAccuracyValue:(double)value_ {
+	[self setPrimitiveLocationAccuracy:[NSNumber numberWithDouble:value_]];
 }
 
 
@@ -211,22 +211,22 @@ const struct GeoSampleFetchedProperties GeoSampleFetchedProperties = {
 
 
 
-- (float)speedValue {
+- (double)speedValue {
 	NSNumber *result = [self speed];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setSpeedValue:(float)value_ {
-	[self setSpeed:[NSNumber numberWithFloat:value_]];
+- (void)setSpeedValue:(double)value_ {
+	[self setSpeed:[NSNumber numberWithDouble:value_]];
 }
 
-- (float)primitiveSpeedValue {
+- (double)primitiveSpeedValue {
 	NSNumber *result = [self primitiveSpeed];
-	return [result floatValue];
+	return [result doubleValue];
 }
 
-- (void)setPrimitiveSpeedValue:(float)value_ {
-	[self setPrimitiveSpeed:[NSNumber numberWithFloat:value_]];
+- (void)setPrimitiveSpeedValue:(double)value_ {
+	[self setPrimitiveSpeed:[NSNumber numberWithDouble:value_]];
 }
 
 

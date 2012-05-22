@@ -6,9 +6,9 @@
 
 extern const struct GeoSampleAttributes {
 	__unsafe_unretained NSString *heading;
-	__unsafe_unretained NSString *heading_accuracy;
+	__unsafe_unretained NSString *headingAccuracy;
 	__unsafe_unretained NSString *latitude;
-	__unsafe_unretained NSString *location_accuracy;
+	__unsafe_unretained NSString *locationAccuracy;
 	__unsafe_unretained NSString *longitude;
 	__unsafe_unretained NSString *speed;
 	__unsafe_unretained NSString *timestamp;
@@ -46,23 +46,23 @@ extern const struct GeoSampleFetchedProperties {
 @property (nonatomic, strong) NSNumber* heading;
 
 
-@property float headingValue;
-- (float)headingValue;
-- (void)setHeadingValue:(float)value_;
+@property double headingValue;
+- (double)headingValue;
+- (void)setHeadingValue:(double)value_;
 
 //- (BOOL)validateHeading:(id*)value_ error:(NSError**)error_;
 
 
 
 
-@property (nonatomic, strong) NSNumber* heading_accuracy;
+@property (nonatomic, strong) NSNumber* headingAccuracy;
 
 
-@property float heading_accuracyValue;
-- (float)heading_accuracyValue;
-- (void)setHeading_accuracyValue:(float)value_;
+@property double headingAccuracyValue;
+- (double)headingAccuracyValue;
+- (void)setHeadingAccuracyValue:(double)value_;
 
-//- (BOOL)validateHeading_accuracy:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateHeadingAccuracy:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -79,14 +79,14 @@ extern const struct GeoSampleFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* location_accuracy;
+@property (nonatomic, strong) NSNumber* locationAccuracy;
 
 
-@property float location_accuracyValue;
-- (float)location_accuracyValue;
-- (void)setLocation_accuracyValue:(float)value_;
+@property double locationAccuracyValue;
+- (double)locationAccuracyValue;
+- (void)setLocationAccuracyValue:(double)value_;
 
-//- (BOOL)validateLocation_accuracy:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateLocationAccuracy:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -106,9 +106,9 @@ extern const struct GeoSampleFetchedProperties {
 @property (nonatomic, strong) NSNumber* speed;
 
 
-@property float speedValue;
-- (float)speedValue;
-- (void)setSpeedValue:(float)value_;
+@property double speedValue;
+- (double)speedValue;
+- (void)setSpeedValue:(double)value_;
 
 //- (BOOL)validateSpeed:(id*)value_ error:(NSError**)error_;
 
@@ -144,17 +144,17 @@ extern const struct GeoSampleFetchedProperties {
 - (NSNumber*)primitiveHeading;
 - (void)setPrimitiveHeading:(NSNumber*)value;
 
-- (float)primitiveHeadingValue;
-- (void)setPrimitiveHeadingValue:(float)value_;
+- (double)primitiveHeadingValue;
+- (void)setPrimitiveHeadingValue:(double)value_;
 
 
 
 
-- (NSNumber*)primitiveHeading_accuracy;
-- (void)setPrimitiveHeading_accuracy:(NSNumber*)value;
+- (NSNumber*)primitiveHeadingAccuracy;
+- (void)setPrimitiveHeadingAccuracy:(NSNumber*)value;
 
-- (float)primitiveHeading_accuracyValue;
-- (void)setPrimitiveHeading_accuracyValue:(float)value_;
+- (double)primitiveHeadingAccuracyValue;
+- (void)setPrimitiveHeadingAccuracyValue:(double)value_;
 
 
 
@@ -168,11 +168,11 @@ extern const struct GeoSampleFetchedProperties {
 
 
 
-- (NSNumber*)primitiveLocation_accuracy;
-- (void)setPrimitiveLocation_accuracy:(NSNumber*)value;
+- (NSNumber*)primitiveLocationAccuracy;
+- (void)setPrimitiveLocationAccuracy:(NSNumber*)value;
 
-- (float)primitiveLocation_accuracyValue;
-- (void)setPrimitiveLocation_accuracyValue:(float)value_;
+- (double)primitiveLocationAccuracyValue;
+- (void)setPrimitiveLocationAccuracyValue:(double)value_;
 
 
 
@@ -189,8 +189,8 @@ extern const struct GeoSampleFetchedProperties {
 - (NSNumber*)primitiveSpeed;
 - (void)setPrimitiveSpeed:(NSNumber*)value;
 
-- (float)primitiveSpeedValue;
-- (void)setPrimitiveSpeedValue:(float)value_;
+- (double)primitiveSpeedValue;
+- (void)setPrimitiveSpeedValue:(double)value_;
 
 
 

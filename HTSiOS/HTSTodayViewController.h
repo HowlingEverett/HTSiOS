@@ -10,6 +10,6 @@
 #import <CoreLocation/CoreLocation.h>
 #import <MapKit/MapKit.h>
 
-@interface HTSTodayViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource>
+@interface HTSTodayViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIActionSheetDelegate>
 
 @end

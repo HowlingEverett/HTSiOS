@@ -8,6 +8,8 @@
 
 #import "HTSiOSTests.h"
 #import "GeoSample.h"
+#import "Trip.h"
+#import "HTSDataFixtures.h"
 
 @implementation HTSiOSTests
 
@@ -17,6 +19,10 @@
     // Set-up code here.
     [MagicalRecordHelpers setDefaultModelForTestCase:[GeoSample class]];
     [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
+    
+    NSArray *samples = [HTSDataFixtures geoSamples];
+    [HTSDataFixtures tripWithSamples:samples];
+    [[NSManagedObjectContext MR_defaultContext] MR_save];
 }
 
 - (void)tearDown
@@ -38,5 +44,7 @@
     STAssertFalse([mySample isCloseToLocation:loc distanceThreshold:1000.0], @"These distant points should not be detected as being quite close.");
     
 }
+
+
 
 @end

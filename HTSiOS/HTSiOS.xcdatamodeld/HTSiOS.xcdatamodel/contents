@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GeoSample" representedClassName="GeoSample" syncable="YES">
-        <attribute name="heading" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="heading_accuracy" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="heading" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="headingAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="location_accuracy" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="locationAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
-        <attribute name="speed" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="samples" inverseEntity="Trip" syncable="YES"/>
     </entity>
@@ -17,7 +17,7 @@
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GeoSample" inverseName="trip" inverseEntity="GeoSample" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GeoSample" positionX="160" positionY="192" width="128" height="150"/>
+        <element name="GeoSample" positionX="160" positionY="192" width="128" height="165"/>
         <element name="Trip" positionX="-83" positionY="126" width="128" height="105"/>
     </elements>
 </model>

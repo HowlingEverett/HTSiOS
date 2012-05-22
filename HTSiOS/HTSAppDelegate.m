@@ -7,6 +7,7 @@
 //
 
 #import "HTSAppDelegate.h"
+#import "HTSDataFixtures.h"
 #if RUN_KIF_TESTS
 #import "HTSExampleTestController.h"
 #endif
@@ -17,7 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+#if RUN_KIF_TESTS
+    [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
+    [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
+    NSArray *samples = [HTSDataFixtures geoSamples];
+    [HTSDataFixtures tripWithSamples:samples];
+    [[NSManagedObjectContext MR_defaultContext] MR_save];
+#else
     [MagicalRecordHelpers setupCoreDataStackWithStoreNamed:@"HTSiOS.sqlite"];
+    //[MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
+    [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
+    NSArray *samples = [HTSDataFixtures geoSamples];
+    [HTSDataFixtures tripWithSamples:samples];
+    [[NSManagedObjectContext MR_defaultContext] MR_save];
+#endif
+    
     return YES;
 }
 

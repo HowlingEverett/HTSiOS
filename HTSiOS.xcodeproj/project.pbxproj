@@ -32,6 +32,18 @@
 		D004FFB71568B613004687ED /* Trip.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFB31568B613004687ED /* Trip.m */; };
 		D00E720115651CC900ECC409 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E720015651CC900ECC409 /* CoreLocation.framework */; };
 		D00E7203156525ED00ECC409 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D00E720015651CC900ECC409 /* CoreLocation.framework */; };
+		D0205BE5156A278000B4C816 /* buttonbackgroundgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */; };
+		D0205BE6156A278000B4C816 /* buttonbackgroundgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */; };
+		D0205BE7156A278000B4C816 /* buttonbackgroundred in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDF156A271400B4C816 /* buttonbackgroundred */; };
+		D0205BE8156A278000B4C816 /* buttonbackgroundred@2x in Resources */ = {isa = PBXBuildFile; fileRef = D0205BE0156A271400B4C816 /* buttonbackgroundred@2x */; };
+		D0205BE9156A278100B4C816 /* buttonbackgroundgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */; };
+		D0205BEA156A278100B4C816 /* buttonbackgroundgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */; };
+		D0205BEB156A278100B4C816 /* buttonbackgroundred in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDF156A271400B4C816 /* buttonbackgroundred */; };
+		D0205BEC156A278100B4C816 /* buttonbackgroundred@2x in Resources */ = {isa = PBXBuildFile; fileRef = D0205BE0156A271400B4C816 /* buttonbackgroundred@2x */; };
+		D0205BED156A284E00B4C816 /* HTSTodayViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D004FFAE1568AC92004687ED /* HTSTodayViewController.m */; };
+		D0205BF1156A33FA00B4C816 /* HTSDataFixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = D0205BF0156A33FA00B4C816 /* HTSDataFixtures.m */; };
+		D0205BF2156A33FA00B4C816 /* HTSDataFixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = D0205BF0156A33FA00B4C816 /* HTSDataFixtures.m */; };
+		D0205BF3156A33FA00B4C816 /* HTSDataFixtures.m in Sources */ = {isa = PBXBuildFile; fileRef = D0205BF0156A33FA00B4C816 /* HTSDataFixtures.m */; };
 		D034E6441564EAF30092AAA0 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D034E6431564EAF30092AAA0 /* UIKit.framework */; };
 		D034E6461564EAF30092AAA0 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D034E6451564EAF30092AAA0 /* Foundation.framework */; };
 		D034E6481564EAF30092AAA0 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D034E6471564EAF30092AAA0 /* CoreGraphics.framework */; };
@@ -91,6 +103,12 @@
 		D034E7C0156516530092AAA0 /* NSPersistentStoreCoordinator+MagicalRecord.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E79D156515280092AAA0 /* NSPersistentStoreCoordinator+MagicalRecord.m */; };
 		D034E7C1156517380092AAA0 /* _GeoSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E69D1564FC120092AAA0 /* _GeoSample.m */; };
 		D034E7C2156517380092AAA0 /* GeoSample.m in Sources */ = {isa = PBXBuildFile; fileRef = D034E69F1564FC120092AAA0 /* GeoSample.m */; };
+		D0551BDF156B3427000E8EE9 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BDE156B3427000E8EE9 /* arrow.png */; };
+		D0551BE1156B342D000E8EE9 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BDE156B3427000E8EE9 /* arrow.png */; };
+		D0551BE3156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
+		D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
+		D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
+		D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -113,6 +131,12 @@
 		D004FFB21568B613004687ED /* Trip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Trip.h; sourceTree = "<group>"; };
 		D004FFB31568B613004687ED /* Trip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Trip.m; sourceTree = "<group>"; };
 		D00E720015651CC900ECC409 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonbackgroundgreen.png; sourceTree = "<group>"; };
+		D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbackgroundgreen@2x.png"; sourceTree = "<group>"; };
+		D0205BDF156A271400B4C816 /* buttonbackgroundred */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttonbackgroundred; sourceTree = "<group>"; };
+		D0205BE0156A271400B4C816 /* buttonbackgroundred@2x */ = {isa = PBXFileReference; lastKnownFileType = file; path = "buttonbackgroundred@2x"; sourceTree = "<group>"; };
+		D0205BEF156A33FA00B4C816 /* HTSDataFixtures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSDataFixtures.h; sourceTree = "<group>"; };
+		D0205BF0156A33FA00B4C816 /* HTSDataFixtures.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSDataFixtures.m; sourceTree = "<group>"; };
 		D034E63F1564EAF30092AAA0 /* HTSiOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HTSiOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D034E6431564EAF30092AAA0 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		D034E6451564EAF30092AAA0 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -172,6 +196,10 @@
 		D034E7A1156515280092AAA0 /* MagicalRecordShorthand.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MagicalRecordShorthand.h; sourceTree = "<group>"; };
 		D034E7A2156515280092AAA0 /* MRCoreDataAction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MRCoreDataAction.h; sourceTree = "<group>"; };
 		D034E7A3156515280092AAA0 /* MRCoreDataAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCoreDataAction.m; sourceTree = "<group>"; };
+		D0551BDE156B3427000E8EE9 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
+		D0551BE2156B3495000E8EE9 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSGeoSampleManager.h; sourceTree = "<group>"; };
+		D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSGeoSampleManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +255,28 @@
 			name = "View Controllers";
 			sourceTree = "<group>";
 		};
+		D0205BDC156A251E00B4C816 /* Graphics */ = {
+			isa = PBXGroup;
+			children = (
+				D0551BE2156B3495000E8EE9 /* arrow@2x.png */,
+				D0551BDE156B3427000E8EE9 /* arrow.png */,
+				D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */,
+				D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */,
+				D0205BDF156A271400B4C816 /* buttonbackgroundred */,
+				D0205BE0156A271400B4C816 /* buttonbackgroundred@2x */,
+			);
+			name = Graphics;
+			sourceTree = "<group>";
+		};
+		D0205BEE156A325900B4C816 /* Fixtures */ = {
+			isa = PBXGroup;
+			children = (
+				D0205BEF156A33FA00B4C816 /* HTSDataFixtures.h */,
+				D0205BF0156A33FA00B4C816 /* HTSDataFixtures.m */,
+			);
+			name = Fixtures;
+			sourceTree = "<group>";
+		};
 		D034E6341564EAF30092AAA0 = {
 			isa = PBXGroup;
 			children = (
@@ -279,6 +329,7 @@
 		D034E64C1564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0205BDC156A251E00B4C816 /* Graphics */,
 				D034E64D1564EAF30092AAA0 /* HTSiOS-Info.plist */,
 				D034E64E1564EAF30092AAA0 /* InfoPlist.strings */,
 				D034E6511564EAF30092AAA0 /* main.m */,
@@ -290,6 +341,7 @@
 		D034E6671564EAF30092AAA0 /* HTSiOSTests */ = {
 			isa = PBXGroup;
 			children = (
+				D0205BEE156A325900B4C816 /* Fixtures */,
 				D034E6AB1564FD430092AAA0 /* Unit & Integration Tests */,
 				D034E6AA1564FD310092AAA0 /* Acceptance Tests */,
 			);
@@ -310,6 +362,7 @@
 			isa = PBXGroup;
 			children = (
 				D034E6571564EAF30092AAA0 /* HTSiOS.xcdatamodeld */,
+				D06F5F58156B793D0009F2BA /* Managers */,
 				D034E6A31564FC360092AAA0 /* Robot */,
 				D034E6A41564FC3C0092AAA0 /* Human */,
 			);
@@ -428,6 +481,15 @@
 			name = Libraries;
 			sourceTree = "<group>";
 		};
+		D06F5F58156B793D0009F2BA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */,
+				D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */,
+			);
+			name = Managers;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -521,6 +583,12 @@
 			files = (
 				D034E6501564EAF30092AAA0 /* InfoPlist.strings in Resources */,
 				D034E6901564ED4E0092AAA0 /* HTSiOS.storyboard in Resources */,
+				D0205BE5156A278000B4C816 /* buttonbackgroundgreen.png in Resources */,
+				D0205BE6156A278000B4C816 /* buttonbackgroundgreen@2x.png in Resources */,
+				D0205BE7156A278000B4C816 /* buttonbackgroundred in Resources */,
+				D0205BE8156A278000B4C816 /* buttonbackgroundred@2x in Resources */,
+				D0551BDF156B3427000E8EE9 /* arrow.png in Resources */,
+				D0551BE3156B3495000E8EE9 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -538,6 +606,12 @@
 			files = (
 				D034E6861564EB630092AAA0 /* InfoPlist.strings in Resources */,
 				D034E7531565065F0092AAA0 /* HTSiOS.storyboard in Resources */,
+				D0205BE9156A278100B4C816 /* buttonbackgroundgreen.png in Resources */,
+				D0205BEA156A278100B4C816 /* buttonbackgroundgreen@2x.png in Resources */,
+				D0205BEB156A278100B4C816 /* buttonbackgroundred in Resources */,
+				D0205BEC156A278100B4C816 /* buttonbackgroundred@2x in Resources */,
+				D0551BE1156B342D000E8EE9 /* arrow.png in Resources */,
+				D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -599,6 +673,8 @@
 				D004FFAF1568AC92004687ED /* HTSTodayViewController.m in Sources */,
 				D004FFB41568B613004687ED /* _Trip.m in Sources */,
 				D004FFB61568B613004687ED /* Trip.m in Sources */,
+				D0205BF1156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
+				D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -607,6 +683,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D034E66F1564EAF30092AAA0 /* HTSiOSTests.m in Sources */,
+				D0205BF2156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -637,6 +714,9 @@
 				D034E7C2156517380092AAA0 /* GeoSample.m in Sources */,
 				D004FFB51568B613004687ED /* _Trip.m in Sources */,
 				D004FFB71568B613004687ED /* Trip.m in Sources */,
+				D0205BED156A284E00B4C816 /* HTSTodayViewController.m in Sources */,
+				D0205BF3156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
+				D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
