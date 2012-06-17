@@ -10,6 +10,7 @@
 #import "Trip.h"
 #import "GeoSample.h"
 #import "HTSGeoSampleManager.h"
+#import "HTSTripMapViewController.h"
 
 @interface HTSTodayViewController ()
 
@@ -21,24 +22,28 @@
 @property (nonatomic, strong) Trip *activeTrip;
 
 // Outlets
-@property (nonatomic, weak) IBOutlet MKMapView *mapView;
+@property (weak, nonatomic) IBOutlet UIView *tripMapView;
 @property (weak, nonatomic) IBOutlet UILabel *tripNameLabel;
 @property (weak, nonatomic) IBOutlet UIButton *startStopButton;
 
 // Actions
 - (IBAction)startStop:(id)sender;
 - (IBAction)openCurrentTrip:(id)sender;
+
+// Child View Controllers
+@property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
 @end
 
 @implementation HTSTodayViewController
 @synthesize locationManager = _locationManager;
 @synthesize fetchedResultsController = _fetchedResultsController;
-@synthesize mapView = _mapView;
+@synthesize tripMapView = _tripMapView;
 @synthesize tripNameLabel = _tripNameLabel;
 @synthesize startStopButton = _startStopButton;
 @synthesize activeTrip = _activeTrip;
 @synthesize transportDescriptions;
 @synthesize loggingEnabled;
+@synthesize tripMapViewController;
 
 - (void)awakeFromNib
 {
@@ -55,16 +60,31 @@
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     self.navigationItem.leftBarButtonItem = [self editButtonItem];
     
+    // Add and configure child view controller for trip map
+    [self addTripMapSubviewController];
+    
     // Tapping on current trip map should open full view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCurrentTrip:)];
-    [self.mapView addGestureRecognizer:tap];
+    [self.tripMapView addGestureRecognizer:tap];
+}
+
+- (void)addTripMapSubviewController
+{
+    self.tripMapViewController = [[HTSTripMapViewController alloc] initWithNibName:@"HTSTripMapViewController" bundle:nil];
+    self.tripMapViewController.view.frame = self.tripMapView.bounds;
+    [self.tripMapViewController.view setClipsToBounds:YES];
+    [self.tripMapView addSubview:self.tripMapViewController.view];
+    [self.tripMapViewController didMoveToParentViewController:self];
+    [self.tripMapViewController.mapView setZoomEnabled:NO];
+    [self.tripMapViewController.mapView setScrollEnabled:NO];
+    [self addChildViewController:self.tripMapViewController];
 }
 
 - (void)viewDidUnload
 {
     [self setTripNameLabel:nil];
-    [self setMapView:nil];
     [self setStartStopButton:nil];
+    [self setTripMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -80,7 +100,9 @@
     if ([segue.identifier isEqualToString:@"View Current Trip"]) {
         
     } else if ([segue.identifier isEqualToString:@"View Historical Trip"]) {
-        
+        NSIndexPath *cellPath  = [self.tableView indexPathForCell:sender];
+        Trip *trip = [self.fetchedResultsController objectAtIndexPath:cellPath];
+        [[segue destinationViewController] setTrip:trip];
     }
 }
 
@@ -245,6 +267,9 @@
     
     // Otherwise, create and save a GeoSample
     [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
+    [self.tripMapViewController plotTrip:self.activeTrip];
+    
+    NSLog(@"New location: %@", newLocation);
 }
 
 #pragma mark UIActionSheetDelegate methods

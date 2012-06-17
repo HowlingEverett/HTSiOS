@@ -21,6 +21,25 @@
 /* End PBXAggregateTarget section */
 
 /* Begin PBXBuildFile section */
+		D0027F72156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
+		D0027F73156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
+		D0027F7C156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F7D156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; };
+		D0027F7E156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F7F156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F80156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; };
+		D0027F81156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F82156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F83156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; };
+		D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
+		D0027F8A156BC095002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
+		D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
+		D0027F8E156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
+		D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
+		D0027F91156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */; };
+		D0027F92156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */; };
+		D0027F93156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */; };
 		D004FFA515689F82004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
 		D004FFA715689F91004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
 		D004FFA815689F98004687ED /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D004FFA415689F82004687ED /* MapKit.framework */; };
@@ -109,6 +128,8 @@
 		D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
 		D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
+		D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
+		D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -122,6 +143,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Toowong-hills.gpx"; sourceTree = "<group>"; };
+		D0027F76156BBBFF002D65C6 /* gpx-api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-api.h"; sourceTree = "<group>"; };
+		D0027F77156BBBFF002D65C6 /* gpx-api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-api.m"; sourceTree = "<group>"; };
+		D0027F78156BBBFF002D65C6 /* gpx-reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-reader.h"; sourceTree = "<group>"; };
+		D0027F79156BBBFF002D65C6 /* gpx-reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-reader.m"; sourceTree = "<group>"; };
+		D0027F7A156BBBFF002D65C6 /* gpx-writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-writer.h"; sourceTree = "<group>"; };
+		D0027F7B156BBBFF002D65C6 /* gpx-writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-writer.m"; sourceTree = "<group>"; };
+		D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
+		D0027F8B156BD231002D65C6 /* HTSTripMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripMapViewController.h; sourceTree = "<group>"; };
+		D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripMapViewController.m; sourceTree = "<group>"; };
+		D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HTSTripMapViewController.xib; sourceTree = "<group>"; };
 		D004FFA415689F82004687ED /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		D004FFA91568A4B4004687ED /* HTSiOS Acceptance Tests-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "HTSiOS Acceptance Tests-Info.plist"; sourceTree = SOURCE_ROOT; };
 		D004FFAD1568AC92004687ED /* HTSTodayViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTodayViewController.h; sourceTree = "<group>"; };
@@ -200,6 +232,8 @@
 		D0551BE2156B3495000E8EE9 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSGeoSampleManager.h; sourceTree = "<group>"; };
 		D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSGeoSampleManager.m; sourceTree = "<group>"; };
+		D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripDetailViewController.h; sourceTree = "<group>"; };
+		D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +241,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */,
 				D004FFA515689F82004687ED /* MapKit.framework in Frameworks */,
 				D00E720115651CC900ECC409 /* CoreLocation.framework in Frameworks */,
 				D034E6441564EAF30092AAA0 /* UIKit.framework in Frameworks */,
@@ -233,6 +268,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0027F8A156BC095002D65C6 /* libxml2.2.dylib in Frameworks */,
 				D004FFAB1568A4D6004687ED /* CoreLocation.framework in Frameworks */,
 				D004FFA815689F98004687ED /* MapKit.framework in Frameworks */,
 				D034E68E1564EBCE0092AAA0 /* libKIF.a in Frameworks */,
@@ -246,11 +282,29 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D0027F75156BBBFF002D65C6 /* gpx-api */ = {
+			isa = PBXGroup;
+			children = (
+				D0027F76156BBBFF002D65C6 /* gpx-api.h */,
+				D0027F77156BBBFF002D65C6 /* gpx-api.m */,
+				D0027F78156BBBFF002D65C6 /* gpx-reader.h */,
+				D0027F79156BBBFF002D65C6 /* gpx-reader.m */,
+				D0027F7A156BBBFF002D65C6 /* gpx-writer.h */,
+				D0027F7B156BBBFF002D65C6 /* gpx-writer.m */,
+			);
+			path = "gpx-api";
+			sourceTree = "<group>";
+		};
 		D004FFAC1568AC71004687ED /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				D004FFAD1568AC92004687ED /* HTSTodayViewController.h */,
 				D004FFAE1568AC92004687ED /* HTSTodayViewController.m */,
+				D0027F8B156BD231002D65C6 /* HTSTripMapViewController.h */,
+				D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */,
+				D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */,
+				D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */,
+				D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -300,6 +354,7 @@
 		D034E6421564EAF30092AAA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */,
 				D004FFA415689F82004687ED /* MapKit.framework */,
 				D034E68D1564EBCE0092AAA0 /* libKIF.a */,
 				D00E720015651CC900ECC409 /* CoreLocation.framework */,
@@ -329,6 +384,7 @@
 		D034E64C1564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */,
 				D0205BDC156A251E00B4C816 /* Graphics */,
 				D034E64D1564EAF30092AAA0 /* HTSiOS-Info.plist */,
 				D034E64E1564EAF30092AAA0 /* InfoPlist.strings */,
@@ -476,6 +532,7 @@
 		D034E7B21565152B0092AAA0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
+				D0027F75156BBBFF002D65C6 /* gpx-api */,
 				D034E783156515280092AAA0 /* MagicalRecord */,
 			);
 			name = Libraries;
@@ -589,6 +646,8 @@
 				D0205BE8156A278000B4C816 /* buttonbackgroundred@2x in Resources */,
 				D0551BDF156B3427000E8EE9 /* arrow.png in Resources */,
 				D0551BE3156B3495000E8EE9 /* arrow@2x.png in Resources */,
+				D0027F72156BAA03002D65C6 /* Toowong-hills.gpx in Resources */,
+				D0027F91156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -597,6 +656,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D034E66C1564EAF30092AAA0 /* InfoPlist.strings in Resources */,
+				D0027F92156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -612,6 +672,8 @@
 				D0205BEC156A278100B4C816 /* buttonbackgroundred@2x in Resources */,
 				D0551BE1156B342D000E8EE9 /* arrow.png in Resources */,
 				D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */,
+				D0027F73156BAA03002D65C6 /* Toowong-hills.gpx in Resources */,
+				D0027F93156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -675,6 +737,11 @@
 				D004FFB61568B613004687ED /* Trip.m in Sources */,
 				D0205BF1156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
+				D0027F7C156BBBFF002D65C6 /* gpx-api.m in Sources */,
+				D0027F7F156BBBFF002D65C6 /* gpx-reader.m in Sources */,
+				D0027F82156BBBFF002D65C6 /* gpx-writer.m in Sources */,
+				D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
+				D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -684,6 +751,10 @@
 			files = (
 				D034E66F1564EAF30092AAA0 /* HTSiOSTests.m in Sources */,
 				D0205BF2156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
+				D0027F7D156BBBFF002D65C6 /* gpx-api.m in Sources */,
+				D0027F80156BBBFF002D65C6 /* gpx-reader.m in Sources */,
+				D0027F83156BBBFF002D65C6 /* gpx-writer.m in Sources */,
+				D0027F8E156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -717,6 +788,11 @@
 				D0205BED156A284E00B4C816 /* HTSTodayViewController.m in Sources */,
 				D0205BF3156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
+				D0027F7E156BBBFF002D65C6 /* gpx-api.m in Sources */,
+				D0027F81156BBBFF002D65C6 /* gpx-reader.m in Sources */,
+				D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */,
+				D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
+				D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -770,6 +846,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				SDKROOT = iphoneos;
 			};
@@ -788,6 +865,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "/usr/include/libxml2/**";
 				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
@@ -800,8 +878,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HTSiOS/HTSiOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "HTSiOS/HTSiOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -811,8 +894,13 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HTSiOS/HTSiOS-Prefix.pch";
+				HEADER_SEARCH_PATHS = (
+					"$(inherited)",
+					"/usr/include/libxml2/**",
+				);
 				INFOPLIST_FILE = "HTSiOS/HTSiOS-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -863,6 +951,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/KIF/**",
+					"$(SDKROOT)/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "HTSiOS Acceptance Tests-Info.plist";
 				OTHER_LDFLAGS = (
@@ -887,6 +976,7 @@
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/Frameworks/KIF/**",
+					"$(SDKROOT)/usr/include/libxml2/**",
 				);
 				INFOPLIST_FILE = "HTSiOS Acceptance Tests-Info.plist";
 				OTHER_LDFLAGS = (

@@ -26,10 +26,7 @@
     [[NSManagedObjectContext MR_defaultContext] MR_save];
 #else
     [MagicalRecordHelpers setupCoreDataStackWithStoreNamed:@"HTSiOS.sqlite"];
-    //[MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
     [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
-    NSArray *samples = [HTSDataFixtures geoSamples];
-    [HTSDataFixtures tripWithSamples:samples];
     [[NSManagedObjectContext MR_defaultContext] MR_save];
 #endif
     

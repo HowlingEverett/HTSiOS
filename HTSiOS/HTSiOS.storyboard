@@ -55,10 +55,6 @@
                                         <action selector="startStop:" destination="c2t-rM-40t" eventType="touchUpInside" id="moZ-Md-zcO"/>
                                     </connections>
                                 </button>
-                                <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" zoomEnabled="NO" scrollEnabled="NO" id="7h7-Pu-8Yv">
-                                    <rect key="frame" x="20" y="65" width="263" height="132"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                </mapView>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Trip:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="BNQ-hj-D5v">
                                     <rect key="frame" x="20" y="205" width="96" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -88,6 +84,11 @@
                                         <action selector="openCurrentTrip:" destination="c2t-rM-40t" eventType="touchUpInside" id="8Ub-FE-sme"/>
                                     </connections>
                                 </button>
+                                <view contentMode="scaleToFill" id="oR4-9Y-zzJ">
+                                    <rect key="frame" x="20" y="65" width="262" height="132"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
@@ -128,8 +129,8 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Today's Trips" id="7IP-hN-nsw"/>
                     <connections>
-                        <outlet property="mapView" destination="7h7-Pu-8Yv" id="DYg-h4-EwN"/>
                         <outlet property="startStopButton" destination="oQ7-LP-DvF" id="cyy-th-jKF"/>
+                        <outlet property="tripMapView" destination="oR4-9Y-zzJ" id="qOG-tf-r1f"/>
                         <outlet property="tripNameLabel" destination="INe-WS-8be" id="mQv-Sf-xkZ"/>
                         <segue destination="vJt-al-bzM" kind="push" identifier="View Current Trip" id="fEA-md-jek"/>
                     </connections>
@@ -137,19 +138,20 @@
             </objects>
             <point key="canvasLocation" x="785" y="-357"/>
         </scene>
-        <!--View Controller - Current Trip-->
+        <!--Trip Detail View Controller - Current Trip-->
         <scene sceneID="zjv-4M-GJJ">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8b-gy-31l" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="vJt-al-bzM" sceneMemberID="viewController">
+                <viewController id="vJt-al-bzM" customClass="HTSTripDetailViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Cj9-As-a4A">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" id="nz8-X6-2Dd">
+                            <view contentMode="scaleToFill" id="gJz-qg-wfU">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="367"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                            </mapView>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                            </view>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Distance" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Hyh-BC-beU">
                                 <rect key="frame" x="20" y="326" width="139" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -170,6 +172,9 @@
                     <navigationItem key="navigationItem" title="Current Trip" id="nxK-BP-44j">
                         <barButtonItem key="rightBarButtonItem" systemItem="play" id="of4-87-zWK"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tripMapView" destination="gJz-qg-wfU" id="DLz-r1-aaP"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1214" y="-357"/>
@@ -308,9 +313,15 @@
             <relationships>
                 <relationship kind="action" name="openCurrentTrip:"/>
                 <relationship kind="action" name="startStop:"/>
-                <relationship kind="outlet" name="mapView" candidateClass="MKMapView"/>
                 <relationship kind="outlet" name="startStopButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
                 <relationship kind="outlet" name="tripNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HTSTripDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
             </relationships>
         </class>
     </classes>
@@ -320,6 +331,6 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="6mz-zR-ekb"/>
+        <segue reference="fEA-md-jek"/>
     </inferredMetricsTieBreakers>
 </document>
