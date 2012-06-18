@@ -9,13 +9,12 @@
 #import "HTSTodayViewController.h"
 #import "Trip.h"
 #import "GeoSample.h"
-#import "HTSGeoSampleManager.h"
 #import "HTSTripMapViewController.h"
+#import "HTSGeoSampleManager.h"
 
 @interface HTSTodayViewController ()
 
 // Data objects
-@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSDictionary *transportDescriptions;
 @property (nonatomic, assign) BOOL loggingEnabled;
@@ -35,7 +34,6 @@
 @end
 
 @implementation HTSTodayViewController
-@synthesize locationManager = _locationManager;
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize tripMapView = _tripMapView;
 @synthesize tripNameLabel = _tripNameLabel;
@@ -170,16 +168,6 @@
 
 
 #pragma mark Auto-intanstiating accessors
-- (CLLocationManager *)locationManager
-{
-    if (!_locationManager) {
-        _locationManager = [[CLLocationManager alloc] init];
-        [_locationManager setDesiredAccuracy:kCLLocationAccuracyBestForNavigation];
-        [_locationManager setDelegate:self];
-    }
-    
-    return _locationManager;
-}
 
 - (NSFetchedResultsController *)fetchedResultsController
 {
@@ -208,12 +196,8 @@
 }
 
 - (IBAction)startStop:(id)sender {
+    HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
     if (!self.loggingEnabled) {
-        [self.locationManager startUpdatingLocation];
-        if ([CLLocationManager headingAvailable]) {
-            [self.locationManager startUpdatingHeading];
-        }        
-        [self.locationManager stopMonitoringSignificantLocationChanges];
         [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundred.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
         [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];
@@ -226,18 +210,17 @@
             self.tripNameLabel.text = self.activeTrip.tripDescription;
         }
         
+        [geosampleManger setActiveTrip:self.activeTrip];
+        [geosampleManger startCapturingSamples];
+        
         NSLog(@"Started updating locations.");
     } else {
-        [self.locationManager stopUpdatingLocation];
-        if ([CLLocationManager headingAvailable]) {
-            [self.locationManager stopUpdatingHeading];
-        }
-        [self.locationManager startMonitoringSignificantLocationChanges];
+        [geosampleManger stopCapturingSamples];
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundgreen.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
         [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];
-        NSLog(@"Stopped updating locations.");
         
+        NSLog(@"Stopped updating locations.");
         // Clear trip property so a new one gets created next start
     }
     
@@ -253,23 +236,6 @@
     self.activeTrip.date = [NSDate date];
     self.activeTrip.tripDescription = @"New trip";
     [[NSManagedObjectContext MR_defaultContext] MR_save];
-}
-
-#pragma mark CLLocationManagerDelegate methods
-- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
-{
-    // test that the horizontal accuracy does not indicate an invalid measurement
-    if (newLocation.horizontalAccuracy < 0) return;
-    // test the age of the location measurement to determine if the measurement is cached
-    // in most cases you will not want to rely on cached measurements
-    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
-    if (locationAge > 5.0) return;
-    
-    // Otherwise, create and save a GeoSample
-    [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
-    [self.tripMapViewController plotTrip:self.activeTrip];
-    
-    NSLog(@"New location: %@", newLocation);
 }
 
 #pragma mark UIActionSheetDelegate methods

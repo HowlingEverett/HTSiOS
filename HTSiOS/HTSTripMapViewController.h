@@ -10,10 +10,13 @@
 #import <MapKit/MapKit.h>
 #import <CoreLocation/CoreLocation.h>
 
+#import "HTSGeoSampleManager.h"
+
 @class Trip;
-@interface HTSTripMapViewController : UIViewController <MKMapViewDelegate>
+@interface HTSTripMapViewController : UIViewController <MKMapViewDelegate, HTSGeoSampleManagerDelegate>
 
 @property (nonatomic, strong) IBOutlet MKMapView *mapView;
+@property (nonatomic, assign) BOOL tripActive;
 
 - (void)plotTrip:(Trip *)aTrip;
 @end

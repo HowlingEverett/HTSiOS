@@ -23,13 +23,10 @@
 /* Begin PBXBuildFile section */
 		D0027F72156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
 		D0027F73156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
-		D0027F7C156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0027F7D156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; };
 		D0027F7E156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0027F7F156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0027F80156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; };
 		D0027F81156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0027F82156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0027F83156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; };
 		D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
@@ -128,6 +125,10 @@
 		D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
 		D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
+		D0D5E109158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
+		D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
+		D0D5E10D158EB2DB00334EF3 /* HTSTripPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */; };
+		D0D5E10E158EB2DB00334EF3 /* HTSTripPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */; };
 		D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
 		D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
 /* End PBXBuildFile section */
@@ -232,6 +233,10 @@
 		D0551BE2156B3495000E8EE9 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
 		D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSGeoSampleManager.h; sourceTree = "<group>"; };
 		D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSGeoSampleManager.m; sourceTree = "<group>"; };
+		D0D5E107158EB13000334EF3 /* HTSTripPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPath.h; sourceTree = "<group>"; };
+		D0D5E108158EB13000334EF3 /* HTSTripPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripPath.m; sourceTree = "<group>"; };
+		D0D5E10B158EB2DB00334EF3 /* HTSTripPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPathView.h; sourceTree = "<group>"; };
+		D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripPathView.m; sourceTree = "<group>"; };
 		D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripDetailViewController.h; sourceTree = "<group>"; };
 		D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -372,6 +377,7 @@
 			children = (
 				D034E7B21565152B0092AAA0 /* Libraries */,
 				D034E6A21564FC2E0092AAA0 /* Models */,
+				D0D5E105158EB0F300334EF3 /* Overlays and Annotations */,
 				D004FFAC1568AC71004687ED /* View Controllers */,
 				D034E6541564EAF30092AAA0 /* HTSAppDelegate.h */,
 				D034E6551564EAF30092AAA0 /* HTSAppDelegate.m */,
@@ -545,6 +551,17 @@
 				D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */,
 			);
 			name = Managers;
+			sourceTree = "<group>";
+		};
+		D0D5E105158EB0F300334EF3 /* Overlays and Annotations */ = {
+			isa = PBXGroup;
+			children = (
+				D0D5E107158EB13000334EF3 /* HTSTripPath.h */,
+				D0D5E108158EB13000334EF3 /* HTSTripPath.m */,
+				D0D5E10B158EB2DB00334EF3 /* HTSTripPathView.h */,
+				D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */,
+			);
+			name = "Overlays and Annotations";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -737,11 +754,10 @@
 				D004FFB61568B613004687ED /* Trip.m in Sources */,
 				D0205BF1156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
-				D0027F7C156BBBFF002D65C6 /* gpx-api.m in Sources */,
-				D0027F7F156BBBFF002D65C6 /* gpx-reader.m in Sources */,
-				D0027F82156BBBFF002D65C6 /* gpx-writer.m in Sources */,
 				D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 				D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
+				D0D5E109158EB13000334EF3 /* HTSTripPath.m in Sources */,
+				D0D5E10D158EB2DB00334EF3 /* HTSTripPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -793,6 +809,8 @@
 				D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */,
 				D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 				D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
+				D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */,
+				D0D5E10E158EB2DB00334EF3 /* HTSTripPathView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

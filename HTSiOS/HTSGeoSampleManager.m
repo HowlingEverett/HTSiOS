@@ -10,7 +10,16 @@
 #import "GeoSample.h"
 #import "Trip.h"
 
+@interface HTSGeoSampleManager ()
+
+@property (nonatomic, strong) CLLocationManager *locationManager;
+
+@end
+
 @implementation HTSGeoSampleManager
+@synthesize locationManager;
+@synthesize activeTrip;
+@synthesize delegate;
 
 + (GeoSample *)sampleForLocation:(CLLocation *)aLocation onTrip:(Trip *)aTrip
 {
@@ -41,6 +50,54 @@
     }
     
     [[NSManagedObjectContext MR_defaultContext] MR_save];
+}
+
++ (HTSGeoSampleManager *)sharedManager
+{
+    static HTSGeoSampleManager *instance;
+    if (!instance) {
+        instance = [[HTSGeoSampleManager alloc] init];
+        instance.locationManager = [[CLLocationManager alloc] init];
+        [instance.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+    }
+    
+    return instance;
+}
+
+#pragma mark instance methods
+- (void)startCapturingSamples
+{
+    if (activeTrip) {
+        [self.locationManager stopMonitoringSignificantLocationChanges];
+        [self.locationManager startUpdatingLocation];
+        if ([CLLocationManager headingAvailable]) {
+            [self.locationManager startUpdatingHeading];
+        }
+    } else {
+        NSLog(@"No active trip. Can't start capturing samples.");
+    }
+}
+
+- (void)stopCapturingSamples
+{
+    [self.locationManager stopUpdatingLocation];
+    [self.locationManager stopUpdatingHeading];
+    [self.locationManager startMonitoringSignificantLocationChanges];
+}
+
+#pragma mark - CLLocationManagerDelegate methods
+- (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
+{
+    // test that the horizontal accuracy does not indicate an invalid measurement
+    if (newLocation.horizontalAccuracy < 0) return;
+    // test the age of the location measurement to determine if the measurement is cached
+    // in most cases you will not want to rely on cached measurements
+    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
+    if (locationAge > 5.0) return;
+    
+    // Otherwise, create and save a GeoSample
+    [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
+    [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
 }
 
 @end
