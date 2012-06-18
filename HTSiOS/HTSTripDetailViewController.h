@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 
 @class Trip;
+@class HTSTripMapViewController;
 
 @interface HTSTripDetailViewController : UIViewController
-
+@property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
 @property (nonatomic, weak) Trip *trip;
 @end

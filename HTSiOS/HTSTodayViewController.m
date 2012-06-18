@@ -9,6 +9,7 @@
 #import "HTSTodayViewController.h"
 #import "Trip.h"
 #import "GeoSample.h"
+#import "HTSTripDetailViewController.h"
 #import "HTSTripMapViewController.h"
 #import "HTSGeoSampleManager.h"
 
@@ -96,7 +97,9 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"View Current Trip"]) {
-        
+        HTSTripDetailViewController *detailViewController = (HTSTripDetailViewController *)detailViewController;
+        [detailViewController setTrip:self.activeTrip];
+        [detailViewController.tripMapViewController setTripActive:YES];
     } else if ([segue.identifier isEqualToString:@"View Historical Trip"]) {
         NSIndexPath *cellPath  = [self.tableView indexPathForCell:sender];
         Trip *trip = [self.fetchedResultsController objectAtIndexPath:cellPath];
@@ -211,11 +214,14 @@
         }
         
         [geosampleManger setActiveTrip:self.activeTrip];
+        [geosampleManger setDelegate:self.tripMapViewController];
         [geosampleManger startCapturingSamples];
         
         NSLog(@"Started updating locations.");
     } else {
         [geosampleManger stopCapturingSamples];
+        [geosampleManger setDelegate:nil];
+        
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundgreen.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
         [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];

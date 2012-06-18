@@ -13,8 +13,6 @@
 
 @interface HTSTripDetailViewController ()
 
-@property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
-
 // IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *tripMapView;
 @end
@@ -22,7 +20,7 @@
 @implementation HTSTripDetailViewController
 @synthesize tripMapView;
 @synthesize tripMapViewController;
-@synthesize trip;
+@synthesize trip = _trip;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -48,7 +46,7 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self addTripMapSubviewController];
-    [[self tripMapViewController] plotTrip:self.trip];
+//    [[self tripMapViewController] plotTrip:self.trip];
 }
 
 - (void)viewDidUnload
