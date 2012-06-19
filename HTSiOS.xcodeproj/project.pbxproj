@@ -23,12 +23,6 @@
 /* Begin PBXBuildFile section */
 		D0027F72156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
 		D0027F73156BAA03002D65C6 /* Toowong-hills.gpx in Resources */ = {isa = PBXBuildFile; fileRef = D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */; };
-		D0027F7D156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; };
-		D0027F7E156BBBFF002D65C6 /* gpx-api.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F77156BBBFF002D65C6 /* gpx-api.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0027F80156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; };
-		D0027F81156BBBFF002D65C6 /* gpx-reader.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F79156BBBFF002D65C6 /* gpx-reader.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		D0027F83156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; };
-		D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F7B156BBBFF002D65C6 /* gpx-writer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
 		D0027F8A156BC095002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
 		D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
@@ -145,12 +139,6 @@
 
 /* Begin PBXFileReference section */
 		D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = "Toowong-hills.gpx"; sourceTree = "<group>"; };
-		D0027F76156BBBFF002D65C6 /* gpx-api.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-api.h"; sourceTree = "<group>"; };
-		D0027F77156BBBFF002D65C6 /* gpx-api.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-api.m"; sourceTree = "<group>"; };
-		D0027F78156BBBFF002D65C6 /* gpx-reader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-reader.h"; sourceTree = "<group>"; };
-		D0027F79156BBBFF002D65C6 /* gpx-reader.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-reader.m"; sourceTree = "<group>"; };
-		D0027F7A156BBBFF002D65C6 /* gpx-writer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "gpx-writer.h"; sourceTree = "<group>"; };
-		D0027F7B156BBBFF002D65C6 /* gpx-writer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "gpx-writer.m"; sourceTree = "<group>"; };
 		D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libxml2.2.dylib; path = usr/lib/libxml2.2.dylib; sourceTree = SDKROOT; };
 		D0027F8B156BD231002D65C6 /* HTSTripMapViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripMapViewController.h; sourceTree = "<group>"; };
 		D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripMapViewController.m; sourceTree = "<group>"; };
@@ -287,19 +275,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		D0027F75156BBBFF002D65C6 /* gpx-api */ = {
-			isa = PBXGroup;
-			children = (
-				D0027F76156BBBFF002D65C6 /* gpx-api.h */,
-				D0027F77156BBBFF002D65C6 /* gpx-api.m */,
-				D0027F78156BBBFF002D65C6 /* gpx-reader.h */,
-				D0027F79156BBBFF002D65C6 /* gpx-reader.m */,
-				D0027F7A156BBBFF002D65C6 /* gpx-writer.h */,
-				D0027F7B156BBBFF002D65C6 /* gpx-writer.m */,
-			);
-			path = "gpx-api";
-			sourceTree = "<group>";
-		};
 		D004FFAC1568AC71004687ED /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -538,7 +513,6 @@
 		D034E7B21565152B0092AAA0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				D0027F75156BBBFF002D65C6 /* gpx-api */,
 				D034E783156515280092AAA0 /* MagicalRecord */,
 			);
 			name = Libraries;
@@ -767,9 +741,6 @@
 			files = (
 				D034E66F1564EAF30092AAA0 /* HTSiOSTests.m in Sources */,
 				D0205BF2156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
-				D0027F7D156BBBFF002D65C6 /* gpx-api.m in Sources */,
-				D0027F80156BBBFF002D65C6 /* gpx-reader.m in Sources */,
-				D0027F83156BBBFF002D65C6 /* gpx-writer.m in Sources */,
 				D0027F8E156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -804,9 +775,6 @@
 				D0205BED156A284E00B4C816 /* HTSTodayViewController.m in Sources */,
 				D0205BF3156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
-				D0027F7E156BBBFF002D65C6 /* gpx-api.m in Sources */,
-				D0027F81156BBBFF002D65C6 /* gpx-reader.m in Sources */,
-				D0027F84156BBBFF002D65C6 /* gpx-writer.m in Sources */,
 				D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 				D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
 				D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */,
