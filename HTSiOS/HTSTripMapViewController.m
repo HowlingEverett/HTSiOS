@@ -21,7 +21,7 @@
 
 @implementation HTSTripMapViewController
 @synthesize mapView;
-@synthesize tripActive;
+@synthesize tripActive = _tripActive;
 @synthesize tripPath;
 @synthesize tripPathView;
 
@@ -29,12 +29,7 @@
 {
     [super viewDidLoad];
     
-    if (self.tripActive) {
-        // Show user location and track active when trip is active
-        [self.mapView setShowsUserLocation:YES];
-        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
-        
-    }
+    
 }
 
 - (void)viewDidUnload
@@ -50,6 +45,8 @@
     // When the view is about to become active, set us as the delegate for the sample manager
     // so that we can update ourself based on location updates.
     [[HTSGeoSampleManager sharedManager] setDelegate:self];
+    [self.mapView setDelegate:self];
+
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -62,18 +59,13 @@
 #pragma mark MKMapViewDelegate methods
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
-    if ([overlay class] == [MKPolyline class]) {
+    if ([overlay class] == [HTSTripPath class]) {
         if (!self.tripPathView) {
             self.tripPathView = [[HTSTripPathView alloc] initWithOverlay:overlay];
         }
         return self.tripPathView;
     }
     
-    return nil;
-}
-
-- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
-{
     return nil;
 }
 
@@ -139,6 +131,18 @@
 - (void)geoSampleManager:(HTSGeoSampleManager *)manager didStopCapturingWithError:(NSError *)error
 {
     
+}
+
+- (void)setTripActive:(BOOL)tripActive
+{
+    if (tripActive) {
+        [self.mapView setShowsUserLocation:YES];
+        [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
+    } else {
+        [self.mapView setShowsUserLocation:NO];
+        [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
+    }
+    _tripActive = tripActive;
 }
 
 @end

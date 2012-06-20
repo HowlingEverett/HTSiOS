@@ -306,24 +306,6 @@
         <image name="arrow.png" width="10" height="15"/>
         <image name="buttonbackgroundgreen.png" width="278" height="45"/>
     </resources>
-    <classes>
-        <class className="HTSTodayViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTodayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openCurrentTrip:"/>
-                <relationship kind="action" name="startStop:"/>
-                <relationship kind="outlet" name="startStopButton" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tripNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HTSTripDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

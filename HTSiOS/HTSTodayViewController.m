@@ -214,6 +214,7 @@
         }
         
         [geosampleManger setActiveTrip:self.activeTrip];
+        [self.tripMapViewController setTripActive:YES];
         [geosampleManger setDelegate:self.tripMapViewController];
         [geosampleManger startCapturingSamples];
         
@@ -221,6 +222,7 @@
     } else {
         [geosampleManger stopCapturingSamples];
         [geosampleManger setDelegate:nil];
+        [self.tripMapViewController setTripActive:NO];
         
         [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
         [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundgreen.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
