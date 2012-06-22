@@ -53,7 +53,7 @@
                                         <action selector="startStop:" destination="c2t-rM-40t" eventType="touchUpInside" id="moZ-Md-zcO"/>
                                     </connections>
                                 </button>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Current Trip:" autoshrinkMode="minimumFontSize" id="BNQ-hj-D5v">
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" text="Current Trip:" autoshrinkMode="minimumScaleFactor" id="BNQ-hj-D5v">
                                     <rect key="frame" x="20" y="205" width="96" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <nil key="highlightedColor"/>
@@ -150,14 +150,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             </view>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Distance" autoshrinkMode="minimumFontSize" id="Hyh-BC-beU">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" text="Distance" autoshrinkMode="minimumScaleFactor" id="Hyh-BC-beU">
                                 <rect key="frame" x="20" y="326" width="139" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
                             </label>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="Time" textAlignment="right" autoshrinkMode="minimumFontSize" id="DAN-v8-JI2">
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" text="Time" textAlignment="right" autoshrinkMode="minimumScaleFactor" id="DAN-v8-JI2">
                                 <rect key="frame" x="190" y="326" width="110" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <nil key="highlightedColor"/>
@@ -306,6 +306,24 @@
         <image name="arrow.png" width="10" height="15"/>
         <image name="buttonbackgroundgreen.png" width="278" height="45"/>
     </resources>
+    <classes>
+        <class className="HTSTodayViewController" superclassName="UITableViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTodayViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="openCurrentTrip:"/>
+                <relationship kind="action" name="startStop:"/>
+                <relationship kind="outlet" name="startStopButton" candidateClass="UIButton"/>
+                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tripNameLabel" candidateClass="UILabel"/>
+            </relationships>
+        </class>
+        <class className="HTSTripDetailViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripDetailViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
+            </relationships>
+        </class>
+    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

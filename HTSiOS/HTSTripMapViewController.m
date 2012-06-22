@@ -136,10 +136,8 @@
 - (void)setTripActive:(BOOL)tripActive
 {
     if (tripActive) {
-        [self.mapView setShowsUserLocation:YES];
         [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
     } else {
-        [self.mapView setShowsUserLocation:NO];
         [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
     }
     _tripActive = tripActive;

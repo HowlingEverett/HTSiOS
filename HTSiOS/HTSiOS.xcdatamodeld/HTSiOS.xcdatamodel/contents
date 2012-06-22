@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1480" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GeoSample" representedClassName="GeoSample" syncable="YES">
         <attribute name="heading" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="headingAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -10,14 +10,23 @@
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="samples" inverseEntity="Trip" syncable="YES"/>
     </entity>
+    <entity name="TransportMode" representedClassName="TransportMode" syncable="YES">
+        <attribute name="mode" attributeType="String" defaultValueString="C" regularExpressionString="PT|P|Cy|C|T" syncable="YES"/>
+        <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="modes" inverseEntity="Trip" syncable="YES"/>
+    </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <attribute name="isExported" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="surveyId" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="transportType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tripDescription" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="modes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TransportMode" inverseName="trip" inverseEntity="TransportMode" syncable="YES"/>
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GeoSample" inverseName="trip" inverseEntity="GeoSample" syncable="YES"/>
     </entity>
     <elements>
         <element name="GeoSample" positionX="160" positionY="192" width="128" height="165"/>
         <element name="Trip" positionX="-83" positionY="126" width="128" height="105"/>
+        <element name="TransportMode" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

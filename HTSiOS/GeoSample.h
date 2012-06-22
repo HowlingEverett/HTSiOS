@@ -6,4 +6,6 @@
 // Custom logic goes here.
 
 - (BOOL)isCloseToLocation:(CLLocation *)location distanceThreshold:(float)distanceInMetres;
+
+- (NSDictionary *)toDict;
 @end
