@@ -19,4 +19,5 @@
 @property (nonatomic, assign) BOOL tripActive;
 
 - (void)plotTrip:(Trip *)aTrip;
+- (void)clearPlot;
 @end

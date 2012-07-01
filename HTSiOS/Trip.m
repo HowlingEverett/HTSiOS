@@ -3,6 +3,7 @@
 #import "GeoSample.h"
 
 @implementation Trip
+@dynamic primitiveSectionIdentifier;
 
 // Custom logic goes here.
 - (NSDictionary *)toDict
@@ -15,14 +16,51 @@
         [modes addObject:mode.mode];
     }
     
-    NSMutableDictionary *tripDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
+    NSDictionary *tripDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                      [df stringFromDate:self.date], @"date",
-                                     self.description, @"description",
+                                     self.tripDescription, @"description",
                                      self.duration, @"duration",
                                      modes, @"transport_modes",
                                      self.surveyId, @"survey_id", nil];
     
     return tripDict;
+}
+
+- (void)setDate:(NSDate *)newDate {
+    
+    // If the time stamp changes, the section identifier become invalid.
+    [self willChangeValueForKey:@"date"];
+    [self setPrimitiveDate:newDate];
+    [self didChangeValueForKey:@"date"];
+    
+    [self setPrimitiveSectionIdentifier:nil];
+}
+
+- (NSString *)sectionIdentifier
+{
+    // Create and cache the section identifier on demand.
+    
+    [self willAccessValueForKey:@"sectionIdentifier"];
+    NSString *tmp = [self primitiveSectionIdentifier];
+    [self didAccessValueForKey:@"sectionIdentifier"];
+    
+    if (!tmp) {
+        /*
+         Sections are organized by month and year. Create the section identifier as a string representing the number (year * 1000) + month; this way they will be correctly ordered chronologically regardless of the actual name of the month.
+         */
+        NSCalendar *calendar = [NSCalendar currentCalendar];
+        
+        NSDateComponents *components = [calendar components:(NSDayCalendarUnit | NSMonthCalendarUnit | NSYearCalendarUnit) fromDate:[self date]];
+        tmp = [NSString stringWithFormat:@"%d", ([components year] * 1000000) + ([components month] * 1000) + [components day]];
+        [self setPrimitiveSectionIdentifier:tmp];
+    }
+    return tmp;
+}
+
++ (NSSet *)keyPathsForValuesAffectingSectionIdentifier
+{
+    // If the value of date changes, the section identifier may change as well.
+    return [NSSet setWithObject:@"date"];
 }
 
 @end

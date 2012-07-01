@@ -12,11 +12,11 @@
 - (NSDictionary *)toDict
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
+    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
     NSMutableDictionary *sampleDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        self.latitude, @"latitude", self.longitude, @"longitude",
                                        [df stringFromDate:self.timestamp], @"timestamp",
-                                       self.locationAccuracy, @"locationAccuracy",
+                                       self.locationAccuracy, @"location_accuracy",
                                        nil];
     if (self.speed) {
         [sampleDict setObject:self.speed forKey:@"speed"];
@@ -24,7 +24,7 @@
     
     if (self.heading && self.headingAccuracy) {
         [sampleDict setObject:self.heading forKey:@"heading"];
-        [sampleDict setObject:self.headingAccuracy forKey:@"headingAccuracy"];
+        [sampleDict setObject:self.headingAccuracy forKey:@"heading_accuracy"];
     }
     
     return sampleDict;

@@ -95,6 +95,12 @@
     free(coords);
 }
 
+- (void)clearPlot
+{
+    [self.mapView removeOverlays:self.mapView.overlays];
+    self.tripPath = nil;
+}
+
 - (void)centreMapOnTripOverlay
 {
     MKMapRect mapRect = [[self.tripPathView overlay] boundingMapRect];
@@ -139,6 +145,7 @@
         [self.mapView setUserTrackingMode:MKUserTrackingModeFollow];
     } else {
         [self.mapView setUserTrackingMode:MKUserTrackingModeNone];
+        [self.mapView setShowsUserLocation:NO];
     }
     _tripActive = tripActive;
 }

@@ -139,12 +139,18 @@
 		D0551BE1156B342D000E8EE9 /* arrow.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BDE156B3427000E8EE9 /* arrow.png */; };
 		D0551BE3156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
 		D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0551BE2156B3495000E8EE9 /* arrow@2x.png */; };
+		D0583508159D704D002981EA /* HTSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0583507159D704D002981EA /* HTSLoginViewController.m */; };
+		D0583509159D704D002981EA /* HTSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0583507159D704D002981EA /* HTSLoginViewController.m */; };
+		D058350D159D7059002981EA /* HTSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D058350C159D7059002981EA /* HTSRegisterViewController.m */; };
+		D058350E159D7059002981EA /* HTSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D058350C159D7059002981EA /* HTSRegisterViewController.m */; };
 		D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D090007715933B2100B1D2C4 /* _TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007415933B2100B1D2C4 /* _TransportMode.m */; };
 		D090007815933B2100B1D2C4 /* _TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007415933B2100B1D2C4 /* _TransportMode.m */; };
 		D090007915933B2100B1D2C4 /* TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007615933B2100B1D2C4 /* TransportMode.m */; };
 		D090007A15933B2100B1D2C4 /* TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007615933B2100B1D2C4 /* TransportMode.m */; };
+		D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
+		D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
 		D0D5E109158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
 		D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
 		D0D5E10D158EB2DB00334EF3 /* HTSTripPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */; };
@@ -268,12 +274,18 @@
 		D034E7A3156515280092AAA0 /* MRCoreDataAction.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MRCoreDataAction.m; sourceTree = "<group>"; };
 		D0551BDE156B3427000E8EE9 /* arrow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = arrow.png; sourceTree = "<group>"; };
 		D0551BE2156B3495000E8EE9 /* arrow@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "arrow@2x.png"; sourceTree = "<group>"; };
+		D0583506159D704D002981EA /* HTSLoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSLoginViewController.h; sourceTree = "<group>"; };
+		D0583507159D704D002981EA /* HTSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSLoginViewController.m; sourceTree = "<group>"; };
+		D058350B159D7059002981EA /* HTSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSRegisterViewController.h; sourceTree = "<group>"; };
+		D058350C159D7059002981EA /* HTSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSRegisterViewController.m; sourceTree = "<group>"; };
 		D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSGeoSampleManager.h; sourceTree = "<group>"; };
 		D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSGeoSampleManager.m; sourceTree = "<group>"; };
 		D090007315933B2100B1D2C4 /* _TransportMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TransportMode.h; sourceTree = "<group>"; };
 		D090007415933B2100B1D2C4 /* _TransportMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _TransportMode.m; sourceTree = "<group>"; };
 		D090007515933B2100B1D2C4 /* TransportMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TransportMode.h; sourceTree = "<group>"; };
 		D090007615933B2100B1D2C4 /* TransportMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportMode.m; sourceTree = "<group>"; };
+		D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripHistoryTableViewController.h; sourceTree = "<group>"; };
+		D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripHistoryTableViewController.m; sourceTree = "<group>"; };
 		D0D5E107158EB13000334EF3 /* HTSTripPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPath.h; sourceTree = "<group>"; };
 		D0D5E108158EB13000334EF3 /* HTSTripPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripPath.m; sourceTree = "<group>"; };
 		D0D5E10B158EB2DB00334EF3 /* HTSTripPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPathView.h; sourceTree = "<group>"; };
@@ -338,6 +350,12 @@
 				D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */,
 				D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */,
 				D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */,
+				D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */,
+				D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */,
+				D0583506159D704D002981EA /* HTSLoginViewController.h */,
+				D0583507159D704D002981EA /* HTSLoginViewController.m */,
+				D058350B159D7059002981EA /* HTSRegisterViewController.h */,
+				D058350C159D7059002981EA /* HTSRegisterViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -448,8 +466,8 @@
 				D004FFAC1568AC71004687ED /* View Controllers */,
 				D034E6541564EAF30092AAA0 /* HTSAppDelegate.h */,
 				D034E6551564EAF30092AAA0 /* HTSAppDelegate.m */,
-				D034E64C1564EAF30092AAA0 /* Supporting Files */,
 				D034E68F1564ED4E0092AAA0 /* HTSiOS.storyboard */,
+				D034E64C1564EAF30092AAA0 /* Supporting Files */,
 			);
 			path = HTSiOS;
 			sourceTree = "<group>";
@@ -842,6 +860,9 @@
 				D00E74BA1591B9DA00A1D31F /* UIImageView+AFNetworking.m in Sources */,
 				D090007715933B2100B1D2C4 /* _TransportMode.m in Sources */,
 				D090007915933B2100B1D2C4 /* TransportMode.m in Sources */,
+				D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */,
+				D0583508159D704D002981EA /* HTSLoginViewController.m in Sources */,
+				D058350D159D7059002981EA /* HTSRegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -902,6 +923,9 @@
 				D00E74BB1591B9DA00A1D31F /* UIImageView+AFNetworking.m in Sources */,
 				D090007815933B2100B1D2C4 /* _TransportMode.m in Sources */,
 				D090007A15933B2100B1D2C4 /* TransportMode.m in Sources */,
+				D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */,
+				D0583509159D704D002981EA /* HTSLoginViewController.m in Sources */,
+				D058350E159D7059002981EA /* HTSRegisterViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -59,6 +59,7 @@
         instance = [[HTSGeoSampleManager alloc] init];
         instance.locationManager = [[CLLocationManager alloc] init];
         [instance.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
+        [instance.locationManager setDistanceFilter:20.0];
         [instance.locationManager setDelegate:instance];
     }
     

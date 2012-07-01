@@ -9,9 +9,11 @@
 #import "HTSTodayViewController.h"
 #import "Trip.h"
 #import "GeoSample.h"
+#import "TransportMode.h"
 #import "HTSTripDetailViewController.h"
 #import "HTSTripMapViewController.h"
 #import "HTSGeoSampleManager.h"
+#import "HTSAPIController.h"
 
 @interface HTSTodayViewController ()
 
@@ -65,6 +67,15 @@
     // Tapping on current trip map should open full view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCurrentTrip:)];
     [self.tripMapView addGestureRecognizer:tap];
+    
+    // Check if login is required
+    if (![[HTSAPIController sharedApi] hasCredentials]) {
+        [self performSegueWithIdentifier:@"Show Login" sender:self];
+    } else {
+        [[HTSAPIController sharedApi] loginWithLocalCredentialsWithFailureBlock:^{
+            [self performSegueWithIdentifier:@"Show Login" sender:self];
+        }];
+    }
 }
 
 - (void)addTripMapSubviewController
@@ -132,10 +143,10 @@
     NSDate *start = [trip.samplesSet valueForKeyPath:@"@min.timestamp"];
     NSDate *end = [trip.samplesSet valueForKeyPath:@"@max.timestamp"];
     NSTimeInterval length = [end timeIntervalSinceDate:start] / 60;
-    cell.textLabel.text = [NSString stringWithFormat:@"%.2f minute trip %@", length, [self.transportDescriptions objectForKey:trip.transportType]];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@", trip.tripDescription];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"hh:mm a"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %@", [df stringFromDate:start], [df stringFromDate:end], trip.tripDescription];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip", [df stringFromDate:start], [df stringFromDate:end], (int)length];
     
     return cell;
 }
@@ -228,6 +239,9 @@
         [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundgreen.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
         [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];
         
+        
+        [self insertTripIntoHistory];
+        
         NSLog(@"Stopped updating locations.");
         // Clear trip property so a new one gets created next start
     }
@@ -243,7 +257,23 @@
     self.activeTrip = [Trip MR_createEntity];
     self.activeTrip.date = [NSDate date];
     self.activeTrip.tripDescription = @"New trip";
+    self.activeTrip.surveyIdValue = 1;
+    TransportMode *tm = [TransportMode MR_createEntity];
+    tm.mode = @"C";
+    [self.activeTrip.modesSet addObject:tm];
     [[NSManagedObjectContext MR_defaultContext] MR_save];
+}
+
+- (void)insertTripIntoHistory
+{
+    [self.fetchedResultsController performFetch:nil];
+    NSArray *indexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    [self.tableView beginUpdates];
+    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationTop];
+    [self.tableView endUpdates];
+    
+    [self.tripNameLabel setText:@"— no trip —"];
+    [self.tripMapViewController clearPlot];
 }
 
 #pragma mark UIActionSheetDelegate methods

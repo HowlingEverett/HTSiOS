@@ -4,4 +4,6 @@
 // Custom logic goes here.
 
 - (NSDictionary *)toDict;
+
+@property (nonatomic, strong) NSString *primitiveSectionIdentifier;
 @end

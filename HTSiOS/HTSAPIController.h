@@ -14,8 +14,13 @@
 
 + (HTSAPIController *)sharedApi;
 
+- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password 
+             failureBlock:(void(^)())failure;
+- (BOOL)hasCredentials;
+- (void)loginWithLocalCredentialsWithFailureBlock:(void(^)())failure;
+
 - (void)batchUploadTrips:(NSArray *)tripsArray
-             withSuccess:(void(^)(AFHTTPRequestOperation *operation, id responseObject))success
-                 failure:(void(^)(AFHTTPRequestOperation *operation, NSError *error))failure
+             withSuccess:(void(^)())success
+                 failure:(void(^)())failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress;
 @end

@@ -7,6 +7,7 @@ const struct TripAttributes TripAttributes = {
 	.date = @"date",
 	.duration = @"duration",
 	.isExported = @"isExported",
+	.sectionIdentifier = @"sectionIdentifier",
 	.surveyId = @"surveyId",
 	.transportType = @"transportType",
 	.tripDescription = @"tripDescription",
@@ -119,6 +120,13 @@ const struct TripFetchedProperties TripFetchedProperties = {
 - (void)setPrimitiveIsExportedValue:(BOOL)value_ {
 	[self setPrimitiveIsExported:[NSNumber numberWithBool:value_]];
 }
+
+
+
+
+
+@dynamic sectionIdentifier;
+
 
 
 

@@ -8,6 +8,7 @@ extern const struct TripAttributes {
 	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *isExported;
+	__unsafe_unretained NSString *sectionIdentifier;
 	__unsafe_unretained NSString *surveyId;
 	__unsafe_unretained NSString *transportType;
 	__unsafe_unretained NSString *tripDescription;
@@ -23,6 +24,7 @@ extern const struct TripFetchedProperties {
 
 @class TransportMode;
 @class GeoSample;
+
 
 
 
@@ -71,6 +73,14 @@ extern const struct TripFetchedProperties {
 - (void)setIsExportedValue:(BOOL)value_;
 
 //- (BOOL)validateIsExported:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSString* sectionIdentifier;
+
+
+//- (BOOL)validateSectionIdentifier:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -158,6 +168,12 @@ extern const struct TripFetchedProperties {
 
 - (BOOL)primitiveIsExportedValue;
 - (void)setPrimitiveIsExportedValue:(BOOL)value_;
+
+
+
+
+- (NSString*)primitiveSectionIdentifier;
+- (void)setPrimitiveSectionIdentifier:(NSString*)value;
 
 
 
