@@ -153,6 +153,11 @@
     return [sectionInfo numberOfObjects];
 }
 
+- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section
+{
+    return @"Previous trips today";
+}
+
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"Trip Cell";
@@ -251,6 +256,13 @@
     [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationTop];
     [self.tableView endUpdates];
     
+    // Get trip duration
+    NSDate *now = [NSDate date];
+    NSDate *start = self.activeTrip.date;
+    NSTimeInterval duration = [now timeIntervalSinceDate:start];
+    self.activeTrip.durationValue = duration / 60;
+    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    
     [self.tripNameLabel setText:@"— no trip —"];
     [self.tripModesLabel setText:@"— —"];
     [self.tripDurationLabel setText:@""];
@@ -312,11 +324,8 @@
         NSCalendar *cal = [NSCalendar currentCalendar];
         NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
         NSDateComponents *conversion = [cal components:unitFlags fromDate:start toDate:now options:0];
-//        NSTimeInterval duration = [now timeIntervalSinceDate:start];
-//        [self.activeTrip setDurationValue:duration / 60];
         
         [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
-//        [[NSManagedObjectContext MR_context] MR_save];
     }
 }
 
