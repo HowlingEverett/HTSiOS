@@ -40,7 +40,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walkiing", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
+    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walking", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
     
     [self.fetchedResultsController performFetch:nil];
     self.uploadProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
@@ -124,7 +124,7 @@
     }
     modeStr = [modeStr substringToIndex:modeStr.length - 2];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", trip.tripDescription, modeStr];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", trip.tripDescription, modeStr];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"hh:mm a"];
     

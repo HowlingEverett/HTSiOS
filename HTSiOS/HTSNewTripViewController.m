@@ -125,11 +125,19 @@
 {
     if ([segue.identifier isEqualToString:@"Select Survey For Trip"]) {
         [[segue destinationViewController] setSurveys:self.surveys];
+        [[segue destinationViewController] setDelegate:self];
     }
 }
 
 - (IBAction)startNewTrip:(id)sender
 {
+    NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
+    if ([selectedRows count] == 0) {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No transport selected" message:@"You must select at least one mode of transport for this trip." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSNumber *surveyId;
     if (![defaults objectForKey:@"HTSActiveSurveyDictKey"]) {
@@ -148,15 +156,12 @@
     Trip *trip = [Trip MR_createInContext:context];
     trip.tripDescription = self.tripPurpose.text;
     trip.date = [NSDate date];
+    
     trip.surveyId = surveyId;
-    NSInteger n = [self.tableView numberOfRowsInSection:0];
-    for (int i = 0; i < n; i++) {
-        UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:i inSection:0]];
-        if (cell.isSelected) {
-            TransportMode *tm = [TransportMode MR_createEntity];
-            tm.mode = [self.transportModes objectAtIndex:i];
-            [trip.modesSet addObject:tm];
-        }
+    for (NSIndexPath *indexPath in selectedRows) {
+        TransportMode *tm = [TransportMode MR_createEntity];
+        tm.mode = [self.transportModes objectAtIndex:indexPath.row];
+        [trip.modesSet addObject:tm];
     }
     
     [context MR_save];
@@ -167,6 +172,15 @@
 - (IBAction)cancel:(id)sender
 {
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (void)didSelectSurveyWithId:(NSInteger)surveyId andTitle:(NSString *)title
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:[NSDictionary dictionaryWithObjectsAndKeys:title, @"surveyTitle", [NSNumber numberWithInt:surveyId], @"surveyId", nil] forKey:@"HTSActiveSurveyDictKey"];
+    
+    [self startNewTrip:self];
+    [defaults synchronize];
 }
 
 @end

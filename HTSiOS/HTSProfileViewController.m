@@ -13,10 +13,11 @@
 
 @property (nonatomic, strong) UIActivityIndicatorView *ai;
 @property (nonatomic, strong) NSArray *surveys;
+@property (nonatomic, strong) IBOutlet UILabel *surveyTitle;
 @end
 
 @implementation HTSProfileViewController
-@synthesize ai, surveys;
+@synthesize ai, surveys, surveyTitle;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -36,6 +37,12 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"HTSActiveSurveyDictKey"]) {
+        surveyTitle.text = [[defaults objectForKey:@"HTSActiveSurveyDictKey"] objectForKey:@"surveyTitle"];
+    } else {
+        surveyTitle.text = @"Select survey";
+    }
 }
 
 - (void)viewDidUnload
@@ -54,6 +61,7 @@
 {
     if ([[segue identifier] isEqualToString:@"Select Survey"]) {
         [[segue destinationViewController] setSurveys:self.surveys];
+        [[segue destinationViewController] setDelegate:self];
     }
 }
 
@@ -130,6 +138,7 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [defaults setObject:[NSDictionary dictionaryWithObjectsAndKeys:title, @"surveyTitle", [NSNumber numberWithInt:surveyId], @"surveyId", nil] forKey:@"HTSActiveSurveyDictKey"];
     [defaults synchronize];
+    surveyTitle.text = title;
 }
 
 @end

@@ -34,7 +34,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="NLS-0F-aU4">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="244"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Current Trip:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="BNQ-hj-D5v">
@@ -44,8 +44,8 @@
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                     <nil key="highlightedColor"/>
                                 </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="— no trip —" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="INe-WS-8be">
-                                    <rect key="frame" x="20" y="182" width="280" height="21"/>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="— no trip —" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" id="INe-WS-8be">
+                                    <rect key="frame" x="20" y="182" width="130" height="42"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -56,12 +56,40 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fjv-M6-m4b">
+                                    <rect key="frame" x="25" y="129" width="120" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ehs-ce-fiQ">
+                                    <rect key="frame" x="175" y="129" width="120" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Modes:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="BPf-NX-zLf">
+                                    <rect key="frame" x="204" y="160" width="96" height="21"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="— —" textAlignment="right" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" id="IZy-09-l5B">
+                                    <rect key="frame" x="170" y="182" width="130" height="42"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Trip Cell" textLabel="3od-QT-QpO" detailTextLabel="PQy-c6-yBO" style="IBUITableViewCellStyleSubtitle" id="Or9-k2-fix">
-                                <rect key="frame" x="0.0" y="259" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="280" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -96,7 +124,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Today's Trips" id="7IP-hN-nsw"/>
                     <connections>
+                        <outlet property="tripDistanceLabel" destination="fjv-M6-m4b" id="BOt-qd-ACZ"/>
+                        <outlet property="tripDurationLabel" destination="ehs-ce-fiQ" id="sqJ-I5-r3S"/>
                         <outlet property="tripMapView" destination="oR4-9Y-zzJ" id="qOG-tf-r1f"/>
+                        <outlet property="tripModesLabel" destination="IZy-09-l5B" id="bV8-1B-8Iq"/>
                         <outlet property="tripNameLabel" destination="INe-WS-8be" id="mQv-Sf-xkZ"/>
                         <segue destination="b1E-pH-Eml" kind="modal" identifier="Show Login" id="bDS-fH-Pvs"/>
                         <segue destination="6n4-iE-zfK" kind="modal" identifier="New Trip" id="nVC-BQ-bDq"/>
@@ -239,6 +270,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Participant Profile" id="C7G-Ba-PYL"/>
                     <connections>
+                        <outlet property="surveyTitle" destination="wqL-9t-FeP" id="H9B-Q8-jz4"/>
                         <segue destination="LVO-4u-TeQ" kind="push" identifier="Select Survey" id="4vE-bW-MHo"/>
                     </connections>
                 </tableViewController>
@@ -277,6 +309,9 @@
                     <navigationItem key="navigationItem" title="Select Active Survey" id="VWQ-D1-85B">
                         <barButtonItem key="backBarButtonItem" title="Profile" id="n4p-zP-G4V"/>
                     </navigationItem>
+                    <connections>
+                        <outlet property="surveyTitle" destination="1gG-hM-yoF" id="FEA-zz-ezm"/>
+                    </connections>
                 </viewController>
             </objects>
             <point key="canvasLocation" x="1192" y="839"/>
@@ -765,6 +800,9 @@
         </class>
         <class className="HTSProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSProfileViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="HTSRegisterViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSRegisterViewController.h"/>
@@ -777,11 +815,17 @@
         </class>
         <class className="HTSSurveyPickerViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSSurveyPickerViewController.h"/>
+            <relationships>
+                <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
+            </relationships>
         </class>
         <class className="HTSTodayViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTodayViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="tripDistanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="tripDurationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
+                <relationship kind="outlet" name="tripModesLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tripNameLabel" candidateClass="UILabel"/>
             </relationships>
         </class>

@@ -19,7 +19,7 @@
 
 @implementation HTSAPIController
 @synthesize client;
-#define kAPIBase @"http://localhost:8000/"
+#define kAPIBase @"http://againstdragons.usdlc.net/"
 
 + (HTSAPIController *)sharedApi
 {

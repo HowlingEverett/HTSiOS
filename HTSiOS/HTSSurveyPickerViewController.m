@@ -11,21 +11,33 @@
 @interface HTSSurveyPickerViewController ()
 
 @property (nonatomic, strong) NSArray *surveys;
+@property (weak, nonatomic) IBOutlet UILabel *surveyTitle;
+@property (nonatomic, assign) NSInteger selectedIndex;
 @end
 
 @implementation HTSSurveyPickerViewController
-@synthesize surveys, delegate;
+@synthesize surveyTitle;
+@synthesize surveys, delegate, selectedIndex;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.selectedIndex = 0;
 	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
+    [self setSurveyTitle:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    NSDictionary *surveyDict = [surveys objectAtIndex:selectedIndex];
+    [self.delegate didSelectSurveyWithId:[[surveyDict objectForKey:@"surveyId"] intValue] andTitle:[surveyDict objectForKey:@"surveyTitle"]];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -35,10 +47,8 @@
 
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
-    NSDictionary *surveyDict = [surveys objectAtIndex:row];
-    
-    [self.delegate didSelectSurveyWithId:[[surveyDict objectForKey:@"surveyId"] intValue] andTitle:[surveyDict objectForKey:@"surveyTitle"]];
-    
+    self.selectedIndex = row;
+    self.surveyTitle.text = [[self.surveys objectAtIndex:row] objectForKey:@"surveyTitle"];
 }
 
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView
@@ -53,7 +63,6 @@
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    NSLog(@"%@", [surveys objectAtIndex:row]);
     return [[surveys objectAtIndex:row] objectForKey:@"surveyTitle"];
 }
 

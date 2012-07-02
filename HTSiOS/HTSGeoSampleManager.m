@@ -59,7 +59,7 @@
         instance = [[HTSGeoSampleManager alloc] init];
         instance.locationManager = [[CLLocationManager alloc] init];
         [instance.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-        [instance.locationManager setDistanceFilter:20.0];
+//        [instance.locationManager setDistanceFilter:10.0];
         [instance.locationManager setDelegate:instance];
     }
     
@@ -91,7 +91,7 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     // test that the horizontal accuracy does not indicate an invalid measurement
-    if (newLocation.horizontalAccuracy < 0) return;
+    if (newLocation.horizontalAccuracy < 0 || newLocation.horizontalAccuracy > 55.0) return;
     // test the age of the location measurement to determine if the measurement is cached
     // in most cases you will not want to rely on cached measurements
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];

@@ -7,11 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "HTSSurveyPickerViewController.h"
 
 @class Trip;
 @protocol HTSNewTripViewControllerDelegate;
 
-@interface HTSNewTripViewController : UITableViewController
+@interface HTSNewTripViewController : UITableViewController <HTSSurveyPickerViewControllerDelegate>
 @property (nonatomic, weak) id<HTSNewTripViewControllerDelegate> delegate;
 @end
 

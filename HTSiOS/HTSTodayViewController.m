@@ -25,6 +25,9 @@
 // Outlets
 @property (weak, nonatomic) IBOutlet UIView *tripMapView;
 @property (weak, nonatomic) IBOutlet UILabel *tripNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tripDistanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tripDurationLabel;
+@property (weak, nonatomic) IBOutlet UILabel *tripModesLabel;
 
 // Bar items
 @property (nonatomic, strong) UIBarButtonItem *addButton;
@@ -32,20 +35,26 @@
 
 // Child View Controllers
 @property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
+
+@property (nonatomic, strong) NSTimer *tripDurationTimer;
 @end
 
 @implementation HTSTodayViewController
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize tripMapView = _tripMapView;
 @synthesize tripNameLabel = _tripNameLabel;
+@synthesize tripDistanceLabel;
+@synthesize tripDurationLabel;
+@synthesize tripModesLabel;
 @synthesize activeTrip = _activeTrip;
 @synthesize transportDescriptions;
 @synthesize tripMapViewController;
 @synthesize addButton, stopButton;
+@synthesize tripDurationTimer;
 
 - (void)awakeFromNib
 {
-    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walkiing", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
+    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walking", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
     
     // Instantiate bar button items
     self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newTrip:)];
@@ -98,6 +107,9 @@
 {
     [self setTripNameLabel:nil];
     [self setTripMapView:nil];
+    [self setTripDistanceLabel:nil];
+    [self setTripDurationLabel:nil];
+    [self setTripModesLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -158,7 +170,7 @@
     }
     modeStr = [modeStr substringToIndex:modeStr.length - 2];
     
-    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", trip.tripDescription, modeStr];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@ (%@)", trip.tripDescription, modeStr];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"hh:mm a"];
     
@@ -240,6 +252,9 @@
     [self.tableView endUpdates];
     
     [self.tripNameLabel setText:@"— no trip —"];
+    [self.tripModesLabel setText:@"— —"];
+    [self.tripDurationLabel setText:@""];
+    [self.tripDistanceLabel setText:@""];
     [self.tripMapViewController clearPlot];
 }
 
@@ -248,12 +263,22 @@
 {
     [self setActiveTrip:trip];
     [self.tripNameLabel setText:trip.tripDescription];
+    NSString *modeStr = @"";
+    for (TransportMode *tm in trip.modes) {
+        modeStr = [modeStr stringByAppendingFormat:@"%@, ", [transportDescriptions objectForKey:tm.mode]];
+    }
+    modeStr = [modeStr substringToIndex:modeStr.length - 2];
+    [self.tripModesLabel setText:modeStr];
+    [self.tripDistanceLabel setText:@"0km 0m"];
+    [self.tripDurationLabel setText:@"00h00m00s"];
     
     HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
     [geosampleManger setActiveTrip:self.activeTrip];
     [self.tripMapViewController setTripActive:YES];
     [geosampleManger setDelegate:self.tripMapViewController];
     [geosampleManger startCapturingSamples];
+    self.tripDurationTimer = [NSTimer timerWithTimeInterval:1 target:self selector:@selector(updateCounter:) userInfo:nil repeats:YES];
+    [[NSRunLoop mainRunLoop] addTimer:self.tripDurationTimer forMode:NSDefaultRunLoopMode];
     
     [self.navigationItem setRightBarButtonItem:self.stopButton];
 }
@@ -270,9 +295,29 @@
     [geosampleManger stopCapturingSamples];
     [geosampleManger setDelegate:nil];
     [self.tripMapViewController setTripActive:NO];
+    [self.tripDurationTimer invalidate];
+    self.tripDurationTimer = nil;
     [self insertTripIntoHistory];
     
     [self.navigationItem setRightBarButtonItem:self.addButton];
+}
+
+# pragma mark Timer updates
+- (void)updateCounter:(id)sel
+{
+    if (self.activeTrip) {
+        NSDate *now = [NSDate date];
+        NSDate *start = self.activeTrip.date;
+        
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        NSDateComponents *conversion = [cal components:unitFlags fromDate:start toDate:now options:0];
+//        NSTimeInterval duration = [now timeIntervalSinceDate:start];
+//        [self.activeTrip setDurationValue:duration / 60];
+        
+        [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
+//        [[NSManagedObjectContext MR_context] MR_save];
+    }
 }
 
 @end
