@@ -26,7 +26,6 @@
 		D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
 		D0027F8A156BC095002D65C6 /* libxml2.2.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */; };
 		D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
-		D0027F8E156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
 		D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */; };
 		D0027F91156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */; };
 		D0027F92156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */; };
@@ -151,12 +150,25 @@
 		D090007A15933B2100B1D2C4 /* TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007615933B2100B1D2C4 /* TransportMode.m */; };
 		D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
 		D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
+		D0D4D08E15A0BDEF00D96683 /* HTSNewTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */; };
+		D0D4D09215A132BF00D96683 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */; };
+		D0D4D09315A132BF00D96683 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */; };
+		D0D4D09A15A143D600D96683 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D09815A143D600D96683 /* done.png */; };
+		D0D4D09B15A143D600D96683 /* done.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D09815A143D600D96683 /* done.png */; };
+		D0D4D09C15A143D600D96683 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D09915A143D600D96683 /* done@2x.png */; };
+		D0D4D09D15A143D600D96683 /* done@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D09915A143D600D96683 /* done@2x.png */; };
+		D0D4D0A615A1465400D96683 /* cloud_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D0A415A1465400D96683 /* cloud_upload.png */; };
+		D0D4D0A715A1465400D96683 /* cloud_upload.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D0A415A1465400D96683 /* cloud_upload.png */; };
+		D0D4D0A815A1465400D96683 /* cloud_upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D0A515A1465400D96683 /* cloud_upload@2x.png */; };
+		D0D4D0A915A1465400D96683 /* cloud_upload@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0D4D0A515A1465400D96683 /* cloud_upload@2x.png */; };
+		D0D4D0AC15A14C3B00D96683 /* HTSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D0AB15A14C3B00D96683 /* HTSProfileViewController.m */; };
+		D0D4D0AD15A14C3B00D96683 /* HTSProfileViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D0AB15A14C3B00D96683 /* HTSProfileViewController.m */; };
+		D0D4D0B015A153F400D96683 /* HTSSurveyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D0AF15A153F400D96683 /* HTSSurveyPickerViewController.m */; };
+		D0D4D0B115A153F400D96683 /* HTSSurveyPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D0AF15A153F400D96683 /* HTSSurveyPickerViewController.m */; };
 		D0D5E109158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
 		D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E108158EB13000334EF3 /* HTSTripPath.m */; };
 		D0D5E10D158EB2DB00334EF3 /* HTSTripPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */; };
 		D0D5E10E158EB2DB00334EF3 /* HTSTripPathView.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */; };
-		D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
-		D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -286,12 +298,22 @@
 		D090007615933B2100B1D2C4 /* TransportMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportMode.m; sourceTree = "<group>"; };
 		D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripHistoryTableViewController.h; sourceTree = "<group>"; };
 		D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripHistoryTableViewController.m; sourceTree = "<group>"; };
+		D0D4D08C15A0BDEF00D96683 /* HTSNewTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSNewTripViewController.h; sourceTree = "<group>"; };
+		D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSNewTripViewController.m; sourceTree = "<group>"; };
+		D0D4D09015A132BF00D96683 /* HTSTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripDetailViewController.h; sourceTree = "<group>"; };
+		D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripDetailViewController.m; sourceTree = "<group>"; };
+		D0D4D09815A143D600D96683 /* done.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = done.png; sourceTree = "<group>"; };
+		D0D4D09915A143D600D96683 /* done@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "done@2x.png"; sourceTree = "<group>"; };
+		D0D4D0A415A1465400D96683 /* cloud_upload.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cloud_upload.png; sourceTree = "<group>"; };
+		D0D4D0A515A1465400D96683 /* cloud_upload@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloud_upload@2x.png"; sourceTree = "<group>"; };
+		D0D4D0AA15A14C3B00D96683 /* HTSProfileViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSProfileViewController.h; sourceTree = "<group>"; };
+		D0D4D0AB15A14C3B00D96683 /* HTSProfileViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSProfileViewController.m; sourceTree = "<group>"; };
+		D0D4D0AE15A153F300D96683 /* HTSSurveyPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSSurveyPickerViewController.h; sourceTree = "<group>"; };
+		D0D4D0AF15A153F400D96683 /* HTSSurveyPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSSurveyPickerViewController.m; sourceTree = "<group>"; };
 		D0D5E107158EB13000334EF3 /* HTSTripPath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPath.h; sourceTree = "<group>"; };
 		D0D5E108158EB13000334EF3 /* HTSTripPath.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripPath.m; sourceTree = "<group>"; };
 		D0D5E10B158EB2DB00334EF3 /* HTSTripPathView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripPathView.h; sourceTree = "<group>"; };
 		D0D5E10C158EB2DB00334EF3 /* HTSTripPathView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripPathView.m; sourceTree = "<group>"; };
-		D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripDetailViewController.h; sourceTree = "<group>"; };
-		D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripDetailViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -347,15 +369,21 @@
 				D004FFAE1568AC92004687ED /* HTSTodayViewController.m */,
 				D0027F8B156BD231002D65C6 /* HTSTripMapViewController.h */,
 				D0027F8C156BD232002D65C6 /* HTSTripMapViewController.m */,
+				D0D4D09015A132BF00D96683 /* HTSTripDetailViewController.h */,
+				D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */,
 				D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */,
-				D0E72DCB156EF2BB0079FD33 /* HTSTripDetailViewController.h */,
-				D0E72DCC156EF2BB0079FD33 /* HTSTripDetailViewController.m */,
 				D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */,
 				D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */,
 				D0583506159D704D002981EA /* HTSLoginViewController.h */,
 				D0583507159D704D002981EA /* HTSLoginViewController.m */,
 				D058350B159D7059002981EA /* HTSRegisterViewController.h */,
 				D058350C159D7059002981EA /* HTSRegisterViewController.m */,
+				D0D4D08C15A0BDEF00D96683 /* HTSNewTripViewController.h */,
+				D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */,
+				D0D4D0AA15A14C3B00D96683 /* HTSProfileViewController.h */,
+				D0D4D0AB15A14C3B00D96683 /* HTSProfileViewController.m */,
+				D0D4D0AE15A153F300D96683 /* HTSSurveyPickerViewController.h */,
+				D0D4D0AF15A153F400D96683 /* HTSSurveyPickerViewController.m */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -475,6 +503,10 @@
 		D034E64C1564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D0D4D0A415A1465400D96683 /* cloud_upload.png */,
+				D0D4D0A515A1465400D96683 /* cloud_upload@2x.png */,
+				D0D4D09815A143D600D96683 /* done.png */,
+				D0D4D09915A143D600D96683 /* done@2x.png */,
 				D0027F71156BAA03002D65C6 /* Toowong-hills.gpx */,
 				D0205BDC156A251E00B4C816 /* Graphics */,
 				D034E64D1564EAF30092AAA0 /* HTSiOS-Info.plist */,
@@ -754,6 +786,10 @@
 				D0551BE3156B3495000E8EE9 /* arrow@2x.png in Resources */,
 				D0027F72156BAA03002D65C6 /* Toowong-hills.gpx in Resources */,
 				D0027F91156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */,
+				D0D4D09A15A143D600D96683 /* done.png in Resources */,
+				D0D4D09C15A143D600D96683 /* done@2x.png in Resources */,
+				D0D4D0A615A1465400D96683 /* cloud_upload.png in Resources */,
+				D0D4D0A815A1465400D96683 /* cloud_upload@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -780,6 +816,10 @@
 				D0551BE4156B3495000E8EE9 /* arrow@2x.png in Resources */,
 				D0027F73156BAA03002D65C6 /* Toowong-hills.gpx in Resources */,
 				D0027F93156BD465002D65C6 /* HTSTripMapViewController.xib in Resources */,
+				D0D4D09B15A143D600D96683 /* done.png in Resources */,
+				D0D4D09D15A143D600D96683 /* done@2x.png in Resources */,
+				D0D4D0A715A1465400D96683 /* cloud_upload.png in Resources */,
+				D0D4D0A915A1465400D96683 /* cloud_upload@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -844,7 +884,6 @@
 				D0205BF1156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
 				D0027F8D156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
-				D0E72DCD156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
 				D0D5E109158EB13000334EF3 /* HTSTripPath.m in Sources */,
 				D0D5E10D158EB2DB00334EF3 /* HTSTripPathView.m in Sources */,
 				D00E749015918F6A00A1D31F /* HTSAPIController.m in Sources */,
@@ -863,6 +902,10 @@
 				D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */,
 				D0583508159D704D002981EA /* HTSLoginViewController.m in Sources */,
 				D058350D159D7059002981EA /* HTSRegisterViewController.m in Sources */,
+				D0D4D08E15A0BDEF00D96683 /* HTSNewTripViewController.m in Sources */,
+				D0D4D09215A132BF00D96683 /* HTSTripDetailViewController.m in Sources */,
+				D0D4D0AC15A14C3B00D96683 /* HTSProfileViewController.m in Sources */,
+				D0D4D0B015A153F400D96683 /* HTSSurveyPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -872,7 +915,6 @@
 			files = (
 				D034E66F1564EAF30092AAA0 /* HTSiOSTests.m in Sources */,
 				D0205BF2156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
-				D0027F8E156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -907,7 +949,6 @@
 				D0205BF3156A33FA00B4C816 /* HTSDataFixtures.m in Sources */,
 				D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */,
 				D0027F8F156BD232002D65C6 /* HTSTripMapViewController.m in Sources */,
-				D0E72DCE156EF2BB0079FD33 /* HTSTripDetailViewController.m in Sources */,
 				D0D5E10A158EB13000334EF3 /* HTSTripPath.m in Sources */,
 				D0D5E10E158EB2DB00334EF3 /* HTSTripPathView.m in Sources */,
 				D00E749115918F6A00A1D31F /* HTSAPIController.m in Sources */,
@@ -926,6 +967,9 @@
 				D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */,
 				D0583509159D704D002981EA /* HTSLoginViewController.m in Sources */,
 				D058350E159D7059002981EA /* HTSRegisterViewController.m in Sources */,
+				D0D4D09315A132BF00D96683 /* HTSTripDetailViewController.m in Sources */,
+				D0D4D0AD15A14C3B00D96683 /* HTSProfileViewController.m in Sources */,
+				D0D4D0B115A153F400D96683 /* HTSSurveyPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

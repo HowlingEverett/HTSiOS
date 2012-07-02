@@ -9,7 +9,6 @@ const struct TripAttributes TripAttributes = {
 	.isExported = @"isExported",
 	.sectionIdentifier = @"sectionIdentifier",
 	.surveyId = @"surveyId",
-	.transportType = @"transportType",
 	.tripDescription = @"tripDescription",
 };
 
@@ -153,13 +152,6 @@ const struct TripFetchedProperties TripFetchedProperties = {
 - (void)setPrimitiveSurveyIdValue:(int16_t)value_ {
 	[self setPrimitiveSurveyId:[NSNumber numberWithShort:value_]];
 }
-
-
-
-
-
-@dynamic transportType;
-
 
 
 

@@ -8,18 +8,20 @@
 
 #import "HTSTripHistoryTableViewController.h"
 #import "Trip.h"
+#import "TransportMode.h"
 #import "HTSAPIController.h"
 #import "HTSGeoSampleManager.h"
 #import "AFHTTPRequestOperation.h"
 
 @interface HTSTripHistoryTableViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
-@property (nonatomic, strong) UIView *uploadProgressView;
+@property (nonatomic, strong) UIProgressView *uploadProgressView;
+@property (nonatomic, strong) NSDictionary *transportDescriptions;
 
 @end
 
 @implementation HTSTripHistoryTableViewController
-@synthesize fetchedResultsController = _fetchedResultsController, uploadProgressView = _uploadProgressView;
+@synthesize fetchedResultsController = _fetchedResultsController, uploadProgressView = _uploadProgressView, transportDescriptions;
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
@@ -38,7 +40,17 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walkiing", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
+    
     [self.fetchedResultsController performFetch:nil];
+    self.uploadProgressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleBar];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -101,10 +113,34 @@
     static NSString *CellIdentifier = @"History Cell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    // Configure the cell...
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    cell.textLabel.text = [trip tripDescription];
+    NSDate *start = [trip.samplesSet valueForKeyPath:@"@min.timestamp"];
+    NSDate *end = [trip.samplesSet valueForKeyPath:@"@max.timestamp"];
+    NSTimeInterval length = [end timeIntervalSinceDate:start] / 60;
     
+    NSString *modeStr = @"";
+    for (TransportMode *tm in trip.modes) {
+        modeStr = [modeStr stringByAppendingFormat:@"%@, ", [self.transportDescriptions objectForKey:tm.mode]];
+    }
+    modeStr = [modeStr substringToIndex:modeStr.length - 2];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", trip.tripDescription, modeStr];
+    NSDateFormatter *df = [[NSDateFormatter alloc] init];
+    [df setDateFormat:@"hh:mm a"];
+    
+    
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip.", [df stringFromDate:start], [df stringFromDate:end], (int)length];
+    if (trip.isExported) {
+        cell.imageView.image = [UIImage imageNamed:@"done.png"];
+        cell.textLabel.textColor = [UIColor lightGrayColor];
+        cell.detailTextLabel.textColor = [UIColor lightGrayColor];
+    } else {
+        cell.imageView.image = [UIImage imageNamed:@"cloud_upload.png"];
+        cell.textLabel.textColor = [UIColor darkTextColor];
+        cell.detailTextLabel.textColor = [UIColor darkTextColor];
+    }
+        
     return cell;
 }
 
@@ -147,6 +183,16 @@
 }
 */
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"View Historical Trip"]) {
+        NSIndexPath *cellPath  = [self.tableView indexPathForCell:sender];
+        Trip *trip = [self.fetchedResultsController objectAtIndexPath:cellPath];
+        [[segue destinationViewController] setTrip:trip];
+        [[[segue destinationViewController] navigationItem] setTitle:trip.tripDescription];
+    }
+}
+
 - (NSFetchedResultsController *)fetchedResultsController
 {
     if (!_fetchedResultsController) {
@@ -170,14 +216,19 @@
 - (IBAction)exportTrips:(id)sender
 {
     NSArray *unexported = [self _unexportedTrips];
-
-    [[HTSAPIController sharedApi] batchUploadTrips:unexported withSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
-        NSLog(@"%@", responseObject);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        NSLog(@"Couldn't upload samples. Network error: %@, body: %@", error, [operation responseString]);
+    self.navigationItem.titleView = self.uploadProgressView;
+    
+    [[HTSAPIController sharedApi] batchUploadTrips:unexported withSuccess:^{
+        [self.navigationItem setTitleView:nil];
+        [self.navigationItem setTitle:@"Trip History"];
+        [self.fetchedResultsController performFetch:nil];
+        [self.tableView reloadData];
+    } failure:^{
+        NSLog(@"Couldn't upload samples.");
     } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        NSLog(@"Uploaded %lld bytes of %lld", totalBytesWritten, totalBytesExpectedToWrite);
+        [self.uploadProgressView setProgress:totalBytesWritten / totalBytesExpectedToWrite];
     }];
+    
 }
 
 - (NSArray *)_unexportedTrips

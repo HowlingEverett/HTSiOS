@@ -20,17 +20,15 @@
 // Data objects
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) NSDictionary *transportDescriptions;
-@property (nonatomic, assign) BOOL loggingEnabled;
 @property (nonatomic, strong) Trip *activeTrip;
 
 // Outlets
 @property (weak, nonatomic) IBOutlet UIView *tripMapView;
 @property (weak, nonatomic) IBOutlet UILabel *tripNameLabel;
-@property (weak, nonatomic) IBOutlet UIButton *startStopButton;
 
-// Actions
-- (IBAction)startStop:(id)sender;
-- (IBAction)openCurrentTrip:(id)sender;
+// Bar items
+@property (nonatomic, strong) UIBarButtonItem *addButton;
+@property (nonatomic, strong) UIBarButtonItem *stopButton;
 
 // Child View Controllers
 @property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
@@ -40,15 +38,18 @@
 @synthesize fetchedResultsController = _fetchedResultsController;
 @synthesize tripMapView = _tripMapView;
 @synthesize tripNameLabel = _tripNameLabel;
-@synthesize startStopButton = _startStopButton;
 @synthesize activeTrip = _activeTrip;
 @synthesize transportDescriptions;
-@synthesize loggingEnabled;
 @synthesize tripMapViewController;
+@synthesize addButton, stopButton;
 
 - (void)awakeFromNib
 {
-    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"by car", @"C", @"on foot", @"P", @"cycling", @"Cy", @"on public transport", @"PT", @"by taxi", @"T", nil];
+    self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walkiing", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
+    
+    // Instantiate bar button items
+    self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newTrip:)];
+    self.stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(stopUpdates:)];
 }
 
 - (void)viewDidLoad
@@ -66,16 +67,18 @@
     
     // Tapping on current trip map should open full view
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCurrentTrip:)];
-    [self.tripMapView addGestureRecognizer:tap];
+    [self.tripMapViewController.view addGestureRecognizer:tap];
     
     // Check if login is required
     if (![[HTSAPIController sharedApi] hasCredentials]) {
         [self performSegueWithIdentifier:@"Show Login" sender:self];
     } else {
-        [[HTSAPIController sharedApi] loginWithLocalCredentialsWithFailureBlock:^{
+        [[HTSAPIController sharedApi] loginWithLocalCredentialsWithSuccess:nil failure:^{
             [self performSegueWithIdentifier:@"Show Login" sender:self];
         }];
     }
+    
+    [self.navigationItem setRightBarButtonItem:self.addButton];
 }
 
 - (void)addTripMapSubviewController
@@ -90,10 +93,10 @@
     [self addChildViewController:self.tripMapViewController];
 }
 
+
 - (void)viewDidUnload
 {
     [self setTripNameLabel:nil];
-    [self setStartStopButton:nil];
     [self setTripMapView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
@@ -108,13 +111,18 @@
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
     if ([segue.identifier isEqualToString:@"View Current Trip"]) {
-        HTSTripDetailViewController *detailViewController = (HTSTripDetailViewController *)detailViewController;
+        HTSTripDetailViewController *detailViewController = (HTSTripDetailViewController *)[segue destinationViewController];
         [detailViewController setTrip:self.activeTrip];
-        [detailViewController.tripMapViewController setTripActive:YES];
+        [detailViewController setTripActive:YES];;
     } else if ([segue.identifier isEqualToString:@"View Historical Trip"]) {
         NSIndexPath *cellPath  = [self.tableView indexPathForCell:sender];
         Trip *trip = [self.fetchedResultsController objectAtIndexPath:cellPath];
         [[segue destinationViewController] setTrip:trip];
+        [[[segue destinationViewController] navigationItem] setTitle:trip.tripDescription];
+    } else if ([segue.identifier isEqualToString:@"New Trip"]) {
+        NSLog(@"%@", [segue destinationViewController]);
+        HTSNewTripViewController *dest = [[[segue destinationViewController] viewControllers] objectAtIndex:0];
+        [dest setDelegate:self];
     }
 }
 
@@ -143,10 +151,20 @@
     NSDate *start = [trip.samplesSet valueForKeyPath:@"@min.timestamp"];
     NSDate *end = [trip.samplesSet valueForKeyPath:@"@max.timestamp"];
     NSTimeInterval length = [end timeIntervalSinceDate:start] / 60;
-    cell.textLabel.text = [NSString stringWithFormat:@"%@", trip.tripDescription];
+    
+    NSString *modeStr = @"";
+    for (TransportMode *tm in trip.modes) {
+        modeStr = [modeStr stringByAppendingFormat:@"%@, ", [transportDescriptions objectForKey:tm.mode]];
+    }
+    modeStr = [modeStr substringToIndex:modeStr.length - 2];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"%@: %@", trip.tripDescription, modeStr];
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
     [df setDateFormat:@"hh:mm a"];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip", [df stringFromDate:start], [df stringFromDate:end], (int)length];
+    
+    
+    
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip.", [df stringFromDate:start], [df stringFromDate:end], (int)length];
     
     return cell;
 }
@@ -209,59 +227,8 @@
     return _fetchedResultsController;
 }
 
-- (IBAction)startStop:(id)sender {
-    HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
-    if (!self.loggingEnabled) {
-        [self.startStopButton setTitle:@"Stop" forState:UIControlStateNormal];
-        [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundred.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-        [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];
-        
-        if (self.activeTrip) {
-            UIActionSheet *sheet = [[UIActionSheet alloc] initWithTitle:@"You have an active trip. Would you like to record onto this trip or start a new one?" delegate:self cancelButtonTitle:@"Existing Trip" destructiveButtonTitle:@"New Trip" otherButtonTitles: nil];
-            [sheet showInView:[[UIApplication sharedApplication] keyWindow]];
-        } else {
-            [self newTrip];
-            self.tripNameLabel.text = self.activeTrip.tripDescription;
-        }
-        
-        [geosampleManger setActiveTrip:self.activeTrip];
-        [self.tripMapViewController setTripActive:YES];
-        [geosampleManger setDelegate:self.tripMapViewController];
-        [geosampleManger startCapturingSamples];
-        
-        NSLog(@"Started updating locations.");
-    } else {
-        [geosampleManger stopCapturingSamples];
-        [geosampleManger setDelegate:nil];
-        [self.tripMapViewController setTripActive:NO];
-        
-        [self.startStopButton setTitle:@"Start" forState:UIControlStateNormal];
-        [self.startStopButton setBackgroundImage:[[UIImage imageNamed:@"buttonbackgroundgreen.png"] stretchableImageWithLeftCapWidth:10.0 topCapHeight:0.0] forState:UIControlStateNormal];
-        [[self.startStopButton titleLabel] setTextColor:[UIColor whiteColor]];
-        
-        
-        [self insertTripIntoHistory];
-        
-        NSLog(@"Stopped updating locations.");
-        // Clear trip property so a new one gets created next start
-    }
-    
-    self.loggingEnabled = !self.loggingEnabled;
-}
 - (IBAction)openCurrentTrip:(id)sender {
     [self performSegueWithIdentifier:@"View Current Trip" sender:sender];
-}
-
-- (void)newTrip
-{
-    self.activeTrip = [Trip MR_createEntity];
-    self.activeTrip.date = [NSDate date];
-    self.activeTrip.tripDescription = @"New trip";
-    self.activeTrip.surveyIdValue = 1;
-    TransportMode *tm = [TransportMode MR_createEntity];
-    tm.mode = @"C";
-    [self.activeTrip.modesSet addObject:tm];
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
 }
 
 - (void)insertTripIntoHistory
@@ -276,14 +243,36 @@
     [self.tripMapViewController clearPlot];
 }
 
-#pragma mark UIActionSheetDelegate methods
-- (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
+# pragma mark HTSNewTripViewController delegate methods
+- (void)didCreateNewTrip:(Trip *)trip
 {
-    if (buttonIndex == 0) {
-        [self newTrip];
-    }
+    [self setActiveTrip:trip];
+    [self.tripNameLabel setText:trip.tripDescription];
     
-    self.tripNameLabel.text = self.activeTrip.tripDescription;
+    HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
+    [geosampleManger setActiveTrip:self.activeTrip];
+    [self.tripMapViewController setTripActive:YES];
+    [geosampleManger setDelegate:self.tripMapViewController];
+    [geosampleManger startCapturingSamples];
+    
+    [self.navigationItem setRightBarButtonItem:self.stopButton];
+}
+
+#pragma mark Button Item methods
+- (void)newTrip:(id)sel
+{
+    [self performSegueWithIdentifier:@"New Trip" sender:sel];
+}
+
+- (void)stopUpdates:(id)sel
+{
+    HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
+    [geosampleManger stopCapturingSamples];
+    [geosampleManger setDelegate:nil];
+    [self.tripMapViewController setTripActive:NO];
+    [self insertTripIntoHistory];
+    
+    [self.navigationItem setRightBarButtonItem:self.addButton];
 }
 
 @end

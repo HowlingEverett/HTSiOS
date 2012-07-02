@@ -14,4 +14,5 @@
 @interface HTSTripDetailViewController : UIViewController
 @property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
 @property (nonatomic, weak) Trip *trip;
+@property (nonatomic, assign) BOOL tripActive;
 @end

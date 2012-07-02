@@ -15,12 +15,15 @@
 + (HTSAPIController *)sharedApi;
 
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password 
-             failureBlock:(void(^)())failure;
+                  success:(void(^)())success 
+                  failure:(void(^)())failure;
 - (BOOL)hasCredentials;
-- (void)loginWithLocalCredentialsWithFailureBlock:(void(^)())failure;
+- (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure;
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
              withSuccess:(void(^)())success
                  failure:(void(^)())failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress;
+
+- (void)getActiveSurveysWithSuccess:(void(^)(NSArray *surveys))success failure:(void(^)())failure;
 @end

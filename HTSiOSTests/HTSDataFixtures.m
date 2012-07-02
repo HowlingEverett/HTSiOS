@@ -37,7 +37,6 @@
     Trip *trip = [Trip MR_createEntity];
     trip.date = [NSDate date];
     trip.tripDescription = @"Off to work!";
-    trip.transportType = @"C";
     [trip addSamples:[NSSet setWithArray:samples]];
     
     return trip;

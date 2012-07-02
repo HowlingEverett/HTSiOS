@@ -16,6 +16,7 @@
 
 @property (nonatomic, strong) HTSTripPath *tripPath;
 @property (nonatomic, strong) HTSTripPathView *tripPathView;
+@property (nonatomic, strong) MKPolylineView *existingPath;
 
 @end
 
@@ -23,7 +24,7 @@
 @synthesize mapView;
 @synthesize tripActive = _tripActive;
 @synthesize tripPath;
-@synthesize tripPathView;
+@synthesize tripPathView, existingPath;
 
 - (void)viewDidLoad
 {
@@ -36,6 +37,7 @@
 {
     [super viewDidUnload];
     // Release any retained subviews of the main view.
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -49,6 +51,13 @@
 
 }
 
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillDisappear:animated];
+    [[HTSGeoSampleManager sharedManager] setDelegate:nil];
+    [self.mapView setDelegate:nil];
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
@@ -57,6 +66,28 @@
 
 
 #pragma mark MKMapViewDelegate methods
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id<MKAnnotation>)annotation
+{
+    if ([annotation class] == [MKPointAnnotation class]) {
+        static NSString *pinIdentifier = @"Pin View Identifier";
+        MKPinAnnotationView *pinView = (MKPinAnnotationView *)[self.mapView dequeueReusableAnnotationViewWithIdentifier:pinIdentifier];
+        if (!pinView) {
+            pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:pinIdentifier];
+        }
+        [pinView setCanShowCallout:YES];
+        
+        if ([[annotation title] isEqualToString:@"Origin"]) {
+            [pinView setPinColor:MKPinAnnotationColorGreen];
+        } else if ([[annotation title] isEqualToString:@"Destination"]) {
+            [pinView setPinColor:MKPinAnnotationColorRed];
+        }
+        
+        return pinView;
+    }
+    
+    return nil;
+}
+
 - (MKOverlayView *)mapView:(MKMapView *)mapView viewForOverlay:(id<MKOverlay>)overlay
 {
     if ([overlay class] == [HTSTripPath class]) {
@@ -64,6 +95,15 @@
             self.tripPathView = [[HTSTripPathView alloc] initWithOverlay:overlay];
         }
         return self.tripPathView;
+    } else if ([overlay class] == [MKPolyline class]) {
+        if (!self.existingPath) {
+            self.existingPath = [[MKPolylineView alloc] initWithPolyline:overlay];
+            [self.existingPath setStrokeColor:[UIColor colorWithRed:0.0f green:0.0f blue:1.0f alpha:0.5f]];
+            [self.existingPath setLineJoin:kCGLineJoinRound];
+            [self.existingPath setLineCap:kCGLineCapRound];
+
+        }
+        return self.existingPath;
     }
     
     return nil;
@@ -92,6 +132,11 @@
     MKPolyline *poly = [MKPolyline polylineWithCoordinates:coords count:numSamples];
     [self.mapView addOverlay:poly];
     
+    MKPointAnnotation *origin = [[MKPointAnnotation alloc] init];
+    origin.coordinate = coords[0];
+    [origin setTitle:@"Origin"];
+    [self.mapView addAnnotation:origin];
+    
     free(coords);
 }
 
@@ -103,7 +148,7 @@
 
 - (void)centreMapOnTripOverlay
 {
-    MKMapRect mapRect = [[self.tripPathView overlay] boundingMapRect];
+    MKMapRect mapRect = [[self.existingPath overlay] boundingMapRect];
     [self.mapView setVisibleMapRect:mapRect edgePadding:UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0) animated:YES];
 }
 
@@ -113,9 +158,13 @@
     if (!tripPath) {
         tripPath = [[HTSTripPath alloc] initWithCenterCoordinate:aLocation.coordinate];
         [self.mapView addOverlay:tripPath];
-        
+        MKPointAnnotation *origin = [[MKPointAnnotation alloc] init];
+        origin.coordinate = aLocation.coordinate;
+        [origin setTitle:@"Origin"];
+        [self.mapView addAnnotation:origin];
         // On the first location update, zoom to the user location
         MKCoordinateRegion region = MKCoordinateRegionMakeWithDistance(aLocation.coordinate, 2000, 2000);
+        
         [self.mapView setRegion:region animated:YES];
     } else {
         MKMapRect updateRect = [tripPath addCoordinate:aLocation.coordinate];

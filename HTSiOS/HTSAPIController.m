@@ -41,7 +41,7 @@
     return NO;
 }
 
-- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password failureBlock:(void(^)())failure
+- (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password success:(void(^)())success failure:(void(^)())failure
 {
     NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:username, @"username", password, @"password", nil];
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
@@ -50,20 +50,25 @@
         [defaults setObject:username forKey:@"HTSUsernameKey"];
         [defaults setObject:password forKey:@"HTSPasswordKey"];
         [defaults synchronize];
+        if (success) {
+            success();
+        }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
         [defaults removeObjectForKey:@"HTSUsernameKey"];
         [defaults removeObjectForKey:@"HTSPasswordKey"];
         [defaults synchronize];
-        dispatch_sync(dispatch_get_main_queue(), failure);
+        if (failure) {
+            failure();
+        }
     }];
 }
 
-- (void)loginWithLocalCredentialsWithFailureBlock:(void(^)())failure
+- (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     NSString *username = [defaults objectForKey:@"HTSUsernameKey"];
     NSString *password = [defaults objectForKey:@"HTSPasswordKey"];
-    [self loginWithUsername:username andPassword:password failureBlock:failure];
+    [self loginWithUsername:username andPassword:password success:success failure:failure];
 }
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
@@ -103,13 +108,31 @@
             }
             
             [[NSManagedObjectContext MR_contextForCurrentThread] save:nil];
+            success();
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
             NSLog(@"Couldn't upload data. Error: %@ responseBody: %@", error, operation.responseString);
+            failure();
         }];
         
         [jsonOperation start];
     });
     
+}
+
+- (void)getActiveSurveysWithSuccess:(void(^)(NSArray *surveys))success failure:(void(^)())failure
+{
+    [self.client getPath:@"/api/surveys/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) { 
+        NSArray *surveysRaw = responseObject;
+        NSMutableArray *surveys = [NSMutableArray arrayWithCapacity:surveysRaw.count];
+        for (NSDictionary *surveyDict in surveysRaw) {
+            [surveys addObject:[NSDictionary dictionaryWithObjectsAndKeys:[surveyDict valueForKeyPath:@"fields.title"], @"surveyTitle", [surveyDict valueForKeyPath:@"pk"], @"surveyId", nil]];
+        }
+        
+        success([surveys copy]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        
+        failure();
+    }];
 }
 
 @end

@@ -31,6 +31,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self.username becomeFirstResponder];
 	// Do any additional setup after loading the view.
 }
 
@@ -48,11 +49,13 @@
 }
 
 - (IBAction)performLogin:(id)sender {
-    [[HTSAPIController sharedApi] loginWithUsername:username.text andPassword:password.text failureBlock:^{
+    [[HTSAPIController sharedApi] loginWithUsername:username.text andPassword:password.text success:^{
+        [self dismissModalViewControllerAnimated:YES];
+    } failure:^{
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't log in" message:@"Was your username or password incorrect?" delegate:self cancelButtonTitle:@"Try again" otherButtonTitles:nil];
         [alert show];
+        [self.username becomeFirstResponder];
     }];
-    [self dismissModalViewControllerAnimated:YES];
 }
 
 - (IBAction)cancelLogin:(id)sender {

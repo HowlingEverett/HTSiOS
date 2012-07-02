@@ -20,7 +20,7 @@
 @implementation HTSTripDetailViewController
 @synthesize tripMapView;
 @synthesize tripMapViewController;
-@synthesize trip = _trip;
+@synthesize trip = _trip, tripActive;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -39,6 +39,19 @@
     [self.tripMapView addSubview:self.tripMapViewController.view];
     [self.tripMapViewController didMoveToParentViewController:self];
     [self addChildViewController:self.tripMapViewController];
+    
+    if (self.trip) {
+        [self.tripMapViewController plotTrip:self.trip];
+    }
+    
+    if (self.tripActive) {
+        [self.tripMapViewController setTripActive:YES];
+    }
+}
+
+- (void)awakeFromNib
+{
+//    [self addTripMapSubviewController];
 }
 
 - (void)viewDidLoad
@@ -46,7 +59,6 @@
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self addTripMapSubviewController];
-//    [[self tripMapViewController] plotTrip:self.trip];
 }
 
 - (void)viewDidUnload

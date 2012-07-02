@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface HTSLoginViewController : UIViewController
+@interface HTSLoginViewController : UIViewController <UIAlertViewDelegate>
 
 @end
