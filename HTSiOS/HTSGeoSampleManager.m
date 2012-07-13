@@ -13,7 +13,6 @@
 @interface HTSGeoSampleManager ()
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-@property (nonatomic, assign) BOOL isLiveTracking;
 
 @end
 
@@ -63,6 +62,7 @@
         [instance.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
 //        [instance.locationManager setDistanceFilter:10.0];
         [instance.locationManager setDelegate:instance];
+        instance.isLiveTracking = NO;
     }
     
     return instance;

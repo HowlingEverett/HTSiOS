@@ -16,6 +16,7 @@
 @property (nonatomic, strong) Trip *activeTrip;
 @property (nonatomic, assign) id<HTSGeoSampleManagerDelegate> delegate;
 
+@property (nonatomic, assign) BOOL isLiveTracking;
 /**
  *  Singleton instance of this manager. Encapsulates location updates for the application into geosamples,
  *  which are wrapped CLLocations that filter bad updates and have persistance.
