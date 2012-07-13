@@ -24,6 +24,7 @@
 
 - (void)startCapturingSamples;
 - (void)stopCapturingSamples;
+- (void)monitorForSignificantLocationChanges;
 
 /** Static methods for creating samples directly. Normally, you'll just use startCapturingSamples */
 /**

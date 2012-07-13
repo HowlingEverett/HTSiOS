@@ -7,8 +7,10 @@
 //
 
 #import "HTSAppDelegate.h"
-#import "HTSDataFixtures.h"
+#import "HTSGeoSampleManager.h"
+#import "HTSTodayViewController.h"
 #if RUN_KIF_TESTS
+#import "HTSDataFixtures.h"
 #import "HTSExampleTestController.h"
 #endif
 
@@ -37,6 +39,19 @@
     [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
     [[NSManagedObjectContext defaultContext] save];
 #endif
+    
+    // If we're coming up for location events, restart significant location changes
+    if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+        [[HTSGeoSampleManager sharedManager] monitorForSignificantLocationChanges];
+    }
+    
+    // Handle launching from a user tapping the local notification
+    UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
+    if (localNotif) {
+        HTSTodayViewController *today = (HTSTodayViewController *)[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0];
+        
+        [today newTrip:self];
+    }
     
     return YES;
 }
@@ -72,6 +87,13 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [MagicalRecordHelpers cleanUp];
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
+{
+    if (application.applicationState == UIApplicationStateInactive) {
+        // User launched the app to start tracking: create a new trip and start tracking on it.
+    }
 }
 
 @end

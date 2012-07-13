@@ -13,12 +13,14 @@
 @interface HTSGeoSampleManager ()
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
+@property (nonatomic, assign) BOOL isLiveTracking;
 
 @end
 
 @implementation HTSGeoSampleManager
 @synthesize locationManager;
 @synthesize activeTrip;
+@synthesize isLiveTracking;
 @synthesize delegate;
 
 + (GeoSample *)sampleForLocation:(CLLocation *)aLocation onTrip:(Trip *)aTrip
@@ -75,6 +77,7 @@
         if ([CLLocationManager headingAvailable]) {
             [self.locationManager startUpdatingHeading];
         }
+        self.isLiveTracking = YES;
     } else {
         NSLog(@"No active trip. Can't start capturing samples.");
     }
@@ -85,6 +88,24 @@
     [self.locationManager stopUpdatingLocation];
     [self.locationManager stopUpdatingHeading];
     [self.locationManager startMonitoringSignificantLocationChanges];
+    self.isLiveTracking = NO;
+}
+
+- (void)monitorForSignificantLocationChanges
+{
+    [self.locationManager startMonitoringSignificantLocationChanges];
+    self.isLiveTracking = NO;
+}
+
+- (void)askUserToStartTracking
+{
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif) {
+        localNotif.alertBody = @"Start tracking this trip in ATLAS?";
+        localNotif.alertAction = @"Start tracking";
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
 }
 
 #pragma mark - CLLocationManagerDelegate methods
@@ -97,15 +118,17 @@
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge > 5.0) return;
     
-    // And update the trip's distance
-    CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
-    self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
-    
-    // Otherwise, create and save a GeoSample
-    [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
-    [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
-    
-    
+    if (self.isLiveTracking) {
+        // And update the trip's distance
+        CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
+        self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
+        
+        // Otherwise, create and save a GeoSample
+        [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
+        [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
+    } else {
+        [self askUserToStartTracking];
+    }
     
 }
 
