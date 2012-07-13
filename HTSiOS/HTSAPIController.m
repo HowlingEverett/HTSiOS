@@ -63,6 +63,40 @@
     }];
 }
 
+- (void)registerWithUsername:(NSString *)username 
+                    password:(NSString *)password 
+                    andEmail:(NSString *)email 
+                     success:(void(^)())success 
+                     failure:(void(^)(NSString *errorMessage))failure
+{
+    NSDictionary *params = [NSDictionary dictionaryWithObjectsAndKeys:username, @"username", password, @"password", email, @"email", nil];
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    
+    [self.client postPath:@"/api/register/" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSLog(@"Successfully registered. Response body: %@", responseObject);
+        [defaults setObject:username forKey:@"HTSUsernameKey"];
+        [defaults setObject:password forKey:@"HTSPasswordKey"];
+        [defaults synchronize];
+        
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSString *errorMessage;
+        if (operation.response.statusCode == 400) {
+            NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
+            errorMessage = [errorDict objectForKey:@"error"];
+        } else {
+            NSLog(@"Error: %@, %@", error, operation.responseString);
+            errorMessage = @"Request couldn't be completed. We probably had no internet, cap'n!";
+        }
+        
+        if (failure) {
+            failure(errorMessage);
+        }
+    }];
+}
+
 - (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure
 {
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];

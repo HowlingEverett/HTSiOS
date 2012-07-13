@@ -5,6 +5,7 @@
 
 const struct TripAttributes TripAttributes = {
 	.date = @"date",
+	.distance = @"distance",
 	.duration = @"duration",
 	.isExported = @"isExported",
 	.sectionIdentifier = @"sectionIdentifier",
@@ -46,6 +47,10 @@ const struct TripFetchedProperties TripFetchedProperties = {
 + (NSSet *)keyPathsForValuesAffectingValueForKey:(NSString *)key {
 	NSSet *keyPaths = [super keyPathsForValuesAffectingValueForKey:key];
 	
+	if ([key isEqualToString:@"distanceValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"distance"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
 	if ([key isEqualToString:@"durationValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
@@ -67,6 +72,32 @@ const struct TripFetchedProperties TripFetchedProperties = {
 
 @dynamic date;
 
+
+
+
+
+
+@dynamic distance;
+
+
+
+- (float)distanceValue {
+	NSNumber *result = [self distance];
+	return [result floatValue];
+}
+
+- (void)setDistanceValue:(float)value_ {
+	[self setDistance:[NSNumber numberWithFloat:value_]];
+}
+
+- (float)primitiveDistanceValue {
+	NSNumber *result = [self primitiveDistance];
+	return [result floatValue];
+}
+
+- (void)setPrimitiveDistanceValue:(float)value_ {
+	[self setPrimitiveDistance:[NSNumber numberWithFloat:value_]];
+}
 
 
 

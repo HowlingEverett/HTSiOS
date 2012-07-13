@@ -7,6 +7,7 @@
 //
 
 #import "HTSRegisterViewController.h"
+#import "HTSAPIController.h"
 
 @interface HTSRegisterViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *username;
@@ -53,6 +54,13 @@
 }
 
 - (IBAction)registerParticipant:(id)sender {
+    [[HTSAPIController sharedApi] registerWithUsername:self.username.text password:self.password.text andEmail:self.email.text success:^{
+        [self dismissViewControllerAnimated:YES completion:^{
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSUserDidRegister" object:nil];
+        }];
+    } failure:^(NSString *errorMessage){
+        NSLog(@"Error: %@", errorMessage);
+    }];
 }
 
 @end

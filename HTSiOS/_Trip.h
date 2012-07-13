@@ -6,6 +6,7 @@
 
 extern const struct TripAttributes {
 	__unsafe_unretained NSString *date;
+	__unsafe_unretained NSString *distance;
 	__unsafe_unretained NSString *duration;
 	__unsafe_unretained NSString *isExported;
 	__unsafe_unretained NSString *sectionIdentifier;
@@ -31,6 +32,7 @@ extern const struct TripFetchedProperties {
 
 
 
+
 @interface TripID : NSManagedObjectID {}
 @end
 
@@ -47,6 +49,18 @@ extern const struct TripFetchedProperties {
 
 
 //- (BOOL)validateDate:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSNumber* distance;
+
+
+@property float distanceValue;
+- (float)distanceValue;
+- (void)setDistanceValue:(float)value_;
+
+//- (BOOL)validateDistance:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -140,6 +154,15 @@ extern const struct TripFetchedProperties {
 
 - (NSDate*)primitiveDate;
 - (void)setPrimitiveDate:(NSDate*)value;
+
+
+
+
+- (NSNumber*)primitiveDistance;
+- (void)setPrimitiveDistance:(NSNumber*)value;
+
+- (float)primitiveDistanceValue;
+- (void)setPrimitiveDistanceValue:(float)value_;
 
 
 

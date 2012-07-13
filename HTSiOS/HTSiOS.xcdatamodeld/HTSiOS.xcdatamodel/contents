@@ -16,6 +16,7 @@
     </entity>
     <entity name="Trip" representedClassName="Trip" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="distance" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="duration" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
         <attribute name="isExported" optional="YES" attributeType="Boolean" syncable="YES"/>
         <attribute name="sectionIdentifier" optional="YES" transient="YES" attributeType="String" syncable="YES"/>
@@ -27,6 +28,6 @@
     <elements>
         <element name="GeoSample" positionX="0" positionY="0" width="0" height="180"/>
         <element name="TransportMode" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Trip" positionX="0" positionY="0" width="0" height="165"/>
+        <element name="Trip" positionX="0" positionY="0" width="0" height="180"/>
     </elements>
 </model>

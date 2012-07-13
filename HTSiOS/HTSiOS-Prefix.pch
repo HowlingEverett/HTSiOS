@@ -14,4 +14,7 @@
     #import <CoreData/CoreData.h>
 #endif
 
+#define MR_SHORTHAND
 #import "CoreData+MagicalRecord.h"
+
+#import "TestFlight.h"

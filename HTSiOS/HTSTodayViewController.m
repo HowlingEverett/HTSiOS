@@ -78,16 +78,25 @@
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCurrentTrip:)];
     [self.tripMapViewController.view addGestureRecognizer:tap];
     
+    [self.navigationItem setRightBarButtonItem:self.addButton];
+    
     // Check if login is required
-    if (![[HTSAPIController sharedApi] hasCredentials]) {
-        [self performSegueWithIdentifier:@"Show Login" sender:self];
+    if (![[NSUserDefaults standardUserDefaults] objectForKey:@"HTSFirstRunKey"]) {
+        // First time launch
+        [self performSegueWithIdentifier:@"First Run" sender:self];
     } else {
-        [[HTSAPIController sharedApi] loginWithLocalCredentialsWithSuccess:nil failure:^{
+        if (![[HTSAPIController sharedApi] hasCredentials]) {
             [self performSegueWithIdentifier:@"Show Login" sender:self];
-        }];
+        } else {
+            [[HTSAPIController sharedApi] loginWithLocalCredentialsWithSuccess:nil failure:^{
+                [self performSegueWithIdentifier:@"Show Login" sender:self];
+            }];
+        }
     }
     
-    [self.navigationItem setRightBarButtonItem:self.addButton];
+    
+    
+    
 }
 
 - (void)addTripMapSubviewController
@@ -262,6 +271,9 @@
     NSTimeInterval duration = [now timeIntervalSinceDate:start];
     self.activeTrip.durationValue = duration / 60;
     [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    self.activeTrip = nil;
+    [self.tripMapViewController clearPlot];
+    [self.tripMapViewController setTripActive:NO];
     
     [self.tripNameLabel setText:@"— no trip —"];
     [self.tripModesLabel setText:@"— —"];
@@ -326,6 +338,7 @@
         NSDateComponents *conversion = [cal components:unitFlags fromDate:start toDate:now options:0];
         
         [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
+        [self.tripDistanceLabel setText:[NSString stringWithFormat:@"%.2fkm", (self.activeTrip.distanceValue / 1000.0)]];
     }
 }
 

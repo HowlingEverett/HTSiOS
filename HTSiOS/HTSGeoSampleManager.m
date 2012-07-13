@@ -97,9 +97,16 @@
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge > 5.0) return;
     
+    // And update the trip's distance
+    CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
+    self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
+    
     // Otherwise, create and save a GeoSample
     [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
     [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
+    
+    
+    
 }
 
 @end

@@ -18,6 +18,13 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+    // Set up testflight
+    [TestFlight takeOff:@"c0bef500bc85976253479df0c319add5_MTAyNzc1MjAxMi0wNi0yMSAyMjo1NzoxMS44NTE0MDg"];
+#define TESTING 1
+#ifdef TESTING
+    [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
+#endif
+    
 #if RUN_KIF_TESTS
     [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
     [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];

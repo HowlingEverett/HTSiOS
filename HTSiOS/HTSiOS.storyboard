@@ -56,20 +56,27 @@
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fjv-M6-m4b">
-                                    <rect key="frame" x="25" y="129" width="120" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ehs-ce-fiQ">
-                                    <rect key="frame" x="175" y="129" width="120" height="21"/>
-                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
+                                <view opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="vEv-Cn-4mH">
+                                    <rect key="frame" x="20" y="127" width="280" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="ehs-ce-fiQ">
+                                            <rect key="frame" x="155" y="2" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" id="fjv-M6-m4b">
+                                            <rect key="frame" x="6" y="2" width="120" height="21"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="Modes:" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" id="BPf-NX-zLf">
                                     <rect key="frame" x="204" y="160" width="96" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -132,6 +139,7 @@
                         <segue destination="b1E-pH-Eml" kind="modal" identifier="Show Login" id="bDS-fH-Pvs"/>
                         <segue destination="6n4-iE-zfK" kind="modal" identifier="New Trip" id="nVC-BQ-bDq"/>
                         <segue destination="vJt-al-bzM" kind="push" identifier="View Current Trip" id="fEA-md-jek"/>
+                        <segue destination="YvI-n1-MCO" kind="modal" identifier="First Run" id="MT6-bt-gaf"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ml4-WK-v9i" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -751,6 +759,297 @@
             </objects>
             <point key="canvasLocation" x="259" y="839"/>
         </scene>
+        <!--Intro Page1 View Controller - Welcome-->
+        <scene sceneID="Bvd-Su-sIF">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hIq-X0-sKZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController wantsFullScreenLayout="YES" modalTransitionStyle="flipHorizontal" hidesBottomBarWhenPushed="YES" id="1HY-fT-NQB" customClass="HTSIntroPage1ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="mSX-vs-1vd">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" numberOfPages="3" id="4Yq-bI-NA8">
+                                <rect key="frame" x="141" y="414" width="38" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </pageControl>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Page 1.png" id="qbL-7B-Ja4">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="fgX-8U-S8W">
+                                <rect key="frame" x="124" y="347" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Skip It">
+                                    <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="skipIntro:" destination="1HY-fT-NQB" eventType="touchUpInside" id="Wsd-xG-Ixa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Welcome" id="R3c-9f-mPQ">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="whT-HU-wZd">
+                            <connections>
+                                <segue destination="otH-qV-1KQ" kind="push" id="B46-cX-hbd"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="315" y="-2610"/>
+        </scene>
+        <!--Page2 View Controller - Registration-->
+        <scene sceneID="04h-2B-dsI">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="AjR-cD-oOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="otH-qV-1KQ" customClass="HTSPage2ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="ueD-7m-7kB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Page 2.png" id="ZuA-0P-uFH">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="eCe-ND-taZ">
+                                <rect key="frame" x="118" y="166" width="85" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Register">
+                                    <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="OXP-d3-pnd" kind="modal" identifier="Register Participant" modalTransitionStyle="flipHorizontal" id="TtE-9B-phs"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Registration" id="Llf-9V-gFT">
+                        <barButtonItem key="backBarButtonItem" title="Welcome" id="uDs-pw-T83"/>
+                    </navigationItem>
+                    <connections>
+                        <segue destination="FeQ-Sg-b1o" kind="push" identifier="Show Consent" id="HlJ-Z9-Qdv"/>
+                    </connections>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="720" y="-2610"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="dp5-Xx-tve">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="NjM-wQ-2l5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController definesPresentationContext="YES" id="OXP-d3-pnd" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="dOk-3t-gj5">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="UZp-9w-HrY" kind="relationship" relationship="rootViewController" id="5jx-fV-SWl"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="1231" y="-2017"/>
+        </scene>
+        <!--View Controller - Consent-->
+        <scene sceneID="6eV-tm-be3">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="N6N-kU-Zxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="FeQ-Sg-b1o" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXN-qf-KAC">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Globe.png" id="RGa-Sb-Pmx">
+                                <rect key="frame" x="33" y="58" width="255" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Cw-bF-1zk">
+                                <rect key="frame" x="20" y="126" width="280" height="219"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            </scrollView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cvu-V7-4kd">
+                                <rect key="frame" x="114" y="359" width="93" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="I Consent">
+                                    <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="sNW-sX-GV5" kind="push" id="od7-Rg-G8P"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="FV2-KE-FCR">
+                                <rect key="frame" x="20" y="20" width="280" height="82"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Thanks! Since you're participating in research, we also require your consent to use the data you provide. Here's the full spiel:</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Consent" id="aWP-sq-QmD"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1150" y="-2610"/>
+        </scene>
+        <!--View Controller - Tour-->
+        <scene sceneID="ndi-Oc-mE9">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sSe-KK-nLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="sNW-sX-GV5" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="W5L-Mw-0aB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Globe.png" id="jp2-Qm-ycG">
+                                <rect key="frame" x="33" y="57" width="255" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="cas-y6-p9b">
+                                <rect key="frame" x="20" y="20" width="280" height="86"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">Excellent.  Now, a quick tour of ATLAS. The main thing ATLAS lets you do is live-record your daily trips using your iPhone's GPS.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="Ol6-C0-sjF">
+                                <rect key="frame" x="20" y="108" width="280" height="94"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">To participate, you first select a survey via the Profile tab, and then use the Today tab to log your trips each day while the survey runs.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" image="starttrip.png" id="714-lp-oWx">
+                                <rect key="frame" x="1" y="210" width="318" height="172"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tour" id="ZT4-VH-hKH">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="Xse-Do-c8n">
+                            <connections>
+                                <segue destination="2pD-lD-nQv" kind="push" id="1HG-BF-Fmu"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1572" y="-2608"/>
+        </scene>
+        <!--View Controller - Tour-->
+        <scene sceneID="mTn-yx-0wE">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8Zy-Qh-07g" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="2pD-lD-nQv" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8ZW-70-UiJ">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Globe.png" id="NEh-eN-hXO">
+                                <rect key="frame" x="33" y="57" width="255" height="301"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="When a trip is active, ATLAS will keep logging in the background. So you can leave the app and use your phone for other stuff." lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="CWI-e0-BqQ">
+                                <rect key="frame" x="20" y="20" width="280" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="center" image="statusbar.png" id="hZm-NV-7vw">
+                                <rect key="frame" x="60" y="102" width="200" height="106"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="hBe-sC-PDk">
+                                <rect key="frame" x="20" y="216" width="280" height="148"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">If you're traveling about but have forgotten to enable logging, ATLAS will remind you. ATLAS uses a low-powered GPS mode for this feature, which will not drain your battery. You can disable this feature in Settings.app, if you wish.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tour" id="n6X-qR-4nt">
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="tkG-hL-gEd">
+                            <connections>
+                                <segue destination="WWN-Ih-1WJ" kind="push" id="Qlj-EY-lsZ"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2012" y="-2608"/>
+        </scene>
+        <!--Page6 View Controller - Tour-->
+        <scene sceneID="YMR-YL-Bmb">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="121-io-Hg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="WWN-Ih-1WJ" customClass="HTSPage6ViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sXc-Xw-Ayk">
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="QoK-dd-Tto">
+                                <rect key="frame" x="20" y="20" width="280" height="105"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <string key="text">When you're at your destination, hit the stop button to save the trip into your daily history. You can upload all of your completed trips to us via the History tab.</string>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" text="That's it! You're ready to begin." lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" id="TzD-Ue-oSS">
+                                <rect key="frame" x="20" y="185" width="280" height="46"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="azG-BW-nJB">
+                                <rect key="frame" x="124" y="271" width="72" height="37"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Do it!">
+                                    <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                    <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="finish:" destination="WWN-Ih-1WJ" eventType="touchUpInside" id="vgu-iu-CPM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Tour" id="1n2-Z2-AOt"/>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="2440" y="-2610"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lu0-eY-onU">
             <objects>
@@ -789,8 +1088,37 @@
             </objects>
             <point key="canvasLocation" x="241" y="-976"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="b2J-9P-Hpe">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6OL-Ot-9si" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="YvI-n1-MCO" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="Q1g-de-2qJ">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="1HY-fT-NQB" kind="relationship" relationship="rootViewController" id="q37-YT-vpd"/>
+                    </connections>
+                </navigationController>
+            </objects>
+            <point key="canvasLocation" x="-211" y="-2610"/>
+        </scene>
     </scenes>
+    <resources>
+        <image name="Globe.png" width="255" height="301"/>
+        <image name="Page 1.png" width="320" height="416"/>
+        <image name="Page 2.png" width="320" height="416"/>
+        <image name="starttrip.png" width="320" height="210"/>
+        <image name="statusbar.png" width="192" height="46"/>
+    </resources>
     <classes>
+        <class className="HTSIntroPage1ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSIntroPage1ViewController.h"/>
+        </class>
         <class className="HTSLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSLoginViewController.h"/>
             <relationships>
@@ -803,6 +1131,12 @@
             <relationships>
                 <relationship kind="outlet" name="tripPurpose" candidateClass="UITextField"/>
             </relationships>
+        </class>
+        <class className="HTSPage2ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSPage2ViewController.h"/>
+        </class>
+        <class className="HTSPage6ViewController" superclassName="UIViewController">
+            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSPage6ViewController.h"/>
         </class>
         <class className="HTSProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSProfileViewController.h"/>
@@ -852,6 +1186,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="fEA-md-jek"/>
+        <segue reference="5jx-fV-SWl"/>
         <segue reference="kte-o2-DB7"/>
     </inferredMetricsTieBreakers>
 </document>

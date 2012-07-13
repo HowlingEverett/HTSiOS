@@ -17,6 +17,11 @@
 - (void)loginWithUsername:(NSString *)username andPassword:(NSString *)password 
                   success:(void(^)())success 
                   failure:(void(^)())failure;
+- (void)registerWithUsername:(NSString *)username 
+                    password:(NSString *)password 
+                    andEmail:(NSString *)email 
+                     success:(void(^)())success 
+                     failure:(void(^)(NSString *errorMessage))failure;
 - (BOOL)hasCredentials;
 - (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure;
 
