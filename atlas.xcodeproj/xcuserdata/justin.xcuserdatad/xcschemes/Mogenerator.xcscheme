@@ -13,10 +13,10 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "D034E67B1564EB630092AAA0"
-               BuildableName = "HTSiOS Acceptance Tests.app"
-               BlueprintName = "HTSiOS Acceptance Tests"
-               ReferencedContainer = "container:HTSiOS.xcodeproj">
+               BlueprintIdentifier = "D034E6911564F6DA0092AAA0"
+               BuildableName = "Mogenerator"
+               BlueprintName = "Mogenerator"
+               ReferencedContainer = "container:atlas.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -28,15 +28,6 @@
       buildConfiguration = "Debug">
       <Testables>
       </Testables>
-      <MacroExpansion>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D034E67B1564EB630092AAA0"
-            BuildableName = "HTSiOS Acceptance Tests.app"
-            BlueprintName = "HTSiOS Acceptance Tests"
-            ReferencedContainer = "container:HTSiOS.xcodeproj">
-         </BuildableReference>
-      </MacroExpansion>
    </TestAction>
    <LaunchAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -47,15 +38,6 @@
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       allowLocationSimulation = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D034E67B1564EB630092AAA0"
-            BuildableName = "HTSiOS Acceptance Tests.app"
-            BlueprintName = "HTSiOS Acceptance Tests"
-            ReferencedContainer = "container:HTSiOS.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -65,15 +47,6 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable>
-         <BuildableReference
-            BuildableIdentifier = "primary"
-            BlueprintIdentifier = "D034E67B1564EB630092AAA0"
-            BuildableName = "HTSiOS Acceptance Tests.app"
-            BlueprintName = "HTSiOS Acceptance Tests"
-            ReferencedContainer = "container:HTSiOS.xcodeproj">
-         </BuildableReference>
-      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
