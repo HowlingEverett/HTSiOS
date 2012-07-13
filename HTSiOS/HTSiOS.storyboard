@@ -193,6 +193,28 @@
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="j3Y-CI-UGh">
+                            <rect key="frame" x="0.0" y="259" width="320" height="57"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B43-3a-pqS">
+                                    <rect key="frame" x="119" y="10" width="82" height="37"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                    <state key="normal" title="Log Out">
+                                        <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                        <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                    </state>
+                                    <state key="highlighted">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="logOut:" destination="kXX-Cw-zDX" eventType="touchUpInside" id="fR2-gw-7iy"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
+                        </view>
                         <sections>
                             <tableViewSection headerTitle="Active Survey" footerTitle="Select which survey you'll participate in." id="kKL-3d-IgT">
                                 <cells>
@@ -218,11 +240,11 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Participant Details" id="aFy-P6-53J">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="v92-1s-bGM" detailTextLabel="cWf-wm-hAg" style="IBUITableViewCellStyleValue1" id="gbS-gD-gik">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="v92-1s-bGM" detailTextLabel="cWf-wm-hAg" style="IBUITableViewCellStyleValue1" id="gbS-gD-gik">
                                         <rect key="frame" x="0.0" y="159" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="267" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Username" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="v92-1s-bGM">
@@ -233,7 +255,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="cWf-wm-hAg">
-                                                    <rect key="frame" x="213" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -243,11 +265,11 @@
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Participant Cell" textLabel="uE9-ii-DPa" detailTextLabel="Cm7-fa-h9h" style="IBUITableViewCellStyleValue1" id="SpH-1H-nYf">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Participant Cell" textLabel="uE9-ii-DPa" detailTextLabel="Cm7-fa-h9h" style="IBUITableViewCellStyleValue1" id="SpH-1H-nYf">
                                         <rect key="frame" x="0.0" y="204" width="320" height="45"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="0.0" width="267" height="43"/>
+                                            <rect key="frame" x="10" y="0.0" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Email" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="uE9-ii-DPa">
@@ -258,7 +280,7 @@
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </label>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Cm7-fa-h9h">
-                                                    <rect key="frame" x="213" y="11" width="44" height="21"/>
+                                                    <rect key="frame" x="246" y="11" width="44" height="21"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.2196078431372549" green="0.32941176470588235" blue="0.52941176470588236" alpha="1" colorSpace="calibratedRGB"/>
@@ -278,7 +300,9 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Participant Profile" id="C7G-Ba-PYL"/>
                     <connections>
+                        <outlet property="email" destination="Cm7-fa-h9h" id="wSW-YQ-RLo"/>
                         <outlet property="surveyTitle" destination="wqL-9t-FeP" id="H9B-Q8-jz4"/>
+                        <outlet property="username" destination="cWf-wm-hAg" id="4tT-QD-bsR"/>
                         <segue destination="LVO-4u-TeQ" kind="push" identifier="Select Survey" id="4vE-bW-MHo"/>
                     </connections>
                 </tableViewController>
@@ -292,7 +316,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="TEB-fL-iqn" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="LVO-4u-TeQ" customClass="HTSSurveyPickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JmN-Nd-4Hg">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="1Dc-86-asR">
@@ -322,7 +346,7 @@
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="1192" y="839"/>
+            <point key="canvasLocation" x="1331" y="801"/>
         </scene>
         <!--Trip History Table View Controller - Trip History-->
         <scene sceneID="etE-LE-yrM">
@@ -1141,7 +1165,9 @@
         <class className="HTSProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSProfileViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="email" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
             </relationships>
         </class>
         <class className="HTSRegisterViewController" superclassName="UIViewController">
@@ -1185,8 +1211,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="4vE-bW-MHo"/>
         <segue reference="fEA-md-jek"/>
         <segue reference="5jx-fV-SWl"/>
-        <segue reference="kte-o2-DB7"/>
     </inferredMetricsTieBreakers>
 </document>

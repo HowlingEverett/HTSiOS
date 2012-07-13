@@ -16,6 +16,7 @@
 
 @synthesize window = _window;
 
+#pragma GCC diagnostic ignored "-Wdeprecated-declarations"
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Set up testflight
@@ -30,11 +31,11 @@
     [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
     NSArray *samples = [HTSDataFixtures geoSamples];
     [HTSDataFixtures tripWithSamples:samples];
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
+    [[NSManagedObjectContext defaultContext] save];
 #else
     [MagicalRecordHelpers setupCoreDataStackWithStoreNamed:@"HTSiOS.sqlite"];
     [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
+    [[NSManagedObjectContext defaultContext] save];
 #endif
     
     return YES;

@@ -22,12 +22,14 @@
                     andEmail:(NSString *)email 
                      success:(void(^)())success 
                      failure:(void(^)(NSString *errorMessage))failure;
+- (void)logoutWithSuccess:(void(^)())success 
+                  failure:(void(^)(NSError *error))failure;
 - (BOOL)hasCredentials;
 - (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure;
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
              withSuccess:(void(^)())success
-                 failure:(void(^)())failure
+                 failure:(void(^)(NSError *error))failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress;
 
 - (void)getActiveSurveysWithSuccess:(void(^)(NSArray *surveys))success failure:(void(^)())failure;

@@ -23,7 +23,7 @@
 
 + (GeoSample *)sampleForLocation:(CLLocation *)aLocation onTrip:(Trip *)aTrip
 {
-    GeoSample *sample = [GeoSample MR_createEntity];
+    GeoSample *sample = [GeoSample createEntity];
     [sample setLatitudeValue:aLocation.coordinate.latitude];
     [sample setLongitudeValue:aLocation.coordinate.longitude];
     [sample setTimestamp:aLocation.timestamp];
@@ -40,7 +40,7 @@
 + (void)createSampleForLocation:(CLLocation *)aLocation onTrip:(Trip *)aTrip;
 {
     [HTSGeoSampleManager sampleForLocation:aLocation onTrip:aTrip];
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
+    [[NSManagedObjectContext defaultContext] save];
 }
 
 + (void)createSamplesForLocations:(NSArray *)locations onTrip:(Trip *)aTrip;
@@ -49,7 +49,7 @@
         [HTSGeoSampleManager sampleForLocation:loc onTrip:aTrip];
     }
     
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
+    [[NSManagedObjectContext defaultContext] save];
 }
 
 + (HTSGeoSampleManager *)sharedManager

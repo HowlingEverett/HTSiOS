@@ -22,7 +22,7 @@
     
     NSArray *samples = [HTSDataFixtures geoSamples];
     [HTSDataFixtures tripWithSamples:samples];
-    [[NSManagedObjectContext MR_defaultContext] MR_save];
+    [[NSManagedObjectContext defaultContext] save];
 }
 
 - (void)tearDown
@@ -35,7 +35,7 @@
 
 - (void)testBasicGeoSampleDistanceComparison
 {
-    GeoSample *mySample = [GeoSample MR_createEntity];
+    GeoSample *mySample = [GeoSample createEntity];
     mySample.longitudeValue = 51.261926;
     mySample.latitudeValue = 30.236045;
     mySample.timestamp = [NSDate date];

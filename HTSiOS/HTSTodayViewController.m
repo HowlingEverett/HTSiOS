@@ -32,6 +32,7 @@
 // Bar items
 @property (nonatomic, strong) UIBarButtonItem *addButton;
 @property (nonatomic, strong) UIBarButtonItem *stopButton;
+@property (nonatomic, strong) UIBarButtonItem *loginButton;
 
 // Child View Controllers
 @property (nonatomic, strong) HTSTripMapViewController *tripMapViewController;
@@ -49,7 +50,7 @@
 @synthesize activeTrip = _activeTrip;
 @synthesize transportDescriptions;
 @synthesize tripMapViewController;
-@synthesize addButton, stopButton;
+@synthesize addButton, stopButton, loginButton;
 @synthesize tripDurationTimer;
 
 - (void)awakeFromNib
@@ -59,6 +60,7 @@
     // Instantiate bar button items
     self.addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(newTrip:)];
     self.stopButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemPause target:self action:@selector(stopUpdates:)];
+    self.loginButton = [[UIBarButtonItem alloc] initWithTitle:@"Log in" style:UIBarButtonItemStyleBordered target:self action:@selector(showLogin:)];
 }
 
 - (void)viewDidLoad
@@ -86,17 +88,26 @@
         [self performSegueWithIdentifier:@"First Run" sender:self];
     } else {
         if (![[HTSAPIController sharedApi] hasCredentials]) {
-            [self performSegueWithIdentifier:@"Show Login" sender:self];
+            [self showLogin:self];
+            
         } else {
             [[HTSAPIController sharedApi] loginWithLocalCredentialsWithSuccess:nil failure:^{
-                [self performSegueWithIdentifier:@"Show Login" sender:self];
+                [self showLogin:self];
             }];
         }
     }
     
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
     
-    
-    
+    if (![[HTSAPIController sharedApi] hasCredentials]) {
+        [self.navigationItem setLeftBarButtonItem:self.loginButton];
+    } else {
+        [self.navigationItem setLeftBarButtonItem:nil];
+    }
 }
 
 - (void)addTripMapSubviewController
@@ -207,13 +218,13 @@
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
-        NSManagedObjectContext *context = [NSManagedObjectContext MR_defaultContext];
+        NSManagedObjectContext *context = [NSManagedObjectContext defaultContext];
         Trip *t = [self.fetchedResultsController objectAtIndexPath:indexPath];
         for (GeoSample *sample in t.samplesSet) {
             [context deleteObject:sample];
         }
         [context deleteObject:t];
-        [context MR_save];
+        [context save];
         [NSFetchedResultsController deleteCacheWithName:@"TripCache"];
         [self.fetchedResultsController performFetch:nil];
         
@@ -246,11 +257,16 @@
         //[predicateTemplate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObjectsAndKeys:start, @"DATE_START", end, @"DATE_END", nil]];
         [fetch setPredicate:predicateTemplate];
         [fetch setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext MR_defaultContext]  sectionNameKeyPath:nil cacheName:@"TripCache"];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:nil cacheName:@"TripCache"];
         [_fetchedResultsController performFetch:nil];
     }
     
     return _fetchedResultsController;
+}
+
+#pragma mark Actions
+- (void)showLogin:(id)sender {
+    [self performSegueWithIdentifier:@"Show Login" sender:self];
 }
 
 - (IBAction)openCurrentTrip:(id)sender {
@@ -270,7 +286,7 @@
     NSDate *start = self.activeTrip.date;
     NSTimeInterval duration = [now timeIntervalSinceDate:start];
     self.activeTrip.durationValue = duration / 60;
-    [[NSManagedObjectContext MR_contextForCurrentThread] MR_save];
+    [[NSManagedObjectContext contextForCurrentThread] save];
     self.activeTrip = nil;
     [self.tripMapViewController clearPlot];
     [self.tripMapViewController setTripActive:NO];

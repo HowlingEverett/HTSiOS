@@ -152,19 +152,19 @@
         surveyId = [[defaults objectForKey:@"HTSActiveSurveyDictKey"] objectForKey:@"surveyId"];
     }
     
-    NSManagedObjectContext *context = [NSManagedObjectContext MR_contextForCurrentThread];
-    Trip *trip = [Trip MR_createInContext:context];
+    NSManagedObjectContext *context = [NSManagedObjectContext contextForCurrentThread];
+    Trip *trip = [Trip createInContext:context];
     trip.tripDescription = self.tripPurpose.text;
     trip.date = [NSDate date];
     
     trip.surveyId = surveyId;
     for (NSIndexPath *indexPath in selectedRows) {
-        TransportMode *tm = [TransportMode MR_createEntity];
+        TransportMode *tm = [TransportMode createEntity];
         tm.mode = [self.transportModes objectAtIndex:indexPath.row];
         [trip.modesSet addObject:tm];
     }
     
-    [context MR_save];
+    [context save];
     [self.delegate didCreateNewTrip:trip];
     [self dismissModalViewControllerAnimated:YES];
 }

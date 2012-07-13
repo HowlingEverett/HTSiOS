@@ -47,6 +47,8 @@
     NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     [self.client postPath:@"/api/login/" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully logged in. Response body: %@", responseObject);
+        NSString *email = [responseObject valueForKeyPath:@"success.fields.email"];
+        [defaults setObject:email forKey:@"HTSEmailKey"];
         [defaults setObject:username forKey:@"HTSUsernameKey"];
         [defaults setObject:password forKey:@"HTSPasswordKey"];
         [defaults synchronize];
@@ -63,6 +65,26 @@
     }];
 }
 
+- (void)logoutWithSuccess:(void(^)())success 
+                  failure:(void(^)(NSError *error))failure
+{
+    [self.client postPath:@"/api/logout/" parameters:nil success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+        [defaults removeObjectForKey:@"HTSUsernameKey"];
+        [defaults removeObjectForKey:@"HTSPasswordKey"];
+        [defaults removeObjectForKey:@"HTSEmailKey"];
+        [defaults removeObjectForKey:@"HTSActiveSurveyDictKey"];
+        [defaults synchronize];
+        if (success) {
+            success();
+        }
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if (failure) {
+            failure(error);
+        }
+    }];
+}
+
 - (void)registerWithUsername:(NSString *)username 
                     password:(NSString *)password 
                     andEmail:(NSString *)email 
@@ -74,6 +96,8 @@
     
     [self.client postPath:@"/api/register/" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
         NSLog(@"Successfully registered. Response body: %@", responseObject);
+        NSString *email = [responseObject valueForKeyPath:@"success.fields.email"];
+        [defaults setObject:email forKey:@"HTSEmailKey"];
         [defaults setObject:username forKey:@"HTSUsernameKey"];
         [defaults setObject:password forKey:@"HTSPasswordKey"];
         [defaults synchronize];
@@ -107,10 +131,16 @@
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
              withSuccess:(void(^)())success
-                 failure:(void(^)())failure
+                 failure:(void(^)(NSError *error))failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
 {
-    
+    // Don't try to upload if 
+    if ([tripsArray count] == 0) {
+        NSDictionary *userInfo = [NSDictionary dictionaryWithObject:@"No trips to export" forKey:@"NSLocalizedDescriptionKey"];
+        NSError *error = [[NSError alloc] initWithDomain:@"HTSAPIDomain" code:-400 userInfo:userInfo];
+        failure(error);
+        return;
+    }
     
     dispatch_queue_t tripProcessQueue = dispatch_queue_create("com.lovelyhead.tripProcessQueue", 0);
     dispatch_async(tripProcessQueue, ^{
@@ -141,11 +171,12 @@
                 trip.isExportedValue = YES;
             }
             
-            [[NSManagedObjectContext MR_contextForCurrentThread] save:nil];
+            [[NSManagedObjectContext contextForCurrentThread] save:nil];
             success();
         } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-            NSLog(@"Couldn't upload data. Error: %@ responseBody: %@", error, operation.responseString);
-            failure();
+            NSLog(@"Couldn't upload data. responseBody: %@", operation.responseString);
+            
+            failure(error);
         }];
         
         [jsonOperation start];

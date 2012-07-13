@@ -14,10 +14,12 @@
 @property (nonatomic, strong) UIActivityIndicatorView *ai;
 @property (nonatomic, strong) NSArray *surveys;
 @property (nonatomic, strong) IBOutlet UILabel *surveyTitle;
+@property (nonatomic, strong) IBOutlet UILabel *username;
+@property (nonatomic, strong) IBOutlet UILabel *email;
 @end
 
 @implementation HTSProfileViewController
-@synthesize ai, surveys, surveyTitle;
+@synthesize ai, surveys, surveyTitle, username, email;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -37,12 +39,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
-    if ([defaults objectForKey:@"HTSActiveSurveyDictKey"]) {
-        surveyTitle.text = [[defaults objectForKey:@"HTSActiveSurveyDictKey"] objectForKey:@"surveyTitle"];
-    } else {
-        surveyTitle.text = @"Select survey";
-    }
+    
 }
 
 - (void)viewDidUnload
@@ -62,6 +59,23 @@
     if ([[segue identifier] isEqualToString:@"Select Survey"]) {
         [[segue destinationViewController] setSurveys:self.surveys];
         [[segue destinationViewController] setDelegate:self];
+    }
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    if ([defaults objectForKey:@"HTSActiveSurveyDictKey"]) {
+        surveyTitle.text = [[defaults objectForKey:@"HTSActiveSurveyDictKey"] objectForKey:@"surveyTitle"];
+    } else {
+        surveyTitle.text = @"Select survey";
+    }
+    
+    if ([defaults objectForKey:@"HTSUsernameKey"]) {
+        self.username.text = [defaults objectForKey:@"HTSUsernameKey"];
+        self.email.text = [defaults objectForKey:@"HTSEmailKey"];
     }
 }
 
@@ -140,5 +154,16 @@
     [defaults synchronize];
     surveyTitle.text = title;
 }
+
+- (IBAction)logOut:(id)sender {
+    [[HTSAPIController sharedApi] logoutWithSuccess:^{
+        self.username.text = nil;
+        self.email.text = nil;
+        self.surveyTitle.text = @"No survey";
+    } failure:^(NSError *error) {
+        NSLog(@"Couldn't log you out. Failure message: %@", error);
+    }];
+}
+
 
 @end

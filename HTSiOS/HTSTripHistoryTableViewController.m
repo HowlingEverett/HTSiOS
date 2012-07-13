@@ -144,44 +144,6 @@
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
@@ -206,7 +168,7 @@
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];
         [fetch setSortDescriptors:sortDescriptors];
         
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext MR_defaultContext]  sectionNameKeyPath:@"sectionIdentifier" cacheName:@"TripHistoryCache"];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:@"sectionIdentifier" cacheName:@"TripHistoryCache"];
         [_fetchedResultsController setDelegate:self];
     }
     
@@ -223,8 +185,14 @@
         [self.navigationItem setTitle:@"Trip History"];
         [self.fetchedResultsController performFetch:nil];
         [self.tableView reloadData];
-    } failure:^{
-        NSLog(@"Couldn't upload samples.");
+    } failure:^(NSError *error) {
+        // -400 error means we stopped because there was nothing to upload. Silently reset in this case
+        if (error && error.code != -400) {
+            NSLog(@"Upload failure: error was %@", error);
+        }
+        
+        [self.navigationItem setTitleView:nil];
+        [self.navigationItem setTitle:@"Trip History"];
     } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         [self.uploadProgressView setProgress:totalBytesWritten / totalBytesExpectedToWrite];
     }];
