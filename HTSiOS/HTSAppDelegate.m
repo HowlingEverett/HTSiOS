@@ -99,7 +99,11 @@
         // User launched the app to start tracking: create a new trip and start tracking on it.
         HTSTodayViewController *today = (HTSTodayViewController *)[[[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0] viewControllers] objectAtIndex:0];
         
-        [today newTrip:today];
+        if ([notification.alertAction isEqualToString:@"Start Tracking"]) {
+            [today newTrip:today];
+        } else if ([notification.alertAction isEqualToString:@"Stop Tracking"]) {
+            [today stopUpdates:today];
+        }
     }
 }
 

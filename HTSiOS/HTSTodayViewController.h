@@ -14,4 +14,5 @@
 @interface HTSTodayViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, CLLocationManagerDelegate, UIActionSheetDelegate, HTSNewTripViewControllerDelegate>
 
 - (void)newTrip:(id)sel;
+- (void)stopUpdates:(id)sel;
 @end

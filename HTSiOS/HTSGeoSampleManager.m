@@ -96,6 +96,13 @@
 - (void)timeoutLogging
 {
     [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSLiveLoggingStoppedNotification" object:nil];
+    UILocalNotification *localNotif = [[UILocalNotification alloc] init];
+    if (localNotif) {
+        localNotif.alertBody = @"Are you at your destination? Tap here to stop tracking.";
+        localNotif.alertAction = @"Stop Tracking";
+        localNotif.soundName = UILocalNotificationDefaultSoundName;
+        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+    }
 }
 
 - (void)monitorForSignificantLocationChanges

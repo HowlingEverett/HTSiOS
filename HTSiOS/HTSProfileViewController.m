@@ -62,7 +62,8 @@
     }
 }
 
-- (void)viewWillDisappear:(BOOL)animated
+
+- (void)viewWillAppear:(BOOL)animated
 {
     [super viewWillAppear:animated];
     
@@ -78,7 +79,6 @@
         self.email.text = [defaults objectForKey:@"HTSEmailKey"];
     }
 }
-
 /*
 // Override to support conditional editing of the table view.
 - (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath

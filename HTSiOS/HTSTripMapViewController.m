@@ -111,11 +111,7 @@
 
 - (void)mapView:(MKMapView *)mapView didAddOverlayViews:(NSArray *)overlayViews
 {
-    // If the trip is historical, adding an overlay means the whole thing has just been drawn.
-    // So in this case centre the map to display the whole overlay
-    if (!self.tripActive) {
-        [self centreMapOnTripOverlay];
-    }
+
 }
 
 #pragma mark Trip mapping and tracking methods
@@ -143,6 +139,7 @@
 - (void)clearPlot
 {
     [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView removeAnnotations:self.mapView.annotations];
     self.tripPath = nil;
 }
 

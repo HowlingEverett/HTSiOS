@@ -299,7 +299,6 @@
     [self.tripModesLabel setText:@"— —"];
     [self.tripDurationLabel setText:@""];
     [self.tripDistanceLabel setText:@""];
-    [self.tripMapViewController clearPlot];
 }
 
 # pragma mark HTSNewTripViewController delegate methods
