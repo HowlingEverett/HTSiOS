@@ -13,7 +13,8 @@
 @interface HTSGeoSampleManager ()
 
 @property (nonatomic, strong) CLLocationManager *locationManager;
-
+@property (nonatomic, strong) NSDate *idleTimestamp;
+@property (nonatomic, assign) NSTimeInterval secondsIdle;
 @end
 
 @implementation HTSGeoSampleManager
@@ -21,6 +22,7 @@
 @synthesize activeTrip;
 @synthesize isLiveTracking;
 @synthesize delegate;
+@synthesize idleTimestamp, secondsIdle;
 
 + (GeoSample *)sampleForLocation:(CLLocation *)aLocation onTrip:(Trip *)aTrip
 {
@@ -60,7 +62,7 @@
         instance = [[HTSGeoSampleManager alloc] init];
         instance.locationManager = [[CLLocationManager alloc] init];
         [instance.locationManager setDesiredAccuracy:kCLLocationAccuracyBest];
-//        [instance.locationManager setDistanceFilter:10.0];
+        [instance.locationManager setDistanceFilter:10.0];
         [instance.locationManager setDelegate:instance];
         instance.isLiveTracking = NO;
     }
@@ -91,6 +93,11 @@
     self.isLiveTracking = NO;
 }
 
+- (void)timeoutLogging
+{
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSLiveLoggingStoppedNotification" object:nil];
+}
+
 - (void)monitorForSignificantLocationChanges
 {
     [self.locationManager startMonitoringSignificantLocationChanges];
@@ -112,13 +119,32 @@
 - (void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation
 {
     // test that the horizontal accuracy does not indicate an invalid measurement
-    if (newLocation.horizontalAccuracy < 0 || newLocation.horizontalAccuracy > 55.0) return;
+    if (newLocation.horizontalAccuracy < 0 || newLocation.horizontalAccuracy > 55.0) {
+        
+        return;
+    }
     // test the age of the location measurement to determine if the measurement is cached
     // in most cases you will not want to rely on cached measurements
     NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
     if (locationAge > 5.0) return;
     
     if (self.isLiveTracking) {
+        // First check if we should time out and stop tracking
+        if (self.secondsIdle > 300.0 || self.activeTrip.durationValue > 90.0) {
+            [self timeoutLogging];
+        }
+        
+        if ([oldLocation distanceFromLocation:newLocation] < 50.0) {
+            if (!self.idleTimestamp) {
+                self.idleTimestamp = [NSDate date];
+            }
+            
+            self.secondsIdle = [newLocation.timestamp timeIntervalSinceDate:self.idleTimestamp];
+        } else {
+            self.idleTimestamp = nil;
+            self.secondsIdle = 0;
+        }
+        
         // And update the trip's distance
         CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
         self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;

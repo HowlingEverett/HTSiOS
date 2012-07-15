@@ -9,7 +9,7 @@
 - (NSDictionary *)toDict
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd"];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
     
     NSMutableArray *modes = [NSMutableArray arrayWithCapacity:self.modes.count];
     for (TransportMode *mode in self.modes) {

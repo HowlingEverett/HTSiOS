@@ -8,6 +8,7 @@
 
 #import "HTSAPIController.h"
 #import "AFHTTPClient.h"
+#import "LFCGzipUtility.h"
 #import "AFJSONRequestOperation.h"
 #import "Trip.h"
 #import "GeoSample.h"
@@ -56,6 +57,7 @@
             success();
         }
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"Couldn't log in: error %@", error);
         [defaults removeObjectForKey:@"HTSUsernameKey"];
         [defaults removeObjectForKey:@"HTSPasswordKey"];
         [defaults synchronize];
@@ -130,6 +132,8 @@
 }
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
+            processStart:(void(^)())start
+         processComplete:(void(^)())complete
              withSuccess:(void(^)())success
                  failure:(void(^)(NSError *error))failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress
@@ -141,6 +145,8 @@
         failure(error);
         return;
     }
+    
+    start();
     
     dispatch_queue_t tripProcessQueue = dispatch_queue_create("com.lovelyhead.tripProcessQueue", 0);
     dispatch_async(tripProcessQueue, ^{
@@ -157,13 +163,15 @@
         }
         
         NSDictionary *payloadDict = [NSDictionary dictionaryWithObject:trips forKey:@"trips"];
-
-        NSLog(@"%@", payloadDict);
+        NSData *payload =  [NSJSONSerialization dataWithJSONObject:payloadDict options:0 error:nil];
+        // Compress upload with gzip
+        payload = [LFCGzipUtility gzipData:payload];
+        NSMutableURLRequest *request = [self.client multipartFormRequestWithMethod:@"POST" path:@"/api/batch_upload/" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+            [formData appendPartWithFileData:payload name:@"payload" fileName:@"payload.gz" mimeType:@"application/gzip"];
+        }];
         
-        [self.client setParameterEncoding:AFJSONParameterEncoding];
-        NSMutableURLRequest *request = [self.client requestWithMethod:@"POST" path:@"/api/batch_upload/" parameters:payloadDict];
+        complete();
         
-        //[self.client postPath:@"/api/batch_upload/" parameters:payloadDict success:success failure:failure];
         AFJSONRequestOperation *jsonOperation = [[AFJSONRequestOperation alloc] initWithRequest:request];
         [jsonOperation setUploadProgressBlock:progress];
         [jsonOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {

@@ -14,7 +14,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D034E63E1564EAF30092AAA0"
-               BuildableName = "HTSiOS.app"
+               BuildableName = "atlas.app"
                BlueprintName = "atlas"
                ReferencedContainer = "container:atlas.xcodeproj">
             </BuildableReference>
@@ -32,7 +32,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "D034E65E1564EAF30092AAA0"
-               BuildableName = "HTSiOSTests.octest"
+               BuildableName = "atlasTests.octest"
                BlueprintName = "atlasTests"
                ReferencedContainer = "container:atlas.xcodeproj">
             </BuildableReference>
@@ -42,7 +42,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D034E63E1564EAF30092AAA0"
-            BuildableName = "HTSiOS.app"
+            BuildableName = "atlas.app"
             BlueprintName = "atlas"
             ReferencedContainer = "container:atlas.xcodeproj">
          </BuildableReference>
@@ -61,7 +61,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D034E63E1564EAF30092AAA0"
-            BuildableName = "HTSiOS.app"
+            BuildableName = "atlas.app"
             BlueprintName = "atlas"
             ReferencedContainer = "container:atlas.xcodeproj">
          </BuildableReference>
@@ -83,7 +83,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "D034E63E1564EAF30092AAA0"
-            BuildableName = "HTSiOS.app"
+            BuildableName = "atlas.app"
             BlueprintName = "atlas"
             ReferencedContainer = "container:atlas.xcodeproj">
          </BuildableReference>

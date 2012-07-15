@@ -54,7 +54,7 @@
     if (localNotif) {
         HTSTodayViewController *today = (HTSTodayViewController *)[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0];
         
-        [today newTrip:self];
+        [today newTrip:today];
     }
     
     return YES;
@@ -97,6 +97,9 @@
 {
     if (application.applicationState == UIApplicationStateInactive) {
         // User launched the app to start tracking: create a new trip and start tracking on it.
+        HTSTodayViewController *today = (HTSTodayViewController *)[[[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0] viewControllers] objectAtIndex:0];
+        
+        [today newTrip:today];
     }
 }
 

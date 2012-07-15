@@ -97,6 +97,8 @@
         }
     }
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loggingCanceled:) name:@"HTSLiveLoggingStoppedNotification" object:nil];
+    
 }
 
 - (void)viewWillAppear:(BOOL)animated
@@ -130,6 +132,8 @@
     [self setTripDistanceLabel:nil];
     [self setTripDurationLabel:nil];
     [self setTripModesLabel:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:@"HTSLiveLoggingStoppedNotification" object:nil];
+    
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -285,7 +289,7 @@
     NSDate *now = [NSDate date];
     NSDate *start = self.activeTrip.date;
     NSTimeInterval duration = [now timeIntervalSinceDate:start];
-    self.activeTrip.durationValue = duration / 60;
+    self.activeTrip.durationValue = duration / 60.0;
     [[NSManagedObjectContext contextForCurrentThread] save];
     self.activeTrip = nil;
     [self.tripMapViewController clearPlot];
@@ -329,6 +333,11 @@
     [self performSegueWithIdentifier:@"New Trip" sender:sel];
 }
 
+- (void)loggingCanceled:(NSNotification *)not
+{
+    [self stopUpdates:self];
+}
+
 - (void)stopUpdates:(id)sel
 {
     HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
@@ -352,6 +361,7 @@
         NSCalendar *cal = [NSCalendar currentCalendar];
         NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
         NSDateComponents *conversion = [cal components:unitFlags fromDate:start toDate:now options:0];
+        self.activeTrip.durationValue = [now timeIntervalSinceDate:start] / 60.0;
         
         [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
         [self.tripDistanceLabel setText:[NSString stringWithFormat:@"%.2fkm", (self.activeTrip.distanceValue / 1000.0)]];

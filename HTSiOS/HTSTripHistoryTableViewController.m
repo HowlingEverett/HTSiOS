@@ -178,9 +178,15 @@
 - (IBAction)exportTrips:(id)sender
 {
     NSArray *unexported = [self _unexportedTrips];
-    self.navigationItem.titleView = self.uploadProgressView;
+    UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     
-    [[HTSAPIController sharedApi] batchUploadTrips:unexported withSuccess:^{
+    [[HTSAPIController sharedApi] batchUploadTrips:unexported processStart:^{
+        self.navigationItem.titleView = activity;
+        [activity startAnimating];
+    } processComplete:^{
+        [activity stopAnimating];
+        self.navigationItem.titleView = self.uploadProgressView;
+    } withSuccess:^{
         [self.navigationItem setTitleView:nil];
         [self.navigationItem setTitle:@"Trip History"];
         [self.fetchedResultsController performFetch:nil];
@@ -194,7 +200,7 @@
         [self.navigationItem setTitleView:nil];
         [self.navigationItem setTitle:@"Trip History"];
     } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
-        [self.uploadProgressView setProgress:totalBytesWritten / totalBytesExpectedToWrite];
+        [self.uploadProgressView setProgress:totalBytesWritten / (float)totalBytesExpectedToWrite];
     }];
     
 }

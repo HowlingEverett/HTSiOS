@@ -150,6 +150,8 @@
 		D090007A15933B2100B1D2C4 /* TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007615933B2100B1D2C4 /* TransportMode.m */; };
 		D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
 		D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
+		D0D13E5815B2FDCA00343D61 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D13E5715B2FDCA00343D61 /* libz.1.2.5.dylib */; };
+		D0D13E5C15B302D100343D61 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D13E5B15B302D100343D61 /* LFCGzipUtility.m */; };
 		D0D4D08E15A0BDEF00D96683 /* HTSNewTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */; };
 		D0D4D09215A132BF00D96683 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */; };
 		D0D4D09315A132BF00D96683 /* HTSTripDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */; };
@@ -340,6 +342,9 @@
 		D090007615933B2100B1D2C4 /* TransportMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportMode.m; sourceTree = "<group>"; };
 		D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripHistoryTableViewController.h; sourceTree = "<group>"; };
 		D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripHistoryTableViewController.m; sourceTree = "<group>"; };
+		D0D13E5715B2FDCA00343D61 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
+		D0D13E5A15B302D100343D61 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
+		D0D13E5B15B302D100343D61 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
 		D0D4D08C15A0BDEF00D96683 /* HTSNewTripViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSNewTripViewController.h; sourceTree = "<group>"; };
 		D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSNewTripViewController.m; sourceTree = "<group>"; };
 		D0D4D09015A132BF00D96683 /* HTSTripDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripDetailViewController.h; sourceTree = "<group>"; };
@@ -388,6 +393,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0D13E5815B2FDCA00343D61 /* libz.1.2.5.dylib in Frameworks */,
 				D0DFF9F415AF95100037C196 /* libz.dylib in Frameworks */,
 				D0027F89156BC08B002D65C6 /* libxml2.2.dylib in Frameworks */,
 				D004FFA515689F82004687ED /* MapKit.framework in Frameworks */,
@@ -465,6 +471,8 @@
 			children = (
 				D00E748E15918F6A00A1D31F /* HTSAPIController.h */,
 				D00E748F15918F6A00A1D31F /* HTSAPIController.m */,
+				D0D13E5A15B302D100343D61 /* LFCGzipUtility.h */,
+				D0D13E5B15B302D100343D61 /* LFCGzipUtility.m */,
 			);
 			name = "Server API";
 			sourceTree = "<group>";
@@ -523,7 +531,6 @@
 		D034E6341564EAF30092AAA0 = {
 			isa = PBXGroup;
 			children = (
-				D0DFF9F315AF95100037C196 /* libz.dylib */,
 				D034E64B1564EAF30092AAA0 /* HTSiOS */,
 				D034E6671564EAF30092AAA0 /* HTSiOSTests */,
 				D034E6421564EAF30092AAA0 /* Frameworks */,
@@ -544,6 +551,8 @@
 		D034E6421564EAF30092AAA0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				D0D13E5715B2FDCA00343D61 /* libz.1.2.5.dylib */,
+				D0DFF9F315AF95100037C196 /* libz.dylib */,
 				D0027F87156BBCF4002D65C6 /* libxml2.2.dylib */,
 				D004FFA415689F82004687ED /* MapKit.framework */,
 				D034E68D1564EBCE0092AAA0 /* libKIF.a */,
@@ -1069,6 +1078,7 @@
 				D0DFF9DE15AE6E4A0037C196 /* HTSIntroPage1ViewController.m in Sources */,
 				D0DFF9E215AE6E5A0037C196 /* HTSPage2ViewController.m in Sources */,
 				D0DFF9E615AE700A0037C196 /* HTSPage6ViewController.m in Sources */,
+				D0D13E5C15B302D100343D61 /* LFCGzipUtility.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -12,7 +12,7 @@
 - (NSDictionary *)toDict
 {
     NSDateFormatter *df = [[NSDateFormatter alloc] init];
-    [df setDateFormat:@"yyyy-MM-dd hh:mm:ss"];
+    [df setDateFormat:@"yyyy-MM-dd HH:mm:ss Z"];
     NSMutableDictionary *sampleDict = [NSMutableDictionary dictionaryWithObjectsAndKeys:
                                        self.latitude, @"latitude", self.longitude, @"longitude",
                                        [df stringFromDate:self.timestamp], @"timestamp",

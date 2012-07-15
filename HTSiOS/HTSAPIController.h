@@ -28,6 +28,8 @@
 - (void)loginWithLocalCredentialsWithSuccess:(void(^)())success failure:(void(^)())failure;
 
 - (void)batchUploadTrips:(NSArray *)tripsArray
+            processStart:(void(^)())start
+         processComplete:(void(^)())complete
              withSuccess:(void(^)())success
                  failure:(void(^)(NSError *error))failure
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress;
