@@ -9,12 +9,12 @@
 #import "HTSRegisterViewController.h"
 #import "HTSAPIController.h"
 
-@interface HTSRegisterViewController ()
+@interface HTSRegisterViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *username;
 @property (weak, nonatomic) IBOutlet UITextField *password;
 @property (weak, nonatomic) IBOutlet UITextField *repeatPassword;
 @property (weak, nonatomic) IBOutlet UITextField *email;
-
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
 @implementation HTSRegisterViewController
@@ -22,20 +22,25 @@
 @synthesize password;
 @synthesize repeatPassword;
 @synthesize email;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
+@synthesize scrollView;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view.
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide:) name:UIKeyboardWillHideNotification object:nil];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] removeObserver:self name:UIKeyboardWillHideNotification object:nil];
 }
 
 - (void)viewDidUnload
@@ -44,6 +49,7 @@
     [self setPassword:nil];
     [self setRepeatPassword:nil];
     [self setEmail:nil];
+    [self setScrollView:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }
@@ -62,5 +68,31 @@
         NSLog(@"Error: %@", errorMessage);
     }];
 }
+
+#pragma mark Keyboard methods
+- (void)keyboardWillShow:(NSNotification *)not
+{
+    [self moveScrollViewForKeyboard:not up:YES];
+}
+
+- (void)keyboardWillHide:(NSNotification *)not
+{
+    [self moveScrollViewForKeyboard:not up:NO];
+}
+
+- (void)moveScrollViewForKeyboard:(NSNotification *)not up:(BOOL)up
+{
+    NSDictionary *info = [not userInfo];
+    
+    
+    CGRect keyboardEndFrame;
+    [[info objectForKey:UIKeyboardFrameEndUserInfoKey] getValue:&keyboardEndFrame];
+    CGRect keyboardFrame = [self.view convertRect:keyboardEndFrame toView:nil];
+    CGFloat scrollDistance = keyboardFrame.size.height * (up ? 1 : -1);
+    [self.scrollView setContentOffset:CGPointMake(0.0, scrollDistance) animated:YES];
+}
+
+#pragma mark UITextFieldDelegate methods
+
 
 @end
