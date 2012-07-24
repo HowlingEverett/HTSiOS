@@ -360,10 +360,9 @@
         NSCalendar *cal = [NSCalendar currentCalendar];
         NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
         NSDateComponents *conversion = [cal components:unitFlags fromDate:start toDate:now options:0];
-        self.activeTrip.durationValue = [now timeIntervalSinceDate:start] / 60.0;
         
         [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
-        [self.tripDistanceLabel setText:[NSString stringWithFormat:@"%.2fkm", (self.activeTrip.distanceValue / 1000.0)]];
+        [self.tripDistanceLabel setText:[NSString stringWithFormat:@"%.2lfkm", (self.activeTrip.distanceValue / 1000.0)]];
     }
 }
 

@@ -178,6 +178,8 @@
                     </view>
                     <navigationItem key="navigationItem" id="nxK-BP-44j"/>
                     <connections>
+                        <outlet property="distanceLabel" destination="Hyh-BC-beU" id="t5B-i2-26V"/>
+                        <outlet property="durationLabel" destination="DAN-v8-JI2" id="HrN-tX-Cwi"/>
                         <outlet property="tripMapView" destination="gJz-qg-wfU" id="DLz-r1-aaP"/>
                     </connections>
                 </viewController>
@@ -315,7 +317,7 @@
             <objects>
                 <viewController id="LVO-4u-TeQ" customClass="HTSSurveyPickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JmN-Nd-4Hg">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="1Dc-86-asR">
@@ -382,6 +384,9 @@
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 </view>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
+                                <connections>
+                                    <segue destination="vJt-al-bzM" kind="push" identifier="Show History Map" id="1JQ-Zd-2g0"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -396,6 +401,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="exportButton" destination="9tR-MC-Pei" id="Wbu-tZ-Msn"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhB-oR-BXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1213,6 +1221,8 @@
         <class className="HTSTripDetailViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripDetailViewController.h"/>
             <relationships>
+                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
+                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
             </relationships>
         </class>
@@ -1220,6 +1230,7 @@
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripHistoryTableViewController.h"/>
             <relationships>
                 <relationship kind="action" name="exportTrips:"/>
+                <relationship kind="outlet" name="exportButton" candidateClass="UIBarButtonItem"/>
             </relationships>
         </class>
     </classes>
@@ -1229,8 +1240,8 @@
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="4vE-bW-MHo"/>
-        <segue reference="fEA-md-jek"/>
+        <segue reference="1JQ-Zd-2g0"/>
+        <segue reference="kte-o2-DB7"/>
         <segue reference="5jx-fV-SWl"/>
     </inferredMetricsTieBreakers>
 </document>

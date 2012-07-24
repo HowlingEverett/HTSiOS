@@ -12,15 +12,18 @@
 #import "HTSAPIController.h"
 #import "HTSGeoSampleManager.h"
 #import "AFHTTPRequestOperation.h"
+#import "HTSTripMapViewController.h"
 
 @interface HTSTripHistoryTableViewController ()
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
 @property (nonatomic, strong) UIProgressView *uploadProgressView;
 @property (nonatomic, strong) NSDictionary *transportDescriptions;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *exportButton;
 
 @end
 
 @implementation HTSTripHistoryTableViewController
+@synthesize exportButton = _exportButton;
 @synthesize fetchedResultsController = _fetchedResultsController, uploadProgressView = _uploadProgressView, transportDescriptions;
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -51,6 +54,8 @@
     [super viewWillAppear:animated];
     [self.fetchedResultsController performFetch:nil];
     [self.tableView reloadData];
+    
+    [self enableExportIfApplicable];
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,7 +152,7 @@
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
 {
-    if ([segue.identifier isEqualToString:@"View Historical Trip"]) {
+    if ([segue.identifier isEqualToString:@"Show History Map"]) {
         NSIndexPath *cellPath  = [self.tableView indexPathForCell:sender];
         Trip *trip = [self.fetchedResultsController objectAtIndexPath:cellPath];
         [[segue destinationViewController] setTrip:trip];
@@ -177,6 +182,7 @@
 
 - (IBAction)exportTrips:(id)sender
 {
+    self.exportButton.enabled = NO;
     NSArray *unexported = [self _unexportedTrips];
     UIActivityIndicatorView *activity = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
     
@@ -191,6 +197,8 @@
         [self.navigationItem setTitle:@"Trip History"];
         [self.fetchedResultsController performFetch:nil];
         [self.tableView reloadData];
+        
+        [self enableExportIfApplicable];
     } failure:^(NSError *error) {
         // -400 error means we stopped because there was nothing to upload. Silently reset in this case
         if (error && error.code != -400) {
@@ -199,10 +207,21 @@
         
         [self.navigationItem setTitleView:nil];
         [self.navigationItem setTitle:@"Trip History"];
+        
+        [self enableExportIfApplicable];
     } progress:^(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite) {
         [self.uploadProgressView setProgress:totalBytesWritten / (float)totalBytesExpectedToWrite];
     }];
     
+}
+
+- (void)enableExportIfApplicable
+{
+    if ([[self _unexportedTrips] count] == 0) {
+        self.exportButton.enabled = NO;
+    } else {
+        self.exportButton.enabled = YES;
+    }
 }
 
 - (NSArray *)_unexportedTrips
@@ -229,4 +248,8 @@
 //    UIProgressView *progressView = [
 //}
 
+- (void)viewDidUnload {
+    [self setExportButton:nil];
+    [super viewDidUnload];
+}
 @end

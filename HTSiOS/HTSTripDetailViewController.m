@@ -15,10 +15,14 @@
 
 // IBOutlets
 @property (weak, nonatomic) IBOutlet UIView *tripMapView;
+@property (weak, nonatomic) IBOutlet UILabel *distanceLabel;
+@property (weak, nonatomic) IBOutlet UILabel *durationLabel;
 @end
 
 @implementation HTSTripDetailViewController
 @synthesize tripMapView;
+@synthesize distanceLabel;
+@synthesize durationLabel;
 @synthesize tripMapViewController;
 @synthesize trip = _trip, tripActive;
 
@@ -42,6 +46,15 @@
     
     if (self.trip) {
         [self.tripMapViewController plotTrip:self.trip];
+        
+        NSCalendar *cal = [NSCalendar currentCalendar];
+        NSUInteger unitFlags = NSHourCalendarUnit | NSMinuteCalendarUnit | NSSecondCalendarUnit;
+        NSDate *startDate = [self.trip date];
+        NSDate *endDate = [startDate dateByAddingTimeInterval:(self.trip.durationValue * 60.0)];
+        NSDateComponents *conversion = [cal components:unitFlags fromDate:startDate toDate:endDate options:0];
+        [self.durationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
+        [self.distanceLabel setText:[NSString stringWithFormat:@"%.2lfkm", (self.trip.distanceValue / 1000.0)]];
+        [self.tripMapViewController centreMapOnTripOverlay];
     }
     
     if (self.tripActive) {
@@ -64,6 +77,8 @@
 - (void)viewDidUnload
 {
     [self setTripMapView:nil];
+    [self setDistanceLabel:nil];
+    [self setDurationLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

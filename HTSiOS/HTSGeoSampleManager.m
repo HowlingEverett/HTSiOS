@@ -152,9 +152,13 @@
             self.secondsIdle = 0;
         }
         
-        // And update the trip's distance
-        CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
-        self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
+        // And update the trip's distance and duration
+        if (self.activeTrip.samples.count > 0) {
+            CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
+            self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
+            NSTimeInterval durationComponent = [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp];
+            self.activeTrip.durationValue = self.activeTrip.durationValue + (durationComponent / 60.0);
+        }
         
         // Otherwise, create and save a GeoSample
         [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];

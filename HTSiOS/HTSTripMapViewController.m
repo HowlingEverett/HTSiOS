@@ -117,7 +117,8 @@
 #pragma mark Trip mapping and tracking methods
 - (void)plotTrip:(Trip *)aTrip
 {
-    NSSet *samples = [aTrip samples];
+    NSSortDescriptor *sortDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"timestamp" ascending:YES];
+    NSArray *samples = [[aTrip samples] sortedArrayUsingDescriptors:[NSArray arrayWithObject:sortDescriptor]];
     int numSamples = [samples count];
     CLLocationCoordinate2D *coords = (CLLocationCoordinate2D *)malloc(sizeof(CLLocationCoordinate2D) * numSamples);
     int i = 0;
@@ -146,7 +147,7 @@
 - (void)centreMapOnTripOverlay
 {
     MKMapRect mapRect = [[self.existingPath overlay] boundingMapRect];
-    [self.mapView setVisibleMapRect:mapRect edgePadding:UIEdgeInsetsMake(2.0, 2.0, 2.0, 2.0) animated:YES];
+    [self.mapView setVisibleMapRect:mapRect edgePadding:UIEdgeInsetsMake(40.0, 40.0, 40.0, 40.0) animated:YES];
 }
 
 #pragma mark HTSGeoSampleManager delegate methods

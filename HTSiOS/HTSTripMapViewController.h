@@ -20,4 +20,5 @@
 
 - (void)plotTrip:(Trip *)aTrip;
 - (void)clearPlot;
+- (void)centreMapOnTripOverlay;
 @end
