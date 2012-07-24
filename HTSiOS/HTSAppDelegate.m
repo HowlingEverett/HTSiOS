@@ -40,10 +40,6 @@
     [[NSManagedObjectContext defaultContext] save];
 #endif
     
-    if (![[HTSGeoSampleManager sharedManager] isLiveTracking]) {
-        [[HTSGeoSampleManager sharedManager] monitorForSignificantLocationChanges];
-    }
-    
     // If we're coming up for location events, restart significant location changes
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         [[HTSGeoSampleManager sharedManager] monitorForSignificantLocationChanges];

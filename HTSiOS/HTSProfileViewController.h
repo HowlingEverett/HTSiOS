@@ -12,4 +12,5 @@
 @protocol HTSSurveyPickerViewControllerDelegate;
 @interface HTSProfileViewController : UITableViewController <UITableViewDelegate, HTSSurveyPickerViewControllerDelegate>
 
+- (void)selectSurvey:(UITableViewCell *)surveyCell;
 @end

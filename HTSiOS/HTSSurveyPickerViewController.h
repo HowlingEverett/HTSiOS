@@ -13,6 +13,7 @@
 @interface HTSSurveyPickerViewController : UIViewController <UIPickerViewDelegate, UIPickerViewDataSource>
 
 @property (nonatomic, weak) id<HTSSurveyPickerViewControllerDelegate> delegate;
+@property (nonatomic, copy) NSString *existingTitle;
 @end
 
 @protocol HTSSurveyPickerViewControllerDelegate

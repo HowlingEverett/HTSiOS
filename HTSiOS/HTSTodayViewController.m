@@ -317,6 +317,8 @@
     
     HTSGeoSampleManager *geosampleManger = [HTSGeoSampleManager sharedManager];
     [geosampleManger setActiveTrip:self.activeTrip];
+    [self.tripMapViewController clearPlot];
+    
     [self.tripMapViewController setTripActive:YES];
     [geosampleManger setDelegate:self.tripMapViewController];
     [geosampleManger startCapturingSamples];

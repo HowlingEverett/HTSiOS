@@ -10,50 +10,25 @@
 #import "Trip.h"
 #import "TransportMode.h"
 #import "HTSAPIController.h"
+#import "HTSOtherPurposeViewController.h"
 
-@interface HTSNewTripViewController ()
-@property (weak, nonatomic) IBOutlet UITextField *tripPurpose;
+@interface HTSNewTripViewController () <HTSOtherPurposeDelegate>
 @property (nonatomic, strong) NSArray *transportModes;
+@property (nonatomic, strong) NSMutableSet *selectedModes;
 @property (nonatomic, weak) NSArray *surveys;
+
+@property (nonatomic, strong) NSString *tripPurpose;
 @end
 
 @implementation HTSNewTripViewController
-@synthesize tripPurpose, transportModes, delegate, surveys;
-
-- (id)initWithStyle:(UITableViewStyle)style
-{
-    self = [super initWithStyle:style];
-    if (self) {
-        // Custom initialization
-        
-    }
-    return self;
-}
+@synthesize transportModes, selectedModes, delegate, surveys, tripPurpose;
 
 - (void)awakeFromNib
 {
     [super awakeFromNib];
     
     self.transportModes = [NSArray arrayWithObjects:@"C", @"Cy", @"PT", @"P", @"T", nil];
-}
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
-}
-
-- (void)viewDidUnload
-{
-    [self setTripPurpose:nil];
-    [super viewDidUnload];
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
+    self.selectedModes = [NSMutableSet set];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -61,64 +36,50 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-*/
-
-/*
-// Override to support editing the table view.
-- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    if (editingStyle == UITableViewCellEditingStyleDelete) {
-        // Delete the row from the data source
-        [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
-    }   
-    else if (editingStyle == UITableViewCellEditingStyleInsert) {
-        // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-    }   
-}
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
-
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
     UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    if ([indexPath section] == 0) {
+        int rowCount = [self.tableView numberOfRowsInSection:0];
+        for (int i = 0; i < rowCount; i++) {
+            
+            NSIndexPath *rowIndex = [NSIndexPath indexPathForRow:i inSection:0];
+            UITableViewCell *otherCell = [self.tableView cellForRowAtIndexPath:rowIndex];
+            if (![otherCell.reuseIdentifier isEqualToString:@"Other Row"]) {
+                otherCell.accessoryType = UITableViewCellAccessoryNone;
+            } else {
+                if (otherCell.accessoryType == UITableViewCellAccessoryCheckmark) {
+                    otherCell.accessoryType = UITableViewCellAccessoryNone;
+                }
+            }
+        }
+        
+        if (![cell.reuseIdentifier isEqualToString:@"Other Row"]) {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+        }
+        
+        self.tripPurpose = cell.textLabel.text;
+    } else {
+        NSString *modeValue = [self.transportModes objectAtIndex:indexPath.row];
+        if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
+            cell.accessoryType = UITableViewCellAccessoryNone;
+            for (NSString *selectedMode in self.selectedModes) {
+                if ([selectedMode isEqualToString:modeValue]) {
+                    [self.selectedModes removeObject:selectedMode];
+                }
+            }
+        } else {
+            cell.accessoryType = UITableViewCellAccessoryCheckmark;
+            [self.selectedModes addObject:modeValue];
+        }
+    }
 }
 
 - (void)tableView:(UITableView *)tableView didDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
-    cell.accessoryType = UITableViewCellAccessoryNone;
+    
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
@@ -126,13 +87,14 @@
     if ([segue.identifier isEqualToString:@"Select Survey For Trip"]) {
         [[segue destinationViewController] setSurveys:self.surveys];
         [[segue destinationViewController] setDelegate:self];
+    } else if ([segue.identifier isEqualToString:@"Select Custom Purpose"]) {
+        [[segue destinationViewController] setDelegate:self];
     }
 }
 
 - (IBAction)startNewTrip:(id)sender
 {
-    NSArray *selectedRows = [self.tableView indexPathsForSelectedRows];
-    if ([selectedRows count] == 0) {
+    if ([selectedModes count] == 0 || !self.tripPurpose) {
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"No transport selected" message:@"You must select at least one mode of transport for this trip." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];
         return;
@@ -154,13 +116,13 @@
     
     NSManagedObjectContext *context = [NSManagedObjectContext contextForCurrentThread];
     Trip *trip = [Trip createInContext:context];
-    trip.tripDescription = self.tripPurpose.text;
+    trip.tripDescription = self.tripPurpose;
     trip.date = [NSDate date];
     
     trip.surveyId = surveyId;
-    for (NSIndexPath *indexPath in selectedRows) {
+    for (NSString *selectedMode in self.selectedModes) {
         TransportMode *tm = [TransportMode createEntity];
-        tm.mode = [self.transportModes objectAtIndex:indexPath.row];
+        tm.mode = selectedMode;
         [trip.modesSet addObject:tm];
     }
     
@@ -181,6 +143,17 @@
     
     [self startNewTrip:self];
     [defaults synchronize];
+}
+
+#pragma mark -
+#pragma mark HTSOtherPurposeDelegate methods
+- (void)didEnterCustomPurpose:(NSString *)purpose
+{
+    NSIndexPath *otherPath = [NSIndexPath indexPathForRow:6 inSection:0];
+    UITableViewCell *otherPurposeCell = [self.tableView cellForRowAtIndexPath:otherPath];
+    otherPurposeCell.textLabel.text = purpose;
+    otherPurposeCell.accessoryType = UITableViewCellAccessoryCheckmark;
+    self.tripPurpose = purpose;
 }
 
 @end

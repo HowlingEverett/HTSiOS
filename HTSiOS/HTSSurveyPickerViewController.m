@@ -10,26 +10,30 @@
 
 @interface HTSSurveyPickerViewController ()
 
+@property (weak, nonatomic) IBOutlet UIPickerView *picker;
 @property (nonatomic, strong) NSArray *surveys;
 @property (weak, nonatomic) IBOutlet UILabel *surveyTitle;
 @property (nonatomic, assign) NSInteger selectedIndex;
 @end
 
 @implementation HTSSurveyPickerViewController
+@synthesize picker;
 @synthesize surveyTitle;
-@synthesize surveys, delegate, selectedIndex;
+@synthesize surveys, delegate, selectedIndex, existingTitle;
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
     self.selectedIndex = 0;
+    self.surveyTitle.text = existingTitle;
 	// Do any additional setup after loading the view.
 }
 
 - (void)viewDidUnload
 {
     [self setSurveyTitle:nil];
+    [self setPicker:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
 }

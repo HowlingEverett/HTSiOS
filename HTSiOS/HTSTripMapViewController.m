@@ -150,6 +150,27 @@
     [self.mapView setVisibleMapRect:mapRect edgePadding:UIEdgeInsetsMake(40.0, 40.0, 40.0, 40.0) animated:YES];
 }
 
+- (void)mapView:(MKMapView *)mapView didAddAnnotationViews:(NSArray *)views
+{
+    for (MKAnnotationView *annotationView in views) {
+        if ([annotationView.annotation isEqual:self.mapView.userLocation]) {
+            MKCoordinateRegion region;
+            MKCoordinateSpan span;
+            
+            span.latitudeDelta=0.1;
+            span.longitudeDelta=0.1;
+            
+            CLLocationCoordinate2D location=self.mapView.userLocation.coordinate;
+            
+            region.span=span;
+            region.center=location;
+            
+            [self.mapView setRegion:region animated:TRUE];
+            [self.mapView regionThatFits:region];
+        }
+    }
+}
+
 #pragma mark HTSGeoSampleManager delegate methods
 - (void)geosampleManager:(HTSGeoSampleManager *)manager didCaptureSampleAtLocation:(CLLocation *)aLocation
 {

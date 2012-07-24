@@ -127,7 +127,6 @@
 {
     // test that the horizontal accuracy does not indicate an invalid measurement
     if (newLocation.horizontalAccuracy < 0 || newLocation.horizontalAccuracy > 55.0) {
-        
         return;
     }
     // test the age of the location measurement to determine if the measurement is cached
