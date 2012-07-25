@@ -286,10 +286,6 @@
     [self.tableView endUpdates];
     
     // Get trip duration
-    NSDate *now = [NSDate date];
-    NSDate *start = self.activeTrip.date;
-    NSTimeInterval duration = [now timeIntervalSinceDate:start];
-    self.activeTrip.durationValue = duration / 60.0;
     [[NSManagedObjectContext contextForCurrentThread] save];
     self.activeTrip = nil;
     [self.tripMapViewController clearPlot];

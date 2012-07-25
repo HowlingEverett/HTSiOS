@@ -20,6 +20,7 @@
                                      [df stringFromDate:self.date], @"date",
                                      self.tripDescription, @"description",
                                      self.duration, @"duration",
+                                     self.distance, @"distance",
                                      modes, @"transport_modes",
                                      self.surveyId, @"survey_id", nil];
     

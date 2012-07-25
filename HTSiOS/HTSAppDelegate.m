@@ -50,7 +50,11 @@
     if (localNotif) {
         HTSTodayViewController *today = (HTSTodayViewController *)[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0];
         
-        [today newTrip:today];
+        if ([localNotif.alertAction isEqualToString:@"Start Tracking"]) {
+            [today newTrip:today];
+        } else if ([localNotif.alertAction isEqualToString:@"Stop Tracking"]) {
+            [today stopUpdates:today];
+        }
     }
     
     return YES;
@@ -87,20 +91,6 @@
 {
     // Saves changes in the application's managed object context before the application terminates.
     [MagicalRecordHelpers cleanUp];
-}
-
-- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification
-{
-    if (application.applicationState == UIApplicationStateInactive) {
-        // User launched the app to start tracking: create a new trip and start tracking on it.
-        HTSTodayViewController *today = (HTSTodayViewController *)[[[[(UITabBarController *)[self.window rootViewController] viewControllers] objectAtIndex:0] viewControllers] objectAtIndex:0];
-        
-        if ([notification.alertAction isEqualToString:@"Start Tracking"]) {
-            [today newTrip:today];
-        } else if ([notification.alertAction isEqualToString:@"Stop Tracking"]) {
-            [today stopUpdates:today];
-        }
-    }
 }
 
 @end

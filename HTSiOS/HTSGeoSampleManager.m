@@ -95,7 +95,6 @@
 
 - (void)timeoutLogging
 {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSLiveLoggingStoppedNotification" object:nil];
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
     if (localNotif) {
         localNotif.alertBody = @"Are you at your destination? Tap here to stop tracking.";
@@ -140,7 +139,7 @@
             [self timeoutLogging];
         }
         
-        if ([oldLocation distanceFromLocation:newLocation] < 50.0) {
+        if ([oldLocation distanceFromLocation:newLocation] < 8.0) {
             if (!self.idleTimestamp) {
                 self.idleTimestamp = [NSDate date];
             }
@@ -151,6 +150,10 @@
             self.secondsIdle = 0;
         }
         
+        // Otherwise, create and save a GeoSample
+        [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
+        [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
+        
         // And update the trip's distance and duration
         if (self.activeTrip.samples.count > 0) {
             CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
@@ -159,9 +162,7 @@
             self.activeTrip.durationValue = self.activeTrip.durationValue + (durationComponent / 60.0);
         }
         
-        // Otherwise, create and save a GeoSample
-        [HTSGeoSampleManager createSampleForLocation:newLocation onTrip:self.activeTrip];
-        [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
+        
     } else {
         [self askUserToStartTracking];
     }
