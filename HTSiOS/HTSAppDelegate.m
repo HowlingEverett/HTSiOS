@@ -57,7 +57,16 @@
         }
     }
     
+    [self configureAppearance];
+    
     return YES;
+}
+
+- (void)configureAppearance
+{
+    [[UINavigationBar appearance] setTintColor:[UIColor colorWithRed:0.6 green:0.4 blue:0.2 alpha:1.0]];
+//    [[UITableView appearance] setBackgroundColor:[UIColor colorWithRed:1.0 green:0.9921568627450981 blue:0.9764705882352941 alpha:1.0]];
+    [[UIView appearanceWhenContainedIn:[UITableView class], [ nil] setBackgroundColor:[UIColor colorWithRed:1.0 green:0.9921568627450981 blue:0.9764705882352941 alpha:1.0]];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application

@@ -142,6 +142,16 @@
 		D0583509159D704D002981EA /* HTSLoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0583507159D704D002981EA /* HTSLoginViewController.m */; };
 		D058350D159D7059002981EA /* HTSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D058350C159D7059002981EA /* HTSRegisterViewController.m */; };
 		D058350E159D7059002981EA /* HTSRegisterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D058350C159D7059002981EA /* HTSRegisterViewController.m */; };
+		D069EAF215CB3B4C00BD2C8B /* _SurveyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAF115CB3B4C00BD2C8B /* _SurveyResponse.m */; };
+		D069EAF315CB3B4C00BD2C8B /* _SurveyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAF115CB3B4C00BD2C8B /* _SurveyResponse.m */; };
+		D069EAF715CB3B5D00BD2C8B /* SurveyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAF615CB3B5D00BD2C8B /* SurveyResponse.m */; };
+		D069EAF815CB3B5D00BD2C8B /* SurveyResponse.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAF615CB3B5D00BD2C8B /* SurveyResponse.m */; };
+		D069EAFC15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAFB15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m */; };
+		D069EAFD15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAFB15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m */; };
+		D069EB0015CB612300BD2C8B /* HTSOtherInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAFF15CB612300BD2C8B /* HTSOtherInputViewController.m */; };
+		D069EB0115CB612300BD2C8B /* HTSOtherInputViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EAFF15CB612300BD2C8B /* HTSOtherInputViewController.m */; };
+		D069EB0815CB620800BD2C8B /* HTSVehicleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EB0715CB620800BD2C8B /* HTSVehicleListViewController.m */; };
+		D069EB0915CB620800BD2C8B /* HTSVehicleListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D069EB0715CB620800BD2C8B /* HTSVehicleListViewController.m */; };
 		D06F5F5C156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D06F5F5D156B79660009F2BA /* HTSGeoSampleManager.m in Sources */ = {isa = PBXBuildFile; fileRef = D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */; };
 		D090007715933B2100B1D2C4 /* _TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007415933B2100B1D2C4 /* _TransportMode.m */; };
@@ -335,6 +345,16 @@
 		D0583507159D704D002981EA /* HTSLoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSLoginViewController.m; sourceTree = "<group>"; };
 		D058350B159D7059002981EA /* HTSRegisterViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSRegisterViewController.h; sourceTree = "<group>"; };
 		D058350C159D7059002981EA /* HTSRegisterViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSRegisterViewController.m; sourceTree = "<group>"; };
+		D069EAF015CB3B4C00BD2C8B /* _SurveyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _SurveyResponse.h; sourceTree = "<group>"; };
+		D069EAF115CB3B4C00BD2C8B /* _SurveyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = _SurveyResponse.m; sourceTree = "<group>"; };
+		D069EAF515CB3B5D00BD2C8B /* SurveyResponse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SurveyResponse.h; sourceTree = "<group>"; };
+		D069EAF615CB3B5D00BD2C8B /* SurveyResponse.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SurveyResponse.m; sourceTree = "<group>"; };
+		D069EAFA15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSSurveyQuestionViewController.h; sourceTree = "<group>"; };
+		D069EAFB15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSSurveyQuestionViewController.m; sourceTree = "<group>"; };
+		D069EAFE15CB612300BD2C8B /* HTSOtherInputViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSOtherInputViewController.h; sourceTree = "<group>"; };
+		D069EAFF15CB612300BD2C8B /* HTSOtherInputViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSOtherInputViewController.m; sourceTree = "<group>"; };
+		D069EB0615CB620800BD2C8B /* HTSVehicleListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSVehicleListViewController.h; sourceTree = "<group>"; };
+		D069EB0715CB620800BD2C8B /* HTSVehicleListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSVehicleListViewController.m; sourceTree = "<group>"; };
 		D06F5F5A156B79660009F2BA /* HTSGeoSampleManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSGeoSampleManager.h; sourceTree = "<group>"; };
 		D06F5F5B156B79660009F2BA /* HTSGeoSampleManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSGeoSampleManager.m; sourceTree = "<group>"; };
 		D090007315933B2100B1D2C4 /* _TransportMode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = _TransportMode.h; sourceTree = "<group>"; };
@@ -445,6 +465,7 @@
 		D004FFAC1568AC71004687ED /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D069EAF915CB60B100BD2C8B /* Survey Questions */,
 				D0DFF9DB15AE6E300037C196 /* Intro */,
 				D004FFAD1568AC92004687ED /* HTSTodayViewController.h */,
 				D004FFAE1568AC92004687ED /* HTSTodayViewController.m */,
@@ -639,6 +660,8 @@
 		D034E6A31564FC360092AAA0 /* Robot */ = {
 			isa = PBXGroup;
 			children = (
+				D069EAF015CB3B4C00BD2C8B /* _SurveyResponse.h */,
+				D069EAF115CB3B4C00BD2C8B /* _SurveyResponse.m */,
 				D090007315933B2100B1D2C4 /* _TransportMode.h */,
 				D090007415933B2100B1D2C4 /* _TransportMode.m */,
 				D004FFB01568B613004687ED /* _Trip.h */,
@@ -652,6 +675,8 @@
 		D034E6A41564FC3C0092AAA0 /* Human */ = {
 			isa = PBXGroup;
 			children = (
+				D069EAF515CB3B5D00BD2C8B /* SurveyResponse.h */,
+				D069EAF615CB3B5D00BD2C8B /* SurveyResponse.m */,
 				D090007515933B2100B1D2C4 /* TransportMode.h */,
 				D090007615933B2100B1D2C4 /* TransportMode.m */,
 				D004FFB21568B613004687ED /* Trip.h */,
@@ -752,6 +777,19 @@
 				D034E783156515280092AAA0 /* MagicalRecord */,
 			);
 			name = Libraries;
+			sourceTree = "<group>";
+		};
+		D069EAF915CB60B100BD2C8B /* Survey Questions */ = {
+			isa = PBXGroup;
+			children = (
+				D069EAFA15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.h */,
+				D069EAFB15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m */,
+				D069EAFE15CB612300BD2C8B /* HTSOtherInputViewController.h */,
+				D069EAFF15CB612300BD2C8B /* HTSOtherInputViewController.m */,
+				D069EB0615CB620800BD2C8B /* HTSVehicleListViewController.h */,
+				D069EB0715CB620800BD2C8B /* HTSVehicleListViewController.m */,
+			);
+			name = "Survey Questions";
 			sourceTree = "<group>";
 		};
 		D06F5F58156B793D0009F2BA /* Managers */ = {
@@ -1085,6 +1123,11 @@
 				D0DFF9E615AE700A0037C196 /* HTSPage6ViewController.m in Sources */,
 				D0D13E5C15B302D100343D61 /* LFCGzipUtility.m in Sources */,
 				D0E0A5D215BEAABC00E65F18 /* HTSOtherPurposeViewController.m in Sources */,
+				D069EAF215CB3B4C00BD2C8B /* _SurveyResponse.m in Sources */,
+				D069EAF715CB3B5D00BD2C8B /* SurveyResponse.m in Sources */,
+				D069EAFC15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m in Sources */,
+				D069EB0015CB612300BD2C8B /* HTSOtherInputViewController.m in Sources */,
+				D069EB0815CB620800BD2C8B /* HTSVehicleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1152,6 +1195,11 @@
 				D0DFF9DF15AE6E4A0037C196 /* HTSIntroPage1ViewController.m in Sources */,
 				D0DFF9E315AE6E5A0037C196 /* HTSPage2ViewController.m in Sources */,
 				D0DFF9E715AE700A0037C196 /* HTSPage6ViewController.m in Sources */,
+				D069EAF315CB3B4C00BD2C8B /* _SurveyResponse.m in Sources */,
+				D069EAF815CB3B5D00BD2C8B /* SurveyResponse.m in Sources */,
+				D069EAFD15CB60FF00BD2C8B /* HTSSurveyQuestionViewController.m in Sources */,
+				D069EB0115CB612300BD2C8B /* HTSOtherInputViewController.m in Sources */,
+				D069EB0915CB620800BD2C8B /* HTSVehicleListViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

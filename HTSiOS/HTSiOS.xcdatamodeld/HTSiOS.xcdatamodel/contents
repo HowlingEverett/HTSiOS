@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1171" systemVersion="11E53" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+<model name="" userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="1803" systemVersion="12A269" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
     <entity name="GeoSample" representedClassName="GeoSample" syncable="YES">
         <attribute name="heading" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="headingAccuracy" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
@@ -9,6 +9,10 @@
         <attribute name="speed" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" syncable="YES"/>
         <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="samples" inverseEntity="Trip" syncable="YES"/>
+    </entity>
+    <entity name="SurveyResponse" representedClassName="SurveyResponse" syncable="YES">
+        <attribute name="questionResponse" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="TransportMode" representedClassName="TransportMode" syncable="YES">
         <attribute name="mode" attributeType="String" defaultValueString="C" regularExpressionString="PT|P|Cy|C|T" syncable="YES"/>
@@ -26,8 +30,9 @@
         <relationship name="samples" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="GeoSample" inverseName="trip" inverseEntity="GeoSample" syncable="YES"/>
     </entity>
     <elements>
-        <element name="GeoSample" positionX="0" positionY="0" width="0" height="180"/>
-        <element name="TransportMode" positionX="0" positionY="0" width="0" height="0"/>
-        <element name="Trip" positionX="0" positionY="0" width="0" height="180"/>
+        <element name="GeoSample" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="TransportMode" positionX="0" positionY="0" width="128" height="75"/>
+        <element name="Trip" positionX="0" positionY="0" width="128" height="180"/>
+        <element name="SurveyResponse" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>
