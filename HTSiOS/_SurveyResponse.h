@@ -5,6 +5,7 @@
 
 
 extern const struct SurveyResponseAttributes {
+	__unsafe_unretained NSString *groupName;
 	__unsafe_unretained NSString *questionResponse;
 	__unsafe_unretained NSString *questionTitle;
 } SurveyResponseAttributes;
@@ -19,6 +20,7 @@ extern const struct SurveyResponseFetchedProperties {
 
 
 
+
 @interface SurveyResponseID : NSManagedObjectID {}
 @end
 
@@ -27,6 +29,14 @@ extern const struct SurveyResponseFetchedProperties {
 + (NSString*)entityName;
 + (NSEntityDescription*)entityInManagedObjectContext:(NSManagedObjectContext*)moc_;
 - (SurveyResponseID*)objectID;
+
+
+
+
+@property (nonatomic, strong) NSString* groupName;
+
+
+//- (BOOL)validateGroupName:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -56,6 +66,12 @@ extern const struct SurveyResponseFetchedProperties {
 @end
 
 @interface _SurveyResponse (CoreDataGeneratedPrimitiveAccessors)
+
+
+- (NSString*)primitiveGroupName;
+- (void)setPrimitiveGroupName:(NSString*)value;
+
+
 
 
 - (NSString*)primitiveQuestionResponse;

@@ -11,6 +11,7 @@
         <relationship name="trip" optional="YES" minCount="1" maxCount="1" deletionRule="Nullify" destinationEntity="Trip" inverseName="samples" inverseEntity="Trip" syncable="YES"/>
     </entity>
     <entity name="SurveyResponse" representedClassName="SurveyResponse" syncable="YES">
+        <attribute name="groupName" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questionResponse" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="questionTitle" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
@@ -31,8 +32,8 @@
     </entity>
     <elements>
         <element name="GeoSample" positionX="0" positionY="0" width="128" height="165"/>
+        <element name="SurveyResponse" positionX="160" positionY="192" width="128" height="90"/>
         <element name="TransportMode" positionX="0" positionY="0" width="128" height="75"/>
         <element name="Trip" positionX="0" positionY="0" width="128" height="180"/>
-        <element name="SurveyResponse" positionX="160" positionY="192" width="128" height="75"/>
     </elements>
 </model>

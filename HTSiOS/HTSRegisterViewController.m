@@ -64,12 +64,14 @@
 }
 
 - (IBAction)registerParticipant:(id)sender {
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [[HTSAPIController sharedApi] registerWithUsername:self.username.text password:self.password.text andEmail:self.email.text success:^{
-        [self dismissViewControllerAnimated:YES completion:^{
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSUserDidRegister" object:nil];
-        }];
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSUserDidRegister" object:nil];
+        [self performSegueWithIdentifier:@"DemographicInfo" sender:self];
     } failure:^(NSString *errorMessage){
-        NSLog(@"Error: %@", errorMessage);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not register user" message:errorMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
     }];
 }
 

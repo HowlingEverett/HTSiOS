@@ -4,6 +4,7 @@
 #import "_SurveyResponse.h"
 
 const struct SurveyResponseAttributes SurveyResponseAttributes = {
+	.groupName = @"groupName",
 	.questionResponse = @"questionResponse",
 	.questionTitle = @"questionTitle",
 };
@@ -43,6 +44,13 @@ const struct SurveyResponseFetchedProperties SurveyResponseFetchedProperties = {
 
 	return keyPaths;
 }
+
+
+
+
+@dynamic groupName;
+
+
 
 
 

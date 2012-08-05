@@ -7,9 +7,11 @@
 //
 
 #import "HTSVehicleListViewController.h"
+#import "HTSSurveyQuestionViewController.h"
 
-@interface HTSVehicleListViewController ()
+@interface HTSVehicleListViewController () <CreatedVehicleDelegate>
 
+@property (nonatomic, strong) NSMutableArray *vehicles;
 @end
 
 @implementation HTSVehicleListViewController
@@ -23,6 +25,15 @@
     return self;
 }
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        self.vehicles = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -32,6 +43,7 @@
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+    [self.tableView setEditing:YES];
 }
 
 - (void)didReceiveMemoryWarning
@@ -40,82 +52,87 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+{
+    if ([segue.identifier isEqualToString:@"CreateVehicle"]) {
+        int vehicleNum = [self tableView:self.tableView numberOfRowsInSection:0];
+        [segue.destinationViewController setGroupName:[NSString stringWithFormat:@"Vehicle %d", vehicleNum]];
+        [segue.destinationViewController setDelegate:self];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-#warning Potentially incomplete method implementation.
     // Return the number of sections.
-    return 0;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-#warning Incomplete method implementation.
     // Return the number of rows in the section.
-    return 0;
+    return [self.vehicles count] + 1;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    static NSString *CellIdentifier = @"Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    static NSString *VehicleCellIdentifier = @"VehicleCell";
+    static NSString *VehicleAddCellIdentifier = @"AddVehicleCell";
     
-    // Configure the cell...
+    UITableViewCell *cell;
+    if (indexPath.row == self.vehicles.count) {
+        cell = [tableView dequeueReusableCellWithIdentifier:VehicleAddCellIdentifier];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:VehicleCellIdentifier];
+        cell.textLabel.text = [self.vehicles objectAtIndex:indexPath.row];
+    }
     
     return cell;
 }
 
-/*
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
+- (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
+    if (indexPath.row == self.vehicles.count) {
+        return UITableViewCellEditingStyleInsert;
+    }
+    return UITableViewCellEditingStyleDelete;
 }
-*/
 
-/*
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         // Delete the row from the data source
+        [self.vehicles removeObjectAtIndex:indexPath.row];
         [tableView deleteRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationFade];
     }   
     else if (editingStyle == UITableViewCellEditingStyleInsert) {
         // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
+        [self performSegueWithIdentifier:@"CreateVehicle" sender:self];
     }   
 }
-*/
-
-/*
-// Override to support rearranging the table view.
-- (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)fromIndexPath toIndexPath:(NSIndexPath *)toIndexPath
-{
-}
-*/
-
-/*
-// Override to support conditional rearranging of the table view.
-- (BOOL)tableView:(UITableView *)tableView canMoveRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the item to be re-orderable.
-    return YES;
-}
-*/
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
+    if (indexPath.row == self.vehicles.count) {
+        [self performSegueWithIdentifier:@"CreateVehicle" sender:self];
+    }
+}
+
+- (IBAction)submitQuestions:(id)sender {
+    // Need to submit questions here
+    
+    [self dismissModalViewControllerAnimated:YES];
+}
+
+#pragma mark CreatedVehicleDelegate methods
+- (void)didCreateVehicleWithType:(NSString *)vehicleType
+{
+    [self.vehicles addObject:vehicleType];
+    [self.tableView reloadData];
 }
 
 @end
