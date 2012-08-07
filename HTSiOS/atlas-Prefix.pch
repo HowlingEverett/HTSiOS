@@ -15,6 +15,6 @@
 #endif
 
 #define MR_SHORTHAND
-#import "CoreData+MagicalRecord.h"
+#import "MagicalRecord/CoreData+MagicalRecord.h"
 
-#import "TestFlight.h"
+#import "TestFlightSDK/TestFlight.h"

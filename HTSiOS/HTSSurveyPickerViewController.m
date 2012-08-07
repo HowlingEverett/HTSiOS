@@ -26,7 +26,11 @@
     [super viewDidLoad];
     
     self.selectedIndex = 0;
-    self.surveyTitle.text = existingTitle;
+    if (!existingTitle) {
+        self.surveyTitle.text = @"Please select a survey";
+    } else {
+        self.surveyTitle.text = existingTitle;
+    }
 	// Do any additional setup after loading the view.
 }
 
@@ -41,7 +45,9 @@
 - (void)viewWillDisappear:(BOOL)animated
 {
     NSDictionary *surveyDict = [surveys objectAtIndex:selectedIndex];
-    [self.delegate didSelectSurveyWithId:[[surveyDict objectForKey:@"surveyId"] intValue] andTitle:[surveyDict objectForKey:@"surveyTitle"]];
+    if (surveys.count > 0) {
+        [self.delegate didSelectSurveyWithId:[[surveyDict objectForKey:@"surveyId"] intValue] andTitle:[surveyDict objectForKey:@"surveyTitle"]];
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -62,11 +68,18 @@
 
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [surveys count];
+    if (surveys.count == 0) {
+        return 1;
+    } else {
+        return [surveys count];
+    }
 }
 
 - (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
+    if (surveys.count == 0) {
+        return @"No surveys available.";
+    }
     return [[surveys objectAtIndex:row] objectForKey:@"surveyTitle"];
 }
 

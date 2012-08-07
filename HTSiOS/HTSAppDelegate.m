@@ -29,15 +29,16 @@
 #endif
     
 #if RUN_KIF_TESTS
-    [MagicalRecordHelpers setupCoreDataStackWithInMemoryStore];
-    [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
+    [MagicalRecord setupCoreDataStackWithInMemoryStore];
+    [MagicalRecord setDefaultModelNamed:@"atlast.momd"];
     NSArray *samples = [HTSDataFixtures geoSamples];
     [HTSDataFixtures tripWithSamples:samples];
     [[NSManagedObjectContext defaultContext] save];
 #else
-    [MagicalRecordHelpers setupCoreDataStackWithStoreNamed:@"HTSiOS.sqlite"];
-    [MagicalRecordHelpers setDefaultModelNamed:@"HTSiOS.momd"];
-    [[NSManagedObjectContext defaultContext] save];
+    [MagicalRecord setupCoreDataStack];
+    
+//    [MagicalRecord setupCoreDataStackWithStoreNamed:@"atlas.sqlite"];
+//    [MagicalRecord setDefaultModelNamed:@"atlas.momd"];
 #endif
     
     // If we're coming up for location events, restart significant location changes
@@ -98,7 +99,7 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Saves changes in the application's managed object context before the application terminates.
-    [MagicalRecordHelpers cleanUp];
+    [MagicalRecord cleanUp];
 }
 
 @end

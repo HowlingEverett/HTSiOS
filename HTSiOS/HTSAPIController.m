@@ -12,6 +12,7 @@
 #import "AFJSONRequestOperation.h"
 #import "Trip.h"
 #import "GeoSample.h"
+#import "SurveyResponse.h"
 
 @interface HTSAPIController ()
 
@@ -206,6 +207,32 @@
         
         failure();
     }];
+}
+
+- (void)submitSurveyResponses:(NSArray *)responses
+                  withSuccess:(void(^)())success
+                      failure:(void(^)(NSError *error))failure
+{
+    NSMutableArray *responsesArray = [[NSMutableArray alloc] init];
+    for (SurveyResponse *response in responses) {
+        [responsesArray addObject:[response toDict]];
+    }
+    NSDictionary *payloadDict = @{ @"responses" : responsesArray };
+    NSData *payload = [NSJSONSerialization dataWithJSONObject:payloadDict options:0 error:nil];
+    payload = [LFCGzipUtility gzipData:payload];
+    NSURLRequest *request = [self.client multipartFormRequestWithMethod:@"POST" path:@"/api/submit_survey/" parameters:nil constructingBodyWithBlock:^(id<AFMultipartFormData> formData) {
+        [formData appendPartWithFileData:payload name:@"payload" fileName:@"payload.gz" mimeType:@"application/gzip"];
+    }];
+    
+    AFJSONRequestOperation *jsonOperation = [[AFJSONRequestOperation alloc] initWithRequest:request];
+    [jsonOperation setCompletionBlockWithSuccess:^(AFHTTPRequestOperation *operation, id responseObject) {
+        success();
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        NSLog(@"%@", operation.responseString);
+        failure(error);
+    }];
+    
+    [jsonOperation start];
 }
 
 @end

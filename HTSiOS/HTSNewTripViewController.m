@@ -65,7 +65,7 @@
         NSString *modeValue = [self.transportModes objectAtIndex:indexPath.row];
         if (cell.accessoryType == UITableViewCellAccessoryCheckmark) {
             cell.accessoryType = UITableViewCellAccessoryNone;
-            for (NSString *selectedMode in self.selectedModes) {
+            for (NSString *selectedMode in [self.selectedModes copy]) {
                 if ([selectedMode isEqualToString:modeValue]) {
                     [self.selectedModes removeObject:selectedMode];
                 }
@@ -157,3 +157,4 @@
 }
 
 @end
+`

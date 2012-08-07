@@ -35,4 +35,8 @@
                 progress:(void(^)(NSInteger bytesWritten, long long totalBytesWritten, long long totalBytesExpectedToWrite))progress;
 
 - (void)getActiveSurveysWithSuccess:(void(^)(NSArray *surveys))success failure:(void(^)())failure;
+
+- (void)submitSurveyResponses:(NSArray *)responses
+                  withSuccess:(void(^)())success
+                      failure:(void(^)(NSError *error))failure;
 @end

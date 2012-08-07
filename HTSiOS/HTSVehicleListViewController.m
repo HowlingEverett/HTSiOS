@@ -8,6 +8,8 @@
 
 #import "HTSVehicleListViewController.h"
 #import "HTSSurveyQuestionViewController.h"
+#import "HTSAPIController.h"
+#import "SurveyResponse.h"
 
 @interface HTSVehicleListViewController () <CreatedVehicleDelegate>
 
@@ -124,8 +126,19 @@
 
 - (IBAction)submitQuestions:(id)sender {
     // Need to submit questions here
+    NSArray *responses = [SurveyResponse findAll];
     
-    [self dismissModalViewControllerAnimated:YES];
+    [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [[HTSAPIController sharedApi] submitSurveyResponses:responses withSuccess:^{
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        [self dismissModalViewControllerAnimated:YES];
+    } failure:^(NSError *error) {
+        [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+        NSLog(@"%@", error);
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Couldn't submit survey" message:@"We couldn't receive your survey responses. Please try again." delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
+        [alert show];
+    }];
+    
 }
 
 #pragma mark CreatedVehicleDelegate methods
