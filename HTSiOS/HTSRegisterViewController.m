@@ -68,7 +68,7 @@
     [[HTSAPIController sharedApi] registerWithUsername:self.username.text password:self.password.text andEmail:self.email.text success:^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         [[NSNotificationCenter defaultCenter] postNotificationName:@"HTSUserDidRegister" object:nil];
-        [self performSegueWithIdentifier:@"DemographicInfo" sender:self];
+        [self dismissModalViewControllerAnimated:YES];
     } failure:^(NSString *errorMessage){
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Could not register user" message:errorMessage delegate:self cancelButtonTitle:@"Ok" otherButtonTitles:nil];
         [alert show];

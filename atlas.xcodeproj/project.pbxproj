@@ -1357,7 +1357,7 @@
 		D034E6731564EAF30092AAA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Marrington";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HTSiOS/atlas-Prefix.pch";
 				HEADER_SEARCH_PATHS = (
@@ -1370,7 +1370,7 @@
 					"\"$(SRCROOT)/HTSiOS/TestFlightSDK\"",
 				);
 				PRODUCT_NAME = atlas;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9601DE0-1E3B-48FB-8FBB-566C8EF1A0A3";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};

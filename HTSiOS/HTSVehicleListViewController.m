@@ -131,7 +131,7 @@
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
     [[HTSAPIController sharedApi] submitSurveyResponses:responses withSuccess:^{
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
-        [self dismissModalViewControllerAnimated:YES];
+        [[self navigationController] popToRootViewControllerAnimated:YES];
     } failure:^(NSError *error) {
         [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
         NSLog(@"%@", error);

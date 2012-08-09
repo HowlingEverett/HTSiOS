@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2818" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Nec-yP-ZlZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2829" systemVersion="12A269" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Nec-yP-ZlZ">
     <dependencies>
-        <deployment defaultVersion="1536" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1900"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1914"/>
     </dependencies>
     <scenes>
         <!--Tab Bar Controller-->
@@ -196,7 +195,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
                         <view key="tableFooterView" contentMode="scaleToFill" id="j3Y-CI-UGh">
-                            <rect key="frame" x="0.0" y="269" width="320" height="57"/>
+                            <rect key="frame" x="0.0" y="361" width="320" height="57"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="B43-3a-pqS">
@@ -294,6 +293,31 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Demographic Survey" id="KIF-D7-Ykm">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="uZT-Vs-K8l" style="IBUITableViewCellStyleDefault" id="Lje-Mk-YWR">
+                                        <rect key="frame" x="0.0" y="305" width="320" height="46"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                            <rect key="frame" x="10" y="1" width="267" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Take Survey" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="uZT-Vs-K8l">
+                                                    <rect key="frame" x="10" y="0.0" width="247" height="43"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                </label>
+                                            </subviews>
+                                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        </view>
+                                        <connections>
+                                            <segue destination="WGu-m8-TJW" kind="push" id="ueU-CR-ada"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="kXX-Cw-zDX" id="4Oa-ld-qgO"/>
@@ -317,7 +341,7 @@
             <objects>
                 <viewController id="LVO-4u-TeQ" customClass="HTSSurveyPickerViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="JmN-Nd-4Hg">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <pickerView contentMode="scaleToFill" id="1Dc-86-asR">
@@ -585,7 +609,6 @@
                         <outlet property="repeatPassword" destination="fVD-f4-owh" id="Ymo-6c-kJx"/>
                         <outlet property="scrollView" destination="8JU-Gb-Pb3" id="6qo-zS-nJT"/>
                         <outlet property="username" destination="eLY-Tz-nhJ" id="KjY-TQ-OJA"/>
-                        <segue destination="WGu-m8-TJW" kind="push" identifier="DemographicInfo" id="yd3-X8-zls"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lF7-HW-xUa" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -597,7 +620,7 @@
             <objects>
                 <tableViewController id="WGu-m8-TJW" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Wh4-lB-rsi">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -895,14 +918,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bir-Iy-oEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1199" y="-1579"/>
+            <point key="canvasLocation" x="1345" y="1514"/>
         </scene>
         <!--Survey Question View Controller - Your Household-->
         <scene sceneID="aM8-jq-Cna">
             <objects>
                 <tableViewController id="TE5-rQ-XxA" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WQ1-2a-AxX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1254,14 +1277,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="num-ti-Koq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1619" y="-1581"/>
+            <point key="canvasLocation" x="1765" y="1512"/>
         </scene>
         <!--Other Input View Controller - Other-->
         <scene sceneID="A85-u9-ub6">
             <objects>
                 <viewController id="n0Q-1Q-sJH" customClass="HTSOtherInputViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIF-lf-BRb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Label" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="280" id="x99-b3-fW1">
@@ -1289,14 +1312,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3ta-SD-PaQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1633" y="-2207"/>
+            <point key="canvasLocation" x="1779" y="886"/>
         </scene>
         <!--Survey Question View Controller - Work & Travel-->
         <scene sceneID="hId-r8-5AC">
             <objects>
                 <tableViewController id="os6-As-uTy" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EoB-w9-nWE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1770,14 +1793,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGr-aW-TJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2037" y="-1583"/>
+            <point key="canvasLocation" x="2183" y="1510"/>
         </scene>
         <!--Survey Question View Controller - Travel-->
         <scene sceneID="RkQ-mY-D0M">
             <objects>
                 <tableViewController id="5QJ-T6-72c" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cyV-mh-d5b">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2176,14 +2199,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtB-Yh-Dbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2493" y="-1583"/>
+            <point key="canvasLocation" x="2639" y="1510"/>
         </scene>
         <!--Vehicle List View Controller - Vehicles-->
         <scene sceneID="d8v-xd-dLe">
             <objects>
                 <tableViewController id="YlI-Xk-B2q" customClass="HTSVehicleListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QXA-Bs-MzB">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="19Y-rZ-dlU">
@@ -2257,14 +2280,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hS5-lU-d7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2904" y="-1581"/>
+            <point key="canvasLocation" x="3050" y="1512"/>
         </scene>
         <!--Survey Question View Controller - Vehicle Details-->
         <scene sceneID="gQZ-ep-ET6">
             <objects>
                 <tableViewController id="6Pn-ev-bZ2" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aeb-iq-R2t">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2610,7 +2633,7 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiS-Zw-0lM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3324" y="-1583"/>
+            <point key="canvasLocation" x="3470" y="1510"/>
         </scene>
         <!--New Trip View Controller - New Trip-->
         <scene sceneID="PkL-C1-8Rh">
@@ -3055,7 +3078,7 @@ JDIwMB/igJMyOTk
                         <barButtonItem key="backBarButtonItem" title="Welcome" id="uDs-pw-T83"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="FeQ-Sg-b1o" kind="push" identifier="Show Consent" id="HlJ-Z9-Qdv"/>
+                        <segue destination="sNW-sX-GV5" kind="push" identifier="Show Tour" id="wY3-sl-Wvd"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AjR-cD-oOm" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -3077,54 +3100,6 @@ JDIwMB/igJMyOTk
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NjM-wQ-2l5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="396" y="-2261"/>
-        </scene>
-        <!--View Controller - Consent-->
-        <scene sceneID="6eV-tm-be3">
-            <objects>
-                <viewController id="FeQ-Sg-b1o" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="sXN-qf-KAC">
-                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" image="Globe.png" id="RGa-Sb-Pmx">
-                                <rect key="frame" x="33" y="58" width="255" height="301"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="8Cw-bF-1zk">
-                                <rect key="frame" x="20" y="126" width="280" height="219"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                            </scrollView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Cvu-V7-4kd">
-                                <rect key="frame" x="114" y="359" width="93" height="37"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
-                                <state key="normal" title="I Consent">
-                                    <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
-                                    <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
-                                </state>
-                                <state key="highlighted">
-                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                </state>
-                                <connections>
-                                    <segue destination="sNW-sX-GV5" kind="push" id="od7-Rg-G8P"/>
-                                </connections>
-                            </button>
-                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="12" baselineAdjustment="alignBaselines" minimumFontSize="10" autoshrinkMode="minimumFontSize" preferredMaxLayoutWidth="280" id="FV2-KE-FCR">
-                                <rect key="frame" x="20" y="20" width="280" height="82"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <nil key="highlightedColor"/>
-                                <string key="text">Thanks! Since you're participating in research, we also require your consent to use the data you provide. Here's the full spiel:</string>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
-                    </view>
-                    <navigationItem key="navigationItem" title="Consent" id="aWP-sq-QmD"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="N6N-kU-Zxa" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1132" y="-2934"/>
         </scene>
         <!--View Controller - Tour-->
         <scene sceneID="ndi-Oc-mE9">
@@ -3171,7 +3146,7 @@ JDIwMB/igJMyOTk
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="sSe-KK-nLj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1554" y="-2932"/>
+            <point key="canvasLocation" x="1150" y="-2932"/>
         </scene>
         <!--View Controller - Tour-->
         <scene sceneID="mTn-yx-0wE">
@@ -3217,7 +3192,7 @@ JDIwMB/igJMyOTk
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8Zy-Qh-07g" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1994" y="-2932"/>
+            <point key="canvasLocation" x="1590" y="-2932"/>
         </scene>
         <!--Page6 View Controller - Tour-->
         <scene sceneID="YMR-YL-Bmb">
@@ -3264,7 +3239,7 @@ JDIwMB/igJMyOTk
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="121-io-Hg2" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2422" y="-2934"/>
+            <point key="canvasLocation" x="2018" y="-2934"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="Lu0-eY-onU">
@@ -3334,16 +3309,25 @@ JDIwMB/igJMyOTk
     <classes>
         <class className="HTSIntroPage1ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSIntroPage1ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="skipIntro:"/>
+            </relationships>
         </class>
         <class className="HTSLoginViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSLoginViewController.h"/>
             <relationships>
+                <relationship kind="action" name="cancelLogin:"/>
+                <relationship kind="action" name="performLogin:"/>
                 <relationship kind="outlet" name="password" candidateClass="UITextField"/>
                 <relationship kind="outlet" name="username" candidateClass="UITextField"/>
             </relationships>
         </class>
         <class className="HTSNewTripViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSNewTripViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="cancel:"/>
+                <relationship kind="action" name="startNewTrip:"/>
+            </relationships>
         </class>
         <class className="HTSOtherInputViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSOtherInputViewController.h"/>
@@ -3363,10 +3347,14 @@ JDIwMB/igJMyOTk
         </class>
         <class className="HTSPage6ViewController" superclassName="UIViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSPage6ViewController.h"/>
+            <relationships>
+                <relationship kind="action" name="finish:"/>
+            </relationships>
         </class>
         <class className="HTSProfileViewController" superclassName="UITableViewController">
             <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSProfileViewController.h"/>
             <relationships>
+                <relationship kind="action" name="logOut:"/>
                 <relationship kind="outlet" name="email" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
                 <relationship kind="outlet" name="username" candidateClass="UILabel"/>
@@ -3436,8 +3424,8 @@ JDIwMB/igJMyOTk
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="5jx-fV-SWl"/>
+        <segue reference="4vE-bW-MHo"/>
         <segue reference="1JQ-Zd-2g0"/>
-        <segue reference="kte-o2-DB7"/>
-        <segue reference="eIW-Tl-SNg"/>
+        <segue reference="98c-8N-FTW"/>
     </inferredMetricsTieBreakers>
 </document>

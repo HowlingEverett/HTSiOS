@@ -15,7 +15,7 @@
 #import "HTSGeoSampleManager.h"
 #import "HTSAPIController.h"
 
-@interface HTSTodayViewController ()
+@interface HTSTodayViewController () <NSFetchedResultsControllerDelegate>
 
 // Data objects
 @property (nonatomic, strong) NSFetchedResultsController *fetchedResultsController;
@@ -75,11 +75,7 @@
     
     // Add and configure child view controller for trip map
     [self addTripMapSubviewController];
-    
-    // Tapping on current trip map should open full view
-    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(openCurrentTrip:)];
-    [self.tripMapViewController.view addGestureRecognizer:tap];
-    
+        
     [self.navigationItem setRightBarButtonItem:self.addButton];
     
     // Check if login is required
@@ -257,11 +253,12 @@
         [components setMinute:59];
         [components setSecond:59];
         NSDate *end = [cal dateFromComponents:components];
-        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@)", start, end];
+        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO)", start, end, [NSNumber numberWithBool:YES]];
         //[predicateTemplate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObjectsAndKeys:start, @"DATE_START", end, @"DATE_END", nil]];
         [fetch setPredicate:predicateTemplate];
         [fetch setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
         _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:nil cacheName:@"TripCache"];
+        _fetchedResultsController.delegate = self;
         [_fetchedResultsController performFetch:nil];
     }
     
@@ -279,14 +276,16 @@
 
 - (void)insertTripIntoHistory
 {
-    [self.fetchedResultsController performFetch:nil];
-    NSArray *indexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
-    [self.tableView beginUpdates];
-    [self.tableView insertRowsAtIndexPaths:indexPath withRowAnimation:UITableViewRowAnimationTop];
-    [self.tableView endUpdates];
-    
-    // Get trip duration
+//    NSArray *indexPath = [NSArray arrayWithObject:[NSIndexPath indexPathForRow:0 inSection:0]];
+    self.activeTrip.isActiveValue = NO;
+    if (self.activeTrip.samples.count < 2) {
+        [self.activeTrip deleteEntity];
+        UIAlertView *noTripAlert = [[UIAlertView alloc] initWithTitle:@"Trip not saved" message:@"This trip didn't have enough samples to record in the survey." delegate:self cancelButtonTitle:@"Whoops" otherButtonTitles:nil];
+        [noTripAlert show];
+    }
     [[NSManagedObjectContext contextForCurrentThread] save];
+    
+    
     self.activeTrip = nil;
     [self.tripMapViewController clearPlot];
     [self.tripMapViewController setTripActive:NO];
@@ -362,6 +361,50 @@
         [self.tripDurationLabel setText:[NSString stringWithFormat:@"%2dh%2dm%2ds", [conversion hour], [conversion minute], [conversion second]]];
         [self.tripDistanceLabel setText:[NSString stringWithFormat:@"%.2lfkm", (self.activeTrip.distanceValue / 1000.0)]];
     }
+}
+
+#pragma mark NSFetchedResultsControllerDelegate methods
+- (void)controllerWillChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller is about to start sending change notifications, so prepare the table view for updates.
+    [self.tableView beginUpdates];
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeObject:(id)anObject atIndexPath:(NSIndexPath *)indexPath forChangeType:(NSFetchedResultsChangeType)type newIndexPath:(NSIndexPath *)newIndexPath {
+    
+    UITableView *tableView = self.tableView;
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [tableView insertRowsAtIndexPaths:[NSArray arrayWithObject:newIndexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [tableView deleteRowsAtIndexPaths:[NSArray arrayWithObject:indexPath] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controller:(NSFetchedResultsController *)controller didChangeSection:(id )sectionInfo atIndex:(NSUInteger)sectionIndex forChangeType:(NSFetchedResultsChangeType)type {
+    
+    switch(type) {
+            
+        case NSFetchedResultsChangeInsert:
+            [self.tableView insertSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+            
+        case NSFetchedResultsChangeDelete:
+            [self.tableView deleteSections:[NSIndexSet indexSetWithIndex:sectionIndex] withRowAnimation:UITableViewRowAnimationFade];
+            break;
+    }
+}
+
+
+- (void)controllerDidChangeContent:(NSFetchedResultsController *)controller {
+    // The fetch controller has sent all current change notifications, so tell the table view to process all updates.
+    [self.tableView endUpdates];
 }
 
 @end

@@ -168,6 +168,8 @@
         // Set the batch size to a suitable number.
         [fetch setFetchBatchSize:20];
         
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isActive == NO"];
+        [fetch setPredicate:predicate];
         // Sort using the timeStamp property..
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];
         NSArray *sortDescriptors = [[NSArray alloc] initWithObjects:sortDescriptor, nil];

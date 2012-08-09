@@ -30,7 +30,6 @@
     
 #if RUN_KIF_TESTS
     [MagicalRecord setupCoreDataStackWithInMemoryStore];
-    [MagicalRecord setDefaultModelNamed:@"atlast.momd"];
     NSArray *samples = [HTSDataFixtures geoSamples];
     [HTSDataFixtures tripWithSamples:samples];
     [[NSManagedObjectContext defaultContext] save];
@@ -42,8 +41,10 @@
 #endif
     
     // If we're coming up for location events, restart significant location changes
+    
     if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
         [[HTSGeoSampleManager sharedManager] monitorForSignificantLocationChanges];
+        [[HTSGeoSampleManager sharedManager] askUserToStartTracking];
     }
     
     // Handle launching from a user tapping the local notification

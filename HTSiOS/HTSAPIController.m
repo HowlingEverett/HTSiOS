@@ -155,6 +155,7 @@
         NSMutableArray *trips = [NSMutableArray array];
         for (Trip *trip in tripsArray) {
             NSDictionary *tripDict = [trip toDict];
+            NSLog(@"%@", tripDict);
             NSMutableArray *samples = [[NSMutableArray alloc] initWithCapacity:trip.samples.count];
             for (GeoSample *sample in trip.samples) {
                 [samples addObject:[sample toDict]];

@@ -125,6 +125,7 @@
         tm.mode = selectedMode;
         [trip.modesSet addObject:tm];
     }
+    trip.isActiveValue = TRUE;
     
     [context save];
     [self.delegate didCreateNewTrip:trip];

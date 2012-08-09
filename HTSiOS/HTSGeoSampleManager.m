@@ -155,12 +155,14 @@
         [self.delegate geosampleManager:self didCaptureSampleAtLocation:newLocation];
         
         // And update the trip's distance and duration
-        if (self.activeTrip.samples.count > 0) {
+        if (self.activeTrip.samples.count > 0 && oldLocation) {
             CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
             self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
             NSTimeInterval durationComponent = [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp];
             self.activeTrip.durationValue = self.activeTrip.durationValue + (durationComponent / 60.0);
+            NSLog(@"%g", self.activeTrip.durationValue);
         }
+        [[NSManagedObjectContext contextForCurrentThread] save];
         
         
     } else {

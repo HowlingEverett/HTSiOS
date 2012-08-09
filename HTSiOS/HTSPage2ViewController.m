@@ -51,7 +51,7 @@
 
 - (void)nextPage:(NSNotification *)not
 {
-    [self performSegueWithIdentifier:@"Show Consent" sender:self];
+    [self performSegueWithIdentifier:@"Show Tour" sender:self];
 }
 
 @end

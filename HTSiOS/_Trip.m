@@ -7,6 +7,7 @@ const struct TripAttributes TripAttributes = {
 	.date = @"date",
 	.distance = @"distance",
 	.duration = @"duration",
+	.isActive = @"isActive",
 	.isExported = @"isExported",
 	.sectionIdentifier = @"sectionIdentifier",
 	.surveyId = @"surveyId",
@@ -53,6 +54,10 @@ const struct TripFetchedProperties TripFetchedProperties = {
 	}
 	if ([key isEqualToString:@"durationValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
+		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
+	}
+	if ([key isEqualToString:@"isActiveValue"]) {
+		NSSet *affectingKey = [NSSet setWithObject:@"isActive"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"isExportedValue"]) {
@@ -123,6 +128,32 @@ const struct TripFetchedProperties TripFetchedProperties = {
 
 - (void)setPrimitiveDurationValue:(float)value_ {
 	[self setPrimitiveDuration:[NSNumber numberWithFloat:value_]];
+}
+
+
+
+
+
+@dynamic isActive;
+
+
+
+- (BOOL)isActiveValue {
+	NSNumber *result = [self isActive];
+	return [result boolValue];
+}
+
+- (void)setIsActiveValue:(BOOL)value_ {
+	[self setIsActive:[NSNumber numberWithBool:value_]];
+}
+
+- (BOOL)primitiveIsActiveValue {
+	NSNumber *result = [self primitiveIsActive];
+	return [result boolValue];
+}
+
+- (void)setPrimitiveIsActiveValue:(BOOL)value_ {
+	[self setPrimitiveIsActive:[NSNumber numberWithBool:value_]];
 }
 
 
