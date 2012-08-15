@@ -10,4 +10,5 @@
 
 @interface HTSTripHistoryTableViewController : UITableViewController <UITableViewDelegate, UITableViewDataSource, NSFetchedResultsControllerDelegate>
 
+@property (nonatomic, strong) NSDate *tourDate;
 @end

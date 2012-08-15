@@ -90,6 +90,15 @@
 		D00E74B91591B9DA00A1D31F /* AFXMLRequestOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E74A51591B9DA00A1D31F /* AFXMLRequestOperation.m */; };
 		D00E74BA1591B9DA00A1D31F /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E74A71591B9DA00A1D31F /* UIImageView+AFNetworking.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		D00E74BB1591B9DA00A1D31F /* UIImageView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = D00E74A71591B9DA00A1D31F /* UIImageView+AFNetworking.m */; };
+		D01D82B115DA2720005F6919 /* HTSTourHistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D01D82B015DA2720005F6919 /* HTSTourHistoryViewController.m */; };
+		D01D82B415DB1DDE005F6919 /* 103-map.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82B215DB1DDE005F6919 /* 103-map.png */; };
+		D01D82B515DB1DDE005F6919 /* 103-map@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82B315DB1DDE005F6919 /* 103-map@2x.png */; };
+		D01D82B815DB1DF8005F6919 /* 123-id-card.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82B615DB1DF8005F6919 /* 123-id-card.png */; };
+		D01D82B915DB1DF8005F6919 /* 123-id-card@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82B715DB1DF8005F6919 /* 123-id-card@2x.png */; };
+		D01D82BC15DB1E31005F6919 /* 56-cloud.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82BA15DB1E31005F6919 /* 56-cloud.png */; };
+		D01D82BD15DB1E31005F6919 /* 56-cloud@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82BB15DB1E31005F6919 /* 56-cloud@2x.png */; };
+		D01D82C515DB2507005F6919 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82C415DB2506005F6919 /* Icon.png */; };
+		D01D82C715DB2514005F6919 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D01D82C615DB2514005F6919 /* Icon@2x.png */; };
 		D0205BE5156A278000B4C816 /* buttonbackgroundgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */; };
 		D0205BE6156A278000B4C816 /* buttonbackgroundgreen@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */; };
 		D0205BE7156A278000B4C816 /* buttonbackgroundred in Resources */ = {isa = PBXBuildFile; fileRef = D0205BDF156A271400B4C816 /* buttonbackgroundred */; };
@@ -326,6 +335,16 @@
 		D00E74A51591B9DA00A1D31F /* AFXMLRequestOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFXMLRequestOperation.m; sourceTree = "<group>"; };
 		D00E74A61591B9DA00A1D31F /* UIImageView+AFNetworking.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImageView+AFNetworking.h"; sourceTree = "<group>"; };
 		D00E74A71591B9DA00A1D31F /* UIImageView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImageView+AFNetworking.m"; sourceTree = "<group>"; };
+		D01D82AF15DA2720005F6919 /* HTSTourHistoryViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTourHistoryViewController.h; sourceTree = "<group>"; };
+		D01D82B015DA2720005F6919 /* HTSTourHistoryViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTourHistoryViewController.m; sourceTree = "<group>"; };
+		D01D82B215DB1DDE005F6919 /* 103-map.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map.png"; sourceTree = "<group>"; };
+		D01D82B315DB1DDE005F6919 /* 103-map@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "103-map@2x.png"; sourceTree = "<group>"; };
+		D01D82B615DB1DF8005F6919 /* 123-id-card.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "123-id-card.png"; sourceTree = "<group>"; };
+		D01D82B715DB1DF8005F6919 /* 123-id-card@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "123-id-card@2x.png"; sourceTree = "<group>"; };
+		D01D82BA15DB1E31005F6919 /* 56-cloud.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud.png"; sourceTree = "<group>"; };
+		D01D82BB15DB1E31005F6919 /* 56-cloud@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "56-cloud@2x.png"; sourceTree = "<group>"; };
+		D01D82C415DB2506005F6919 /* Icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Icon.png; path = ../Icon.png; sourceTree = "<group>"; };
+		D01D82C615DB2514005F6919 /* Icon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Icon@2x.png"; path = "../Icon@2x.png"; sourceTree = "<group>"; };
 		D0205BDD156A271400B4C816 /* buttonbackgroundgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttonbackgroundgreen.png; sourceTree = "<group>"; };
 		D0205BDE156A271400B4C816 /* buttonbackgroundgreen@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "buttonbackgroundgreen@2x.png"; sourceTree = "<group>"; };
 		D0205BDF156A271400B4C816 /* buttonbackgroundred */ = {isa = PBXFileReference; lastKnownFileType = file; path = buttonbackgroundred; sourceTree = "<group>"; };
@@ -495,6 +514,8 @@
 				D0D4D09015A132BF00D96683 /* HTSTripDetailViewController.h */,
 				D0D4D09115A132BF00D96683 /* HTSTripDetailViewController.m */,
 				D0027F90156BD465002D65C6 /* HTSTripMapViewController.xib */,
+				D01D82AF15DA2720005F6919 /* HTSTourHistoryViewController.h */,
+				D01D82B015DA2720005F6919 /* HTSTourHistoryViewController.m */,
 				D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */,
 				D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */,
 				D0583506159D704D002981EA /* HTSLoginViewController.h */,
@@ -733,6 +754,14 @@
 		D034E64C1564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D01D82C615DB2514005F6919 /* Icon@2x.png */,
+				D01D82C415DB2506005F6919 /* Icon.png */,
+				D01D82BA15DB1E31005F6919 /* 56-cloud.png */,
+				D01D82BB15DB1E31005F6919 /* 56-cloud@2x.png */,
+				D01D82B615DB1DF8005F6919 /* 123-id-card.png */,
+				D01D82B715DB1DF8005F6919 /* 123-id-card@2x.png */,
+				D01D82B215DB1DDE005F6919 /* 103-map.png */,
+				D01D82B315DB1DDE005F6919 /* 103-map@2x.png */,
 				D0DFF9A115AE547F0037C196 /* Graphics */,
 				D0D4D0A415A1465400D96683 /* cloud_upload.png */,
 				D0D4D0A515A1465400D96683 /* cloud_upload@2x.png */,
@@ -838,20 +867,12 @@
 			name = "Scenarios & Steps";
 			sourceTree = "<group>";
 		};
-		D034E783156515280092AAA0 /* MagicalRecord */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MagicalRecord;
-			sourceTree = "<group>";
-		};
 		D034E7B21565152B0092AAA0 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
 				D00CF85D15CF780A00DDC5D5 /* MagicalRecord */,
 				D0DFF9E815AF94E10037C196 /* TestFlightSDK */,
 				D00E74921591B9DA00A1D31F /* AFNetworking */,
-				D034E783156515280092AAA0 /* MagicalRecord */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -1063,6 +1084,14 @@
 				D0DFF9D915AE6C0A0037C196 /* statusbar@2x.png in Resources */,
 				D0DFF9EF15AF94E10037C196 /* README.txt in Resources */,
 				D0DFF9F115AF94E10037C196 /* release_notes.txt in Resources */,
+				D01D82B415DB1DDE005F6919 /* 103-map.png in Resources */,
+				D01D82B515DB1DDE005F6919 /* 103-map@2x.png in Resources */,
+				D01D82B815DB1DF8005F6919 /* 123-id-card.png in Resources */,
+				D01D82B915DB1DF8005F6919 /* 123-id-card@2x.png in Resources */,
+				D01D82BC15DB1E31005F6919 /* 56-cloud.png in Resources */,
+				D01D82BD15DB1E31005F6919 /* 56-cloud@2x.png in Resources */,
+				D01D82C515DB2507005F6919 /* Icon.png in Resources */,
+				D01D82C715DB2514005F6919 /* Icon@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1217,6 +1246,7 @@
 				D00CF8B115CF780A00DDC5D5 /* MagicalRecord+ShorthandSupport.m in Sources */,
 				D00CF8B215CF780A00DDC5D5 /* MagicalRecord.m in Sources */,
 				D00CF8B615CF81FB00DDC5D5 /* atlas.xcdatamodeld in Sources */,
+				D01D82B115DA2720005F6919 /* HTSTourHistoryViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

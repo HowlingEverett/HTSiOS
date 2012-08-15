@@ -106,6 +106,9 @@
     } else {
         [self.navigationItem setLeftBarButtonItem:nil];
     }
+    
+    [self.fetchedResultsController performFetch:nil];
+    [self.tableView reloadData];
 }
 
 - (void)addTripMapSubviewController
@@ -115,8 +118,8 @@
     [self.tripMapViewController.view setClipsToBounds:YES];
     [self.tripMapView addSubview:self.tripMapViewController.view];
     [self.tripMapViewController didMoveToParentViewController:self];
-    [self.tripMapViewController.mapView setZoomEnabled:NO];
-    [self.tripMapViewController.mapView setScrollEnabled:NO];
+    [self.tripMapViewController.mapView setZoomEnabled:YES];
+    [self.tripMapViewController.mapView setScrollEnabled:YES];
     [self addChildViewController:self.tripMapViewController];
 }
 
@@ -206,13 +209,6 @@
     return cell;
 }
 
-// Override to support conditional editing of the table view.
-- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Return NO if you do not want the specified item to be editable.
-    return YES;
-}
-
 // Override to support editing the table view.
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
 {
@@ -248,16 +244,17 @@
         [components setHour:0];
         [components setMinute:0];
         [components setSecond:0];
+        [components setTimeZone:[NSTimeZone localTimeZone]];
         NSDate *start = [cal dateFromComponents:components];
         [components setHour:23];
         [components setMinute:59];
         [components setSecond:59];
+        [components setTimeZone:[NSTimeZone localTimeZone]];
         NSDate *end = [cal dateFromComponents:components];
-        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO)", start, end, [NSNumber numberWithBool:YES]];
-        //[predicateTemplate predicateWithSubstitutionVariables:[NSDictionary dictionaryWithObjectsAndKeys:start, @"DATE_START", end, @"DATE_END", nil]];
+        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO)", start, end];
         [fetch setPredicate:predicateTemplate];
         [fetch setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
-        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:nil cacheName:@"TripCache"];
+        _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:nil cacheName:nil];
         _fetchedResultsController.delegate = self;
         [_fetchedResultsController performFetch:nil];
     }

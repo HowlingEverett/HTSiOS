@@ -9,10 +9,6 @@
 #import "HTSAppDelegate.h"
 #import "HTSGeoSampleManager.h"
 #import "HTSTodayViewController.h"
-#if RUN_KIF_TESTS
-#import "HTSDataFixtures.h"
-#import "HTSExampleTestController.h"
-#endif
 
 @implementation HTSAppDelegate
 
@@ -28,24 +24,13 @@
     [TestFlight setDeviceIdentifier:[[UIDevice currentDevice] uniqueIdentifier]];
 #endif
     
-#if RUN_KIF_TESTS
-    [MagicalRecord setupCoreDataStackWithInMemoryStore];
-    NSArray *samples = [HTSDataFixtures geoSamples];
-    [HTSDataFixtures tripWithSamples:samples];
-    [[NSManagedObjectContext defaultContext] save];
-#else
     [MagicalRecord setupCoreDataStack];
-    
-//    [MagicalRecord setupCoreDataStackWithStoreNamed:@"atlas.sqlite"];
-//    [MagicalRecord setDefaultModelNamed:@"atlas.momd"];
-#endif
     
     // If we're coming up for location events, restart significant location changes
     
-    if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
-        [[HTSGeoSampleManager sharedManager] monitorForSignificantLocationChanges];
-        [[HTSGeoSampleManager sharedManager] askUserToStartTracking];
-    }
+//    if ([launchOptions objectForKey:UIApplicationLaunchOptionsLocationKey]) {
+//        [[[HTSGeoSampleManager sharedManager] locationManager] startMonitoringSignificantLocationChanges];
+//    }
     
     // Handle launching from a user tapping the local notification
     UILocalNotification *localNotif = [launchOptions objectForKey:UIApplicationLaunchOptionsLocalNotificationKey];
@@ -60,6 +45,9 @@
     }
     
     [self configureAppearance];
+    
+    // Set ourselves up with default notification styles
+    [[UIApplication sharedApplication] registerForRemoteNotificationTypes:UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound];
     
     return YES;
 }
@@ -80,6 +68,9 @@
 {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. 
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    if (![[HTSGeoSampleManager sharedManager] isLiveTracking]) {
+        [[[HTSGeoSampleManager sharedManager] locationManager] startMonitoringSignificantLocationChanges];
+    }
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application
@@ -89,12 +80,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
-#if RUN_KIF_TESTS
-    [[HTSExampleTestController sharedInstance] startTestingWithCompletionBlock:^{
-        exit([[HTSExampleTestController sharedInstance] failureCount]);
-    }];
-#endif
+    
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

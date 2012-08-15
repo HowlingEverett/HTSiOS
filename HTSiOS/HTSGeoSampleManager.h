@@ -14,6 +14,7 @@
 
 @interface HTSGeoSampleManager : NSObject <CLLocationManagerDelegate>
 @property (nonatomic, strong) Trip *activeTrip;
+@property (nonatomic, strong) CLLocationManager *locationManager;
 @property (nonatomic, assign) id<HTSGeoSampleManagerDelegate> delegate;
 
 @property (nonatomic, assign) BOOL isLiveTracking;

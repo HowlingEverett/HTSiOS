@@ -33,30 +33,30 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="1" green="0.99215692280000001" blue="0.97647064920000004" alpha="1" colorSpace="deviceRGB"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="NLS-0F-aU4">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="223"/>
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="333"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Current Trip:" autoshrinkMode="minimumFontSize" id="BNQ-hj-D5v">
-                                    <rect key="frame" x="20" y="160" width="96" height="21"/>
+                                    <rect key="frame" x="20" y="290" width="96" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <nil key="highlightedColor"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="— no trip —" autoshrinkMode="minimumFontSize" id="INe-WS-8be">
-                                    <rect key="frame" x="20" y="182" width="130" height="21"/>
+                                    <rect key="frame" x="20" y="312" width="130" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <nil key="highlightedColor"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="boldSystem" pointSize="14"/>
                                 </label>
                                 <view contentMode="scaleToFill" id="oR4-9Y-zzJ">
-                                    <rect key="frame" x="20" y="20" width="280" height="132"/>
+                                    <rect key="frame" x="20" y="20" width="280" height="262"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                                 </view>
                                 <view opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" id="vEv-Cn-4mH">
-                                    <rect key="frame" x="20" y="127" width="280" height="26"/>
+                                    <rect key="frame" x="20" y="256" width="280" height="26"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
                                         <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="" textAlignment="right" autoshrinkMode="minimumFontSize" id="ehs-ce-fiQ">
@@ -77,14 +77,14 @@
                                     <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 </view>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Modes:" textAlignment="right" autoshrinkMode="minimumFontSize" id="BPf-NX-zLf">
-                                    <rect key="frame" x="204" y="160" width="96" height="21"/>
+                                    <rect key="frame" x="204" y="290" width="96" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <nil key="highlightedColor"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 </label>
                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="10" text="— —" textAlignment="right" autoshrinkMode="minimumFontSize" id="IZy-09-l5B">
-                                    <rect key="frame" x="170" y="182" width="130" height="21"/>
+                                    <rect key="frame" x="170" y="312" width="130" height="21"/>
                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     <nil key="highlightedColor"/>
                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -95,7 +95,7 @@
                         </view>
                         <prototypes>
                             <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Trip Cell" textLabel="3od-QT-QpO" detailTextLabel="PQy-c6-yBO" style="IBUITableViewCellStyleSubtitle" id="Or9-k2-fix">
-                                <rect key="frame" x="0.0" y="259" width="320" height="46"/>
+                                <rect key="frame" x="0.0" y="369" width="320" height="46"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                     <rect key="frame" x="10" y="1" width="280" height="43"/>
@@ -219,15 +219,15 @@
                         <sections>
                             <tableViewSection headerTitle="Active Survey" footerTitle="Select which survey you'll participate in." id="kKL-3d-IgT">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey Cell" textLabel="wqL-9t-FeP" style="IBUITableViewCellStyleDefault" id="Pma-Bo-C0o">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Survey Cell" textLabel="wqL-9t-FeP" style="IBUITableViewCellStyleDefault" id="Pma-Bo-C0o">
                                         <rect key="frame" x="0.0" y="46" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="267" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="wqL-9t-FeP">
-                                                    <rect key="frame" x="10" y="0.0" width="247" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -295,15 +295,15 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Demographic Survey" id="KIF-D7-Ykm">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="uZT-Vs-K8l" style="IBUITableViewCellStyleDefault" id="Lje-Mk-YWR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="uZT-Vs-K8l" style="IBUITableViewCellStyleDefault" id="Lje-Mk-YWR">
                                         <rect key="frame" x="0.0" y="305" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="267" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Take Survey" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="uZT-Vs-K8l">
-                                                    <rect key="frame" x="10" y="0.0" width="247" height="43"/>
+                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -375,10 +375,10 @@
             </objects>
             <point key="canvasLocation" x="1331" y="801"/>
         </scene>
-        <!--Trip History Table View Controller - Trip History-->
+        <!--Tour History View Controller - Tour History-->
         <scene sceneID="etE-LE-yrM">
             <objects>
-                <tableViewController id="Rwn-nu-IFT" customClass="HTSTripHistoryTableViewController" sceneMemberID="viewController">
+                <tableViewController id="Rwn-nu-IFT" customClass="HTSTourHistoryViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="qMq-tx-ICx">
                         <rect key="frame" x="0.0" y="64" width="320" height="367"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -410,7 +410,7 @@
                                 </view>
                                 <color key="backgroundColor" cocoaTouchSystemColor="tableCellGroupedBackgroundColor"/>
                                 <connections>
-                                    <segue destination="vJt-al-bzM" kind="push" identifier="Show History Map" id="1JQ-Zd-2g0"/>
+                                    <segue destination="9IA-39-vcx" kind="push" identifier="Show Tour" id="g5j-qd-0qF"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -419,7 +419,7 @@
                             <outlet property="delegate" destination="Rwn-nu-IFT" id="D71-Hc-iGL"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Trip History" id="8Gb-rA-Csb">
+                    <navigationItem key="navigationItem" title="Tour History" id="8Gb-rA-Csb">
                         <barButtonItem key="rightBarButtonItem" systemItem="action" id="9tR-MC-Pei">
                             <connections>
                                 <action selector="exportTrips:" destination="Rwn-nu-IFT" id="I7l-Qt-8cS"/>
@@ -433,6 +433,55 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MhB-oR-BXN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="785" y="224"/>
+        </scene>
+        <!--Trip History Table View Controller - Trips-->
+        <scene sceneID="dhd-ow-aqF">
+            <objects>
+                <tableViewController id="9IA-39-vcx" customClass="HTSTripHistoryTableViewController" sceneMemberID="viewController">
+                    <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="k6R-34-VEB">
+                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="detailDisclosureButton" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="History Cell" textLabel="bJy-Uc-AZn" detailTextLabel="5Qc-Es-erN" style="IBUITableViewCellStyleSubtitle" id="dJv-A3-rDM">
+                                <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Title" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="bJy-Uc-AZn">
+                                            <rect key="frame" x="10" y="2" width="38" height="22"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                        </label>
+                                        <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Subtitle" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="5Qc-Es-erN">
+                                            <rect key="frame" x="10" y="24" width="47" height="18"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.50196078431372548" green="0.50196078431372548" blue="0.50196078431372548" alpha="1" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <connections>
+                                    <segue destination="vJt-al-bzM" kind="push" identifier="Show History Map" id="JXc-ho-VLv"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="9IA-39-vcx" id="ObA-GQ-Ngk"/>
+                            <outlet property="delegate" destination="9IA-39-vcx" id="N5Y-15-kNq"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Trips" id="djn-Rp-fEW"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7qx-xF-gbU" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1204" y="224"/>
         </scene>
         <!--Login View Controller - Log In-->
         <scene sceneID="4Bq-3h-hJD">
@@ -2938,7 +2987,7 @@ JDIwMB/igJMyOTk
         <scene sceneID="aT2-Lc-Sts">
             <objects>
                 <navigationController id="PE7-xC-cul" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Today" id="D9P-Ru-TrW"/>
+                    <tabBarItem key="tabBarItem" title="Today" image="103-map.png" id="D9P-Ru-TrW"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="jy5-d1-w1Z">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2958,7 +3007,7 @@ JDIwMB/igJMyOTk
         <scene sceneID="E16-yh-OcK">
             <objects>
                 <navigationController id="v8k-Cz-Z5V" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="History" id="PzU-ON-XD9"/>
+                    <tabBarItem key="tabBarItem" title="History" image="56-cloud.png" id="PzU-ON-XD9"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="oC7-o0-UaM">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -2982,7 +3031,7 @@ JDIwMB/igJMyOTk
         <scene sceneID="v2j-6c-Lgs">
             <objects>
                 <navigationController id="z4B-3E-i7i" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Profile" id="6tA-Je-y3e"/>
+                    <tabBarItem key="tabBarItem" title="Profile" image="123-id-card.png" id="6tA-Je-y3e"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" id="biM-44-P2H">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -3300,132 +3349,24 @@ JDIwMB/igJMyOTk
         </scene>
     </scenes>
     <resources>
+        <image name="103-map.png" width="26" height="21"/>
+        <image name="123-id-card.png" width="24" height="17"/>
+        <image name="56-cloud.png" width="24" height="16"/>
         <image name="Globe.png" width="255" height="301"/>
         <image name="Page 1.png" width="320" height="416"/>
         <image name="Page 2.png" width="320" height="416"/>
         <image name="starttrip.png" width="320" height="210"/>
         <image name="statusbar.png" width="192" height="46"/>
     </resources>
-    <classes>
-        <class className="HTSIntroPage1ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSIntroPage1ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="skipIntro:"/>
-            </relationships>
-        </class>
-        <class className="HTSLoginViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSLoginViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancelLogin:"/>
-                <relationship kind="action" name="performLogin:"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HTSNewTripViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSNewTripViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="cancel:"/>
-                <relationship kind="action" name="startNewTrip:"/>
-            </relationships>
-        </class>
-        <class className="HTSOtherInputViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSOtherInputViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="answerText" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="questionLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HTSOtherPurposeViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSOtherPurposeViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="purposeText" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HTSPage2ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSPage2ViewController.h"/>
-        </class>
-        <class className="HTSPage6ViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSPage6ViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="finish:"/>
-            </relationships>
-        </class>
-        <class className="HTSProfileViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSProfileViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="logOut:"/>
-                <relationship kind="outlet" name="email" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="username" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HTSRegisterViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSRegisterViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="registerParticipant:"/>
-                <relationship kind="outlet" name="email" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="password" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="repeatPassword" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="scrollView" candidateClass="UIScrollView"/>
-                <relationship kind="outlet" name="username" candidateClass="UITextField"/>
-            </relationships>
-        </class>
-        <class className="HTSSurveyPickerViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSSurveyPickerViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="picker" candidateClass="UIPickerView"/>
-                <relationship kind="outlet" name="surveyTitle" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HTSSurveyQuestionViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSSurveyQuestionViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="saveVehicle:"/>
-            </relationships>
-        </class>
-        <class className="HTSTodayViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTodayViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="openCurrentTrip:"/>
-                <relationship kind="outlet" name="tripDistanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tripDurationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
-                <relationship kind="outlet" name="tripModesLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tripNameLabel" candidateClass="UILabel"/>
-            </relationships>
-        </class>
-        <class className="HTSTripDetailViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripDetailViewController.h"/>
-            <relationships>
-                <relationship kind="outlet" name="distanceLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="durationLabel" candidateClass="UILabel"/>
-                <relationship kind="outlet" name="tripMapView" candidateClass="UIView"/>
-            </relationships>
-        </class>
-        <class className="HTSTripHistoryTableViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSTripHistoryTableViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="exportTrips:"/>
-                <relationship kind="outlet" name="exportButton" candidateClass="UIBarButtonItem"/>
-            </relationships>
-        </class>
-        <class className="HTSVehicleListViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/HTSVehicleListViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="submitQuestions:"/>
-            </relationships>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
         <simulatedScreenMetrics key="destination"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="5jx-fV-SWl"/>
         <segue reference="4vE-bW-MHo"/>
-        <segue reference="1JQ-Zd-2g0"/>
         <segue reference="98c-8N-FTW"/>
+        <segue reference="JXc-ho-VLv"/>
+        <segue reference="5jx-fV-SWl"/>
     </inferredMetricsTieBreakers>
 </document>

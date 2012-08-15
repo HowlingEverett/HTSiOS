@@ -22,9 +22,8 @@
         [sampleDict setObject:self.speed forKey:@"speed"];
     }
     
-    if (self.heading && self.headingAccuracy) {
+    if (self.heading) {
         [sampleDict setObject:self.heading forKey:@"heading"];
-        [sampleDict setObject:self.headingAccuracy forKey:@"heading_accuracy"];
     }
     
     return sampleDict;

@@ -157,8 +157,8 @@
             MKCoordinateRegion region;
             MKCoordinateSpan span;
             
-            span.latitudeDelta=0.1;
-            span.longitudeDelta=0.1;
+            span.latitudeDelta=0.03;
+            span.longitudeDelta=0.03;
             
             CLLocationCoordinate2D location=self.mapView.userLocation.coordinate;
             
@@ -200,6 +200,8 @@
             [self.tripPathView setNeedsDisplayInMapRect:updateRect];
         }
     }
+    
+    
 }
 
 - (void)geoSampleManager:(HTSGeoSampleManager *)manager didStopCapturingWithError:(NSError *)error

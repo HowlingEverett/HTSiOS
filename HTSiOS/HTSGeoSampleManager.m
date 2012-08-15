@@ -12,9 +12,10 @@
 
 @interface HTSGeoSampleManager ()
 
-@property (nonatomic, strong) CLLocationManager *locationManager;
+
 @property (nonatomic, strong) NSDate *idleTimestamp;
 @property (nonatomic, assign) NSTimeInterval secondsIdle;
+@property (nonatomic, strong) NSDate *lastPester;
 @end
 
 @implementation HTSGeoSampleManager
@@ -99,6 +100,7 @@
     if (localNotif) {
         localNotif.alertBody = @"Are you at your destination? Tap here to stop tracking.";
         localNotif.alertAction = @"Stop Tracking";
+        localNotif.hasAction = YES;
         localNotif.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
     }
@@ -112,13 +114,24 @@
 
 - (void)askUserToStartTracking
 {
+    self.lastPester = [NSDate date];
+    [[UIApplication sharedApplication] cancelAllLocalNotifications];
     UILocalNotification *localNotif = [[UILocalNotification alloc] init];
-    if (localNotif) {
-        localNotif.alertBody = @"Start tracking this trip in ATLAS?";
-        localNotif.alertAction = @"Start tracking";
-        localNotif.soundName = UILocalNotificationDefaultSoundName;
-        [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
-    }
+    localNotif.alertBody = @"Start tracking this trip in ATLAS?";
+    localNotif.alertAction = @"Start tracking";
+    localNotif.hasAction = YES;
+    localNotif.timeZone = [NSTimeZone defaultTimeZone];
+    localNotif.soundName = UILocalNotificationDefaultSoundName;
+    
+    UILocalNotification *fiveMins = [localNotif copy];
+    NSDate *now = [NSDate date];
+    [fiveMins setFireDate:[now dateByAddingTimeInterval:(5 * 60)]];
+    UILocalNotification *tenMins = [localNotif copy];
+    [tenMins setFireDate:[now dateByAddingTimeInterval:(10 * 60)]];
+    [[UIApplication sharedApplication] scheduleLocalNotification:fiveMins];
+    [[UIApplication sharedApplication] scheduleLocalNotification:tenMins];
+    
+    [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
 }
 
 #pragma mark - CLLocationManagerDelegate methods
@@ -130,8 +143,9 @@
     }
     // test the age of the location measurement to determine if the measurement is cached
     // in most cases you will not want to rely on cached measurements
-    NSTimeInterval locationAge = -[newLocation.timestamp timeIntervalSinceNow];
-    if (locationAge > 5.0) return;
+    NSDate *eventDate = newLocation.timestamp;
+    NSTimeInterval howRecent = [eventDate timeIntervalSinceNow];
+    if (abs(howRecent) > 5.0) return;
     
     if (self.isLiveTracking) {
         // First check if we should time out and stop tracking
@@ -166,7 +180,9 @@
         
         
     } else {
-        [self askUserToStartTracking];
+        if (!self.lastPester || [[NSDate date] timeIntervalSinceDate:self.lastPester] > (5 * 60.0)) {
+            [self askUserToStartTracking];
+        }
     }
     
 }
