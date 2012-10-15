@@ -18,7 +18,9 @@
 @property (nonatomic, strong) NSDate *lastPester;
 @end
 
-@implementation HTSGeoSampleManager
+@implementation HTSGeoSampleManager {
+    BOOL _isTimedOut;
+}
 @synthesize locationManager;
 @synthesize activeTrip;
 @synthesize isLiveTracking;
@@ -81,6 +83,7 @@
             [self.locationManager startUpdatingHeading];
         }
         self.isLiveTracking = YES;
+        _isTimedOut = NO;
     } else {
         NSLog(@"No active trip. Can't start capturing samples.");
     }
@@ -103,6 +106,7 @@
         localNotif.hasAction = YES;
         localNotif.soundName = UILocalNotificationDefaultSoundName;
         [[UIApplication sharedApplication] presentLocalNotificationNow:localNotif];
+        _isTimedOut = YES;
     }
 }
 
@@ -149,19 +153,8 @@
     
     if (self.isLiveTracking) {
         // First check if we should time out and stop tracking
-        if (self.secondsIdle > 300.0 || self.activeTrip.durationValue > 90.0) {
+        if (self.activeTrip.durationValue > 90.0 && !_isTimedOut) {
             [self timeoutLogging];
-        }
-        
-        if ([oldLocation distanceFromLocation:newLocation] < 8.0) {
-            if (!self.idleTimestamp) {
-                self.idleTimestamp = [NSDate date];
-            }
-            
-            self.secondsIdle = [newLocation.timestamp timeIntervalSinceDate:self.idleTimestamp];
-        } else {
-            self.idleTimestamp = nil;
-            self.secondsIdle = 0;
         }
         
         // Otherwise, create and save a GeoSample
@@ -174,13 +167,25 @@
             self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
             NSTimeInterval durationComponent = [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp];
             self.activeTrip.durationValue = self.activeTrip.durationValue + (durationComponent / 60.0);
-            NSLog(@"%g", self.activeTrip.durationValue);
         }
         [[NSManagedObjectContext contextForCurrentThread] save];
         
         
     } else {
         if (!self.lastPester || [[NSDate date] timeIntervalSinceDate:self.lastPester] > (5 * 60.0)) {
+            NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+            Trip *fakeTrip = [Trip createEntity];
+            fakeTrip.date = newLocation.timestamp;
+            fakeTrip.tripDescription = @"SignificantLocationChange";
+            fakeTrip.surveyId = [[defaults objectForKey:@"HTSActiveSurveyDictKey"] objectForKey:@"surveyId"];
+            GeoSample *sample = [GeoSample createEntity];
+            sample.trip = fakeTrip;
+            sample.latitudeValue = newLocation.coordinate.latitude;
+            sample.longitudeValue = newLocation.coordinate.longitude;
+            sample.timestamp = newLocation.timestamp;
+            sample.locationAccuracyValue = newLocation.horizontalAccuracy;
+            [[NSManagedObjectContext defaultContext] save];
+            
             [self askUserToStartTracking];
         }
     }

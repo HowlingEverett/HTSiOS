@@ -164,7 +164,7 @@
         [components setTimeZone:[NSTimeZone localTimeZone]];
         NSDate *end = [cal dateFromComponents:components];
         
-        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO)", start, end];
+        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO) AND(tripDescription != %@)", start, end, @"SignificantLocationChange"];
         [fetch setPredicate:predicateTemplate];
         // Sort using the timeStamp property..
         NSSortDescriptor *sortDescriptor = [[NSSortDescriptor alloc] initWithKey:@"date" ascending:NO];

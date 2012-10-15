@@ -295,26 +295,31 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Demographic Survey" id="KIF-D7-Ykm">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" accessoryType="disclosureIndicator" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" textLabel="uZT-Vs-K8l" style="IBUITableViewCellStyleDefault" id="Lje-Mk-YWR">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="Username Cell" id="Lje-Mk-YWR">
                                         <rect key="frame" x="0.0" y="305" width="320" height="46"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="10" y="1" width="280" height="43"/>
+                                            <rect key="frame" x="10" y="1" width="300" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="left" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" text="Take Survey" adjustsFontSizeToFit="NO" autoshrinkMode="none" id="uZT-Vs-K8l">
-                                                    <rect key="frame" x="10" y="0.0" width="260" height="43"/>
-                                                    <autoresizingMask key="autoresizingMask"/>
-                                                    <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
-                                                </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="dJl-eo-kaO">
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="44"/>
+                                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                    <state key="normal" title="Take Survey">
+                                                        <color key="titleColor" red="0.85098046059999999" green="0.55294120309999995" blue="0.54901963470000004" alpha="1" colorSpace="deviceRGB"/>
+                                                        <color key="titleShadowColor" red="0.93085652370000005" green="0.72180758170000003" blue="0.71905693829999995" alpha="1" colorSpace="deviceRGB"/>
+                                                    </state>
+                                                    <state key="highlighted">
+                                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="tG6-gK-OSx" kind="modal" identifier="Take Survey" modalTransitionStyle="coverVertical" id="QGO-13-Lfx"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         </view>
-                                        <connections>
-                                            <segue destination="WGu-m8-TJW" kind="push" id="ueU-CR-ada"/>
-                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -669,7 +674,7 @@
             <objects>
                 <tableViewController id="WGu-m8-TJW" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Wh4-lB-rsi">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -958,6 +963,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Demographic Info" id="tcQ-Ne-qsu">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="RCD-Ks-wdr"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="tLr-p0-eaW">
                             <connections>
                                 <segue destination="TE5-rQ-XxA" kind="push" identifier="Next" id="7bK-uS-XyW"/>
@@ -967,14 +973,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bir-Iy-oEe" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1345" y="1514"/>
+            <point key="canvasLocation" x="1871" y="1514"/>
         </scene>
         <!--Survey Question View Controller - Your Household-->
         <scene sceneID="aM8-jq-Cna">
             <objects>
                 <tableViewController id="TE5-rQ-XxA" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="WQ1-2a-AxX">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1326,14 +1332,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="num-ti-Koq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1765" y="1512"/>
+            <point key="canvasLocation" x="2291" y="1512"/>
         </scene>
         <!--Other Input View Controller - Other-->
         <scene sceneID="A85-u9-ub6">
             <objects>
                 <viewController id="n0Q-1Q-sJH" customClass="HTSOtherInputViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="SIF-lf-BRb">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" text="Label" adjustsFontSizeToFit="NO" autoshrinkMode="none" preferredMaxLayoutWidth="280" id="x99-b3-fW1">
@@ -1368,7 +1374,7 @@
             <objects>
                 <tableViewController id="os6-As-uTy" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="EoB-w9-nWE">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -1842,14 +1848,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dGr-aW-TJQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2183" y="1510"/>
+            <point key="canvasLocation" x="2709" y="1510"/>
         </scene>
         <!--Survey Question View Controller - Travel-->
         <scene sceneID="RkQ-mY-D0M">
             <objects>
                 <tableViewController id="5QJ-T6-72c" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="cyV-mh-d5b">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2248,14 +2254,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GtB-Yh-Dbd" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2639" y="1510"/>
+            <point key="canvasLocation" x="3165" y="1510"/>
         </scene>
         <!--Vehicle List View Controller - Vehicles-->
         <scene sceneID="d8v-xd-dLe">
             <objects>
                 <tableViewController id="YlI-Xk-B2q" customClass="HTSVehicleListViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="QXA-Bs-MzB">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <view key="tableHeaderView" contentMode="scaleToFill" id="19Y-rZ-dlU">
@@ -2329,14 +2335,14 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hS5-lU-d7m" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3050" y="1512"/>
+            <point key="canvasLocation" x="3576" y="1512"/>
         </scene>
         <!--Survey Question View Controller - Vehicle Details-->
         <scene sceneID="gQZ-ep-ET6">
             <objects>
                 <tableViewController id="6Pn-ev-bZ2" customClass="HTSSurveyQuestionViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="singleLineEtched" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="aeb-iq-R2t">
-                        <rect key="frame" x="0.0" y="64" width="320" height="367"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <sections>
@@ -2682,7 +2688,7 @@ JDIwMB/igJMyOTk
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZiS-Zw-0lM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3470" y="1510"/>
+            <point key="canvasLocation" x="3996" y="1510"/>
         </scene>
         <!--New Trip View Controller - New Trip-->
         <scene sceneID="PkL-C1-8Rh">
@@ -3346,6 +3352,25 @@ JDIwMB/igJMyOTk
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6OL-Ot-9si" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-229" y="-2934"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="ZRR-Kl-5PJ">
+            <objects>
+                <navigationController id="tG6-gK-OSx" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="GVt-mJ-kcC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.60000002379999995" green="0.40000000600000002" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="WGu-m8-TJW" kind="relationship" relationship="rootViewController" id="ZyO-Um-fZe"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LVJ-sF-Ldk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1345" y="1514"/>
         </scene>
     </scenes>
     <resources>

@@ -71,7 +71,7 @@
 - (void)updateHistory
 {
     self.tripsDict = [[NSMutableDictionary alloc] init];
-    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"isActive == NO"];
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(isActive == NO) AND (tripDescription != %@)", @"SignificantLocationChange"];
     NSArray *trips = [Trip findAllWithPredicate:predicate];
     
     NSCalendar *cal = [NSCalendar currentCalendar];
@@ -177,20 +177,14 @@
     return [[self.tripsDict allKeys] sortedArrayUsingComparator:^NSComparisonResult(id obj1, id obj2) {
         NSDate *d1 = (NSDate *)obj1;
         NSDate *d2 = (NSDate *)obj2;
-        if (d1 > d2) {
-            return NSOrderedDescending;
-        } else if (d2 > d1) {
-            return NSOrderedAscending;
-        } else {
-            return NSOrderedSame;
-        }
+        return [d1 compare:d2];
     }];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     static NSString *CellIdentifier = @"History Cell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier forIndexPath:indexPath];
+    UITableViewCell *cell = [self.tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     NSArray *rows = [self sortedDateKeys];
     NSArray *tripsAtRow = [self.tripsDict objectForKey:[rows objectAtIndex:indexPath.row]];

@@ -251,7 +251,7 @@
         [components setSecond:59];
         [components setTimeZone:[NSTimeZone localTimeZone]];
         NSDate *end = [cal dateFromComponents:components];
-        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO)", start, end];
+        NSPredicate *predicateTemplate = [NSPredicate predicateWithFormat:@"(date >= %@) AND (date <= %@) AND (isActive == NO) AND (tripDescription != %@)", start, end, @"SignificantLocationChange"];
         [fetch setPredicate:predicateTemplate];
         [fetch setSortDescriptors:[NSArray arrayWithObject:[NSSortDescriptor sortDescriptorWithKey:@"date" ascending:NO]]];
         _fetchedResultsController = [[NSFetchedResultsController alloc] initWithFetchRequest:fetch managedObjectContext:[NSManagedObjectContext defaultContext]  sectionNameKeyPath:nil cacheName:nil];

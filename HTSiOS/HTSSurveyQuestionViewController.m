@@ -10,7 +10,7 @@
 #import "HTSOtherInputViewController.h"
 #import "SurveyResponse.h"
 
-@interface HTSSurveyQuestionViewController () <HTSOtherInputViewControllerDelegate>
+@interface HTSSurveyQuestionViewController () <HTSOtherInputViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, strong) NSString *vehicleType;
 @end
@@ -31,6 +31,33 @@
     [super viewDidLoad];
 
     self.groupName = self.navigationItem.title;
+    [self.navigationItem setLeftBarButtonItem:[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(cancel:)]];
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+//    [self selectExistingResponses];
+}
+
+- (void)selectExistingResponses
+{
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    int numSections = [self.tableView.dataSource numberOfSectionsInTableView:self.tableView];
+    for (int i = 0; i < numSections; i++) {
+        NSString *questionTitle = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:i];
+        id responseObject = [defaults objectForKey:questionTitle];
+        if (responseObject) {
+            NSArray *indexes = (NSArray *)responseObject;
+            for (NSNumber *index in indexes) {
+                int responseIndex = [index intValue];
+                NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:responseIndex inSection:i];
+                UITableViewCell *cell = [self.tableView cellForRowAtIndexPath:selectedIndexPath];
+                [cell setAccessoryType:UITableViewCellAccessoryCheckmark];
+//                [self.tableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
+            }
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -56,11 +83,19 @@
 - (void)persistResponses
 {
     int numSections = [self.tableView.dataSource numberOfSectionsInTableView:self.tableView];
+//    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
     for (int s = 0; s < numSections; s++) {
         int numRows = [self.tableView.dataSource tableView:self.tableView numberOfRowsInSection:s];
-        SurveyResponse *response = [SurveyResponse createEntity];
-        response.questionTitle = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:s];
+        NSString *questionTitle = [self.tableView.dataSource tableView:self.tableView titleForHeaderInSection:s];
+        SurveyResponse *response = [SurveyResponse findFirstByAttribute:@"questionTitle" withValue:questionTitle];
+        
+        if (!response) {
+            response = [SurveyResponse createEntity];
+        }
+        
+        response.questionTitle = questionTitle;
         NSString *answers = @"";
+//        NSMutableArray *answerIndexes = [[NSMutableArray alloc] init];
         
         for (int r = 0; r < numRows; r++) {
             NSIndexPath *cellPath = [NSIndexPath indexPathForRow:r inSection:s];
@@ -75,8 +110,10 @@
                     }
                     answers = [answers stringByAppendingString:[NSString stringWithFormat:@"%@, ", cell.textLabel.text]];
                 }
+//                [answerIndexes addObject:@(r)];
             }
         }
+//        [defaults setObject:answerIndexes forKey:questionTitle];
         
         // Trim off the last comma, if there were any selected responses at all
         if (answers.length > 2) {
@@ -86,6 +123,7 @@
         response.groupName = self.groupName;
         [[NSManagedObjectContext defaultContext] save];
     }
+//    [defaults synchronize];
 }
 
 #pragma mark - Table view delegate
@@ -138,6 +176,19 @@
     [self persistResponses];
     [self.delegate didCreateVehicleWithType:self.vehicleType];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+- (void)cancel:(id)sender
+{
+    UIAlertView *cancelAlert = [[UIAlertView alloc] initWithTitle:@"Cancel demographic survey?" message:@"Your responses won't be submitted to the survey." delegate:self cancelButtonTitle:@"No, Wait" otherButtonTitles:@"Do it", nil];
+    [cancelAlert show];
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex
+{
+    if (buttonIndex != alertView.cancelButtonIndex) {
+        [self dismissModalViewControllerAnimated:YES];
+    }
 }
 
 @end
