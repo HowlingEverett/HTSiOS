@@ -6,10 +6,11 @@
 const struct TripAttributes TripAttributes = {
 	.date = @"date",
 	.distance = @"distance",
-	.duration = @"duration",
+	.endTime = @"endTime",
 	.isActive = @"isActive",
 	.isExported = @"isExported",
 	.sectionIdentifier = @"sectionIdentifier",
+	.startTime = @"startTime",
 	.surveyId = @"surveyId",
 	.tripDescription = @"tripDescription",
 };
@@ -50,10 +51,6 @@ const struct TripFetchedProperties TripFetchedProperties = {
 	
 	if ([key isEqualToString:@"distanceValue"]) {
 		NSSet *affectingKey = [NSSet setWithObject:@"distance"];
-		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
-	}
-	if ([key isEqualToString:@"durationValue"]) {
-		NSSet *affectingKey = [NSSet setWithObject:@"duration"];
 		keyPaths = [keyPaths setByAddingObjectsFromSet:affectingKey];
 	}
 	if ([key isEqualToString:@"isActiveValue"]) {
@@ -108,27 +105,8 @@ const struct TripFetchedProperties TripFetchedProperties = {
 
 
 
-@dynamic duration;
+@dynamic endTime;
 
-
-
-- (float)durationValue {
-	NSNumber *result = [self duration];
-	return [result floatValue];
-}
-
-- (void)setDurationValue:(float)value_ {
-	[self setDuration:[NSNumber numberWithFloat:value_]];
-}
-
-- (float)primitiveDurationValue {
-	NSNumber *result = [self primitiveDuration];
-	return [result floatValue];
-}
-
-- (void)setPrimitiveDurationValue:(float)value_ {
-	[self setPrimitiveDuration:[NSNumber numberWithFloat:value_]];
-}
 
 
 
@@ -187,6 +165,13 @@ const struct TripFetchedProperties TripFetchedProperties = {
 
 
 @dynamic sectionIdentifier;
+
+
+
+
+
+
+@dynamic startTime;
 
 
 

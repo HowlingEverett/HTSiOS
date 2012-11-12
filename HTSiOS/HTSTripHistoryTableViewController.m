@@ -35,11 +35,6 @@
 {
     [super viewDidLoad];
 
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
- 
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
     self.transportDescriptions = [NSDictionary dictionaryWithObjectsAndKeys:@"own vehicle", @"C", @"walking", @"P", @"cycling", @"Cy", @"public transport", @"PT", @"taxi", @"T", nil];
 }
 
@@ -78,33 +73,6 @@
 	return count;
 }
 
-//- (NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-//	
-//	id <NSFetchedResultsSectionInfo> theSection = [[self.fetchedResultsController sections] objectAtIndex:section];
-//    
-//    /*
-//     Section information derives from an event's sectionIdentifier, which is a string representing the number (year * 1000) + month.
-//     To display the section title, convert the year and month components to a string representation.
-//     */
-//    static NSArray *monthSymbols = nil;
-//    
-//    if (!monthSymbols) {
-//        NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//        [formatter setCalendar:[NSCalendar currentCalendar]];
-//        monthSymbols = [formatter monthSymbols];
-//    }
-//    
-//    NSInteger numericSection = [[theSection name] integerValue];
-//    
-//	NSInteger year = numericSection / 1000000;
-//	NSInteger month = (numericSection - (year * 1000000)) / 1000;
-//    NSInteger day = (numericSection - (year * 1000000) - (month * 1000));
-//	
-//	NSString *titleString = [NSString stringWithFormat:@"%@ %d, %d", [monthSymbols objectAtIndex:month-1], day, year];
-//	
-//	return titleString;
-//}
-
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     
@@ -112,9 +80,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
     Trip *trip = [self.fetchedResultsController objectAtIndexPath:indexPath];
-    NSDate *start = [trip.samplesSet valueForKeyPath:@"@min.timestamp"];
-    NSDate *end = [trip.samplesSet valueForKeyPath:@"@max.timestamp"];
-    NSTimeInterval length = [end timeIntervalSinceDate:start] / 60;
+    NSTimeInterval length = [trip.endTime timeIntervalSinceDate:trip.startTime] / 60;
     
     NSString *modeStr = @"";
     for (TransportMode *tm in trip.modes) {
@@ -128,7 +94,7 @@
     
     
     
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip.", [df stringFromDate:start], [df stringFromDate:end], (int)length];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"%@–%@: %d minute trip.", [df stringFromDate:trip.startTime], [df stringFromDate:trip.endTime], (int)length];
         
     return cell;
 }

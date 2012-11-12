@@ -21,7 +21,7 @@
 
 @implementation HTSAPIController
 @synthesize client;
-#define kAPIBase @"http://againstdragons.usdlc.net/"
+#define kAPIBase @"http://atlas.zones.eait.uq.edu.au/"
 
 + (HTSAPIController *)sharedApi
 {
@@ -112,6 +112,7 @@
         NSString *errorMessage;
         if (operation.response.statusCode == 400) {
             NSDictionary *errorDict = [NSJSONSerialization JSONObjectWithData:operation.responseData options:0 error:nil];
+            NSLog(@"%@", errorDict);
             errorMessage = [errorDict objectForKey:@"error"];
         } else {
             NSLog(@"Error: %@, %@", error, operation.responseString);

@@ -7,10 +7,11 @@
 extern const struct TripAttributes {
 	__unsafe_unretained NSString *date;
 	__unsafe_unretained NSString *distance;
-	__unsafe_unretained NSString *duration;
+	__unsafe_unretained NSString *endTime;
 	__unsafe_unretained NSString *isActive;
 	__unsafe_unretained NSString *isExported;
 	__unsafe_unretained NSString *sectionIdentifier;
+	__unsafe_unretained NSString *startTime;
 	__unsafe_unretained NSString *surveyId;
 	__unsafe_unretained NSString *tripDescription;
 } TripAttributes;
@@ -25,6 +26,7 @@ extern const struct TripFetchedProperties {
 
 @class TransportMode;
 @class GeoSample;
+
 
 
 
@@ -67,14 +69,10 @@ extern const struct TripFetchedProperties {
 
 
 
-@property (nonatomic, strong) NSNumber* duration;
+@property (nonatomic, strong) NSDate* endTime;
 
 
-@property float durationValue;
-- (float)durationValue;
-- (void)setDurationValue:(float)value_;
-
-//- (BOOL)validateDuration:(id*)value_ error:(NSError**)error_;
+//- (BOOL)validateEndTime:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -107,6 +105,14 @@ extern const struct TripFetchedProperties {
 
 
 //- (BOOL)validateSectionIdentifier:(id*)value_ error:(NSError**)error_;
+
+
+
+
+@property (nonatomic, strong) NSDate* startTime;
+
+
+//- (BOOL)validateStartTime:(id*)value_ error:(NSError**)error_;
 
 
 
@@ -181,11 +187,8 @@ extern const struct TripFetchedProperties {
 
 
 
-- (NSNumber*)primitiveDuration;
-- (void)setPrimitiveDuration:(NSNumber*)value;
-
-- (float)primitiveDurationValue;
-- (void)setPrimitiveDurationValue:(float)value_;
+- (NSDate*)primitiveEndTime;
+- (void)setPrimitiveEndTime:(NSDate*)value;
 
 
 
@@ -210,6 +213,12 @@ extern const struct TripFetchedProperties {
 
 - (NSString*)primitiveSectionIdentifier;
 - (void)setPrimitiveSectionIdentifier:(NSString*)value;
+
+
+
+
+- (NSDate*)primitiveStartTime;
+- (void)setPrimitiveStartTime:(NSDate*)value;
 
 
 

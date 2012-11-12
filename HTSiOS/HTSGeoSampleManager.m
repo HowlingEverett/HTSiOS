@@ -153,7 +153,8 @@
     
     if (self.isLiveTracking) {
         // First check if we should time out and stop tracking
-        if (self.activeTrip.durationValue > 90.0 && !_isTimedOut) {
+        NSTimeInterval duration = [self.activeTrip.endTime timeIntervalSinceDate:self.activeTrip.startTime];
+        if (duration > 5400.0 && !_isTimedOut) {
             [self timeoutLogging];
         }
         
@@ -165,8 +166,7 @@
         if (self.activeTrip.samples.count > 0 && oldLocation) {
             CLLocationDistance dist = [newLocation distanceFromLocation:oldLocation];
             self.activeTrip.distanceValue = self.activeTrip.distanceValue + dist;
-            NSTimeInterval durationComponent = [newLocation.timestamp timeIntervalSinceDate:oldLocation.timestamp];
-            self.activeTrip.durationValue = self.activeTrip.durationValue + (durationComponent / 60.0);
+            self.activeTrip.endTime = newLocation.timestamp;
         }
         [[NSManagedObjectContext contextForCurrentThread] save];
         

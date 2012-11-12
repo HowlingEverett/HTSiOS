@@ -166,6 +166,7 @@
 		D090007A15933B2100B1D2C4 /* TransportMode.m in Sources */ = {isa = PBXBuildFile; fileRef = D090007615933B2100B1D2C4 /* TransportMode.m */; };
 		D09000811593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
 		D09000821593F19200B1D2C4 /* HTSTripHistoryTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */; };
+		D092DCF0163B689C00C92A14 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D092DCEF163B689C00C92A14 /* Default-568h@2x.png */; };
 		D0D13E5815B2FDCA00343D61 /* libz.1.2.5.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = D0D13E5715B2FDCA00343D61 /* libz.1.2.5.dylib */; };
 		D0D13E5C15B302D100343D61 /* LFCGzipUtility.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D13E5B15B302D100343D61 /* LFCGzipUtility.m */; };
 		D0D4D08E15A0BDEF00D96683 /* HTSNewTripViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D0D4D08D15A0BDEF00D96683 /* HTSNewTripViewController.m */; };
@@ -403,6 +404,7 @@
 		D090007615933B2100B1D2C4 /* TransportMode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TransportMode.m; sourceTree = "<group>"; };
 		D090007F1593F19200B1D2C4 /* HTSTripHistoryTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTSTripHistoryTableViewController.h; sourceTree = "<group>"; };
 		D09000801593F19200B1D2C4 /* HTSTripHistoryTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTSTripHistoryTableViewController.m; sourceTree = "<group>"; };
+		D092DCEF163B689C00C92A14 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Default-568h@2x.png"; path = "../Default-568h@2x.png"; sourceTree = "<group>"; };
 		D0D13E5715B2FDCA00343D61 /* libz.1.2.5.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.1.2.5.dylib; path = usr/lib/libz.1.2.5.dylib; sourceTree = SDKROOT; };
 		D0D13E5A15B302D100343D61 /* LFCGzipUtility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LFCGzipUtility.h; sourceTree = "<group>"; };
 		D0D13E5B15B302D100343D61 /* LFCGzipUtility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LFCGzipUtility.m; sourceTree = "<group>"; };
@@ -754,6 +756,7 @@
 		D034E64C1564EAF30092AAA0 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D092DCEF163B689C00C92A14 /* Default-568h@2x.png */,
 				D01D82C615DB2514005F6919 /* Icon@2x.png */,
 				D01D82C415DB2506005F6919 /* Icon.png */,
 				D01D82BA15DB1E31005F6919 /* 56-cloud.png */,
@@ -1092,6 +1095,7 @@
 				D01D82BD15DB1E31005F6919 /* 56-cloud@2x.png in Resources */,
 				D01D82C515DB2507005F6919 /* Icon.png in Resources */,
 				D01D82C715DB2514005F6919 /* Icon@2x.png in Resources */,
+				D092DCF0163B689C00C92A14 /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1387,6 +1391,7 @@
 		D034E6731564EAF30092AAA0 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Marrington (TD3L9X2465)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Justin Marrington (TD3L9X2465)";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HTSiOS/atlas-Prefix.pch";
@@ -1400,7 +1405,8 @@
 					"\"$(SRCROOT)/HTSiOS/TestFlightSDK\"",
 				);
 				PRODUCT_NAME = atlas;
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "FEE458FB-8ACB-4720-93B3-CBD6CBB9ABE5";
+				PROVISIONING_PROFILE = "D6A2D68B-E47B-4BF4-A6A1-B7DF9D2AB03C";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "C0EF876A-294F-49D1-A588-1E2074442A0C";
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -1409,6 +1415,7 @@
 		D034E6741564EAF30092AAA0 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer: Justin Marrington (TD3L9X2465)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Justin Marrington";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "HTSiOS/atlas-Prefix.pch";
@@ -1422,6 +1429,7 @@
 					"\"$(SRCROOT)/HTSiOS/TestFlightSDK\"",
 				);
 				PRODUCT_NAME = atlas;
+				PROVISIONING_PROFILE = "D6A2D68B-E47B-4BF4-A6A1-B7DF9D2AB03C";
 				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "F9601DE0-1E3B-48FB-8FBB-566C8EF1A0A3";
 				USER_HEADER_SEARCH_PATHS = "$(inherited)";
 				WRAPPER_EXTENSION = app;

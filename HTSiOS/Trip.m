@@ -19,7 +19,8 @@
     NSDictionary *tripDict = [NSDictionary dictionaryWithObjectsAndKeys:
                                      [df stringFromDate:self.date], @"date",
                                      self.tripDescription, @"description",
-                                     self.duration, @"duration",
+                                     [df stringFromDate:self.startTime], @"start_time",
+                                     [df stringFromDate:self.endTime], @"end_time",
                                      self.distance, @"distance",
                                      modes, @"transport_modes",
                                      self.surveyId, @"survey_id", nil];
